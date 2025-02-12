@@ -56,9 +56,9 @@ Users will move with their mouse and keyboard.
 
 **Win & lose conditions**: 
 - The zombie team wins when all humans are infected before the game ends.
-    - <i><b>“Apex Predator”</b></i>: The zombie that caught the most number of humans will be the winner
-    - <i><b>“The Final Reaper”</b></i>: The zombie that caught the last human will be the winner
-    - <i><b>“The Final Prey”</b></i>: The last human got infected will be the winner
+    - The zombie that caught the most number of humans will be the <i><b>“Apex Predator”</b></i>.
+    - The zombie that caught the last human will be the <i><b>“The Final Reaper”</b></i>.
+    - The last human got infected will be the <i><b>“The Final Prey”</b></i>.
 - The human team wins when at least one human survived when the time ends. All remaining humans are <i><b>“The Hope”</b></i>.
 
 
