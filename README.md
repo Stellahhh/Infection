@@ -24,6 +24,7 @@ The broad category (or categories) your game will fall under. Examples include f
 ### [1. Cat-mouse game]
 
 Cat-mouse game. An offline real-person game where players are assigned to a Cat or Mouse team. Cats need to catch the mouse and convert them to a cat. Every player will have a location tracker to display their location on the map.
+<img src="cat_mouse.JPG" alt="Cat-mouse Image" width="500"/>
 
 ### [2. PUBG]
 
