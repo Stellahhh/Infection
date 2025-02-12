@@ -29,7 +29,7 @@ Cat-mouse game. An offline real-person game where players are assigned to a Cat 
 ### [2. PUBG]
 
 In our game, since would be a time limit, we will implement a similar mechanic to PUBG’s shrinking play area. We plan that every 15 minutes, one-fifth of the game map will be shut down, which force both zombies and humans to leave the zone. Any player that remains in a restricted area will be eliminated instantly. One thing to note is that the shut down area will be reopened after 15 minutes. 
-<img src="PUBG.JPG" alt="PUBG Image" width="500"/>
+<img src="PUBG.jpg" alt="PUBG Image" width="500"/>
 
 ## Gameplay
 
