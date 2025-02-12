@@ -54,6 +54,14 @@ Users will move with their mouse and keyboard.
 - Zombies will have a hungriness bar that will be filled in 15 min. As the zombies get more hungry, their moving speed increases. Catching a human will empty the hungriness bar. If the hungriness bar is filled, the zombie dies.
 - Every 15 min, randomly ⅕ of the whole map will be temporally shut down for 15 min. Players will have to get out of that area. There will be a warning 15 min prior to the shutdown.
 
+**Win & lose conditions**: 
+- The zombie team wins when all humans are infected before the game ends.
+    - <i><b>“Apex Predator”</b></i>: The zombie that caught the most number of humans will be the winner
+    - <i><b>“The Final Reaper”</b></i>: The zombie that caught the last human will be the winner
+    - <i><b>“The Final Prey”</b></i>: The last human got infected will be the winner
+- The human team wins when at least one human survived when the time ends. All remaining humans are <i><b>“The Hope”</b></i>.
+
+
 ## Development Plan
 
 ### Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)
