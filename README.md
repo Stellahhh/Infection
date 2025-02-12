@@ -59,5 +59,17 @@ Users will move with their mouse and keyboard.
 ### Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)
 
 Sketch out a rough idea of what parts of your game you will implement for the next submission, Project Checkpoint 1-2: Basic Mechanics and Scripting involving Unity textbook Chapters 5 through 9. You will come back to update this for each submission based on which things you've accomplished and which need to be prioritized next. This will help you practice thinking ahead as well as reflecting on the progress you've made throughout the semester.
-Implement the map
-Design the basic elements, such as trees, houses, water area, pit.
+- Implement the map
+  - Design the basic elements, such as trees, houses, water area, pit.
+  - Design the random generation of the map
+- Implement the 3D model for human and zombie
+- Implement their movement
+- Implement keyboard association with movement
+- Implement collision detection
+  - Collision detection between player avatar and the environment objects
+  - Collision detection between two players
+  - Human & human collision and zombie-zombie collision
+  - Human & zombie collision
+- Implement win and lose conditions
+  - How zombies die of hunger or how both humans and zombies die due to being outside of the safe zone
+
