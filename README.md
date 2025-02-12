@@ -78,6 +78,12 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
   - Collision detection between two players
   - Human & human collision and zombie-zombie collision
   - Human & zombie collision
-- Implement win and lose conditions
-  - How zombies die of hunger or how both humans and zombies die due to being outside of the safe zone
+- Implement death conditions
+  - How zombies die of hunger
+  - How both humans and zombies die due to being outside of the safe zone
+- Implement time limit
+- Implement win and lose condition
+  - Judge human wins or zombie wins
+  - Calculate zombie's infection number
+  - Determine the last survivor and last reaper
 
