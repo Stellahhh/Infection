@@ -10,12 +10,18 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
     private Transform cam;
-    private PlayerInput playerInput;
-    private InputAction moveAction;
-    private InputAction lookAction;
+    public PlayerInput playerInput;
+    public InputAction moveAction;
+    public InputAction lookAction;
+    
 
-    void Awake()
+    private void Awake()
     {
+        if (controller == null)
+        {
+            controller = GetComponent<CharacterController>(); // Assign if it's missing
+        }
+
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
@@ -24,15 +30,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(playerInput.inputIsActive);
         // Get input from the new Input System
+        moveAction = playerInput.actions["Move"];
+        lookAction = playerInput.actions["Look"];
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
-
+        Debug.Log(moveInput);
         // Convert input to world direction
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
         moveDir.y = 0f; // Prevent movement in the Y direction
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
-
         // Rotate the player using mouse input
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
 
@@ -45,6 +53,8 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
         }
-        controller.Move(velocity * Time.deltaTime);
+        
+            controller.Move(velocity * Time.deltaTime);
     }
+   
 }

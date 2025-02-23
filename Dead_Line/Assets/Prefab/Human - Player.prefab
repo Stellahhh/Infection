@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7067482039796394308}
   - component: {fileID: 2749839116969588575}
   - component: {fileID: 5461358731775261344}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -152,9 +152,10 @@ GameObject:
   - component: {fileID: 3489410992263392030}
   - component: {fileID: 2838634510673149881}
   - component: {fileID: 6947799769017411356}
-  m_Layer: 0
+  - component: {fileID: 3346724599109371301}
+  m_Layer: 6
   m_Name: Human - Player
-  m_TagString: Untagged
+  m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -243,6 +244,7 @@ MonoBehaviour:
   moveSpeed: 30
   rotationSpeed: 20
   gravity: -9.81
+  playerInput: {fileID: 3489410992263392030}
 --- !u!114 &3489410992263392030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +291,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -321,3 +323,17 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3346724599109371301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822913891371134526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929b5ab5bd0b24284a550167b4246fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombiePrefab: {fileID: 5814837833011159231, guid: ebbda1ef7731f4b1f93e980eb0b1aa12,
+    type: 3}
