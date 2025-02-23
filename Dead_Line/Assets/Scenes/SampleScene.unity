@@ -455,7 +455,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1999143536
+--- !u!1 &1999143536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5822913891371134526, guid: cc079db0bd31546d68d68ed42a0c221a,
     type: 3}
@@ -475,6 +475,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 5814837833011159231, guid: ebbda1ef7731f4b1f93e980eb0b1aa12,
     type: 3}
+  playerMovementScript: {fileID: 0}
+--- !u!114 &1999143554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999143536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7908aeac400374a8daf06d7e15a2c0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4951092755792673460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,6 +579,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1999143546}
+    - targetCorrespondingSourceObject: {fileID: 5822913891371134526, guid: cc079db0bd31546d68d68ed42a0c221a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1999143554}
   m_SourcePrefab: {fileID: 100100000, guid: cc079db0bd31546d68d68ed42a0c221a, type: 3}
 --- !u!1001 &5986859272183514427
 PrefabInstance:
@@ -651,3 +668,4 @@ SceneRoots:
   - {fileID: 96561280}
   - {fileID: 4951092755792673460}
   - {fileID: 5986859272183514427}
+  - {fileID: 1571409868}
