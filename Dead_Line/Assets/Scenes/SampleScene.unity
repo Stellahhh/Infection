@@ -375,7 +375,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: d71513206cf4b4ad3ada9070cbe6891b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9132d441e8b1d47b1846bb17d5477452, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &234663470
 GameObject:
@@ -610,51 +610,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1571409866
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1571409868}
-  - component: {fileID: 1571409867}
-  m_Layer: 0
-  m_Name: TerrainSplitterController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1571409867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571409866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 409b47c89c7f248caba5e429ea22941c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalTerrain: {fileID: 96561279}
---- !u!4 &1571409868
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571409866}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.083466, y: 284.9569, z: 668.6503}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999143536 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5822913891371134526, guid: cc079db0bd31546d68d68ed42a0c221a,
@@ -673,21 +628,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929b5ab5bd0b24284a550167b4246fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 5814837833011159231, guid: ebbda1ef7731f4b1f93e980eb0b1aa12,
-    type: 3}
+  zombiePrefab: {fileID: 0}
   playerMovementScript: {fileID: 0}
---- !u!114 &1999143554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999143536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7908aeac400374a8daf06d7e15a2c0d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4951092755792673460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,10 +701,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1999143546}
-    - targetCorrespondingSourceObject: {fileID: 5822913891371134526, guid: cc079db0bd31546d68d68ed42a0c221a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1999143554}
   m_SourcePrefab: {fileID: 100100000, guid: cc079db0bd31546d68d68ed42a0c221a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -772,5 +710,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 96561280}
   - {fileID: 4951092755792673460}
-  - {fileID: 5986859272183514427}
-  - {fileID: 1571409868}
+  - {fileID: 81706714}
