@@ -16,55 +16,103 @@ public class PlayerMovement : NetworkBehaviour
     public InputAction lookAction;
     private Camera playerCamera;
 
-
     private void Start()
     {
-        if (!isLocalPlayer) return;
-        // Enable the camera only for the local player
+        if (!isLocalPlayer) return; // Ensure this runs only for the local player
+
+        // Find the camera inside this player's prefab
         playerCamera = GetComponentInChildren<Camera>();
-        playerCamera.gameObject.SetActive(true);
-        cam = Camera.main.transform;
+
+        if (playerCamera != null)
+        {
+            playerCamera.gameObject.SetActive(true); // Enable only this player's camera
+        }
+
+        // Disable all other player cameras
+        foreach (Camera cam in FindObjectsOfType<Camera>())
+        {
+            if (cam != playerCamera)
+            {
+                cam.gameObject.SetActive(false);
+            }
+        }
+    
     }
 
-    private void Awake()
+
+
+private void Awake()
     {
         if (!isLocalPlayer) return;
 
         if (controller == null)
         {
-            controller = GetComponent<CharacterController>(); // Assign if it's missing
+            controller = GetComponent<CharacterController>(); // Assign if missing
         }
 
-        playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
-        lookAction = playerInput.actions["Look"];
+        //playerInput = GetComponent<PlayerInput>();
+        //moveAction = playerInput.actions["Move"];
+        //lookAction = playerInput.actions["Look"];
+        //moveAction.Enable();
+        //lookAction.Enable();
 
-        moveAction.Enable();
-        lookAction.Enable();
+        //// Try finding the camera within the player object
+        //Camera myCam = GetComponentInChildren<Camera>();
 
-        cam = Camera.main.transform;
-        if (cam == null)
-        {
-            Debug.LogError("Camera.main is null! Please assign a camera with the 'MainCamera' tag.");
-        }
+        //if (myCam != null)
+        //{
+        //    cam = myCam.transform; // Assign camera transform
+        //}
+        //else
+        //{
+        //    Debug.LogError("No camera found in child objects of the player!");
+        //}
     }
 
     void Update()
     {
         if (!isLocalPlayer) return;
 
-        
+
+        playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
-
         moveAction.Enable();
         lookAction.Enable();
+
+        // Try finding the camera within the player object
+        Camera myCam = GetComponentInChildren<Camera>(true);
+
+        playerCamera = GetComponentInChildren<Camera>();
+
+        if (playerCamera != null)
+        {
+            playerCamera.gameObject.SetActive(true); // Enable only this player's camera
+            cam = playerCamera.transform;
+        }
+
+        // Disable all other player cameras
+        foreach (Camera cam in FindObjectsOfType<Camera>())
+        {
+            if (cam != playerCamera)
+            {
+                cam.gameObject.SetActive(false);
+            }
+        }
+
+
+        Debug.Log("Active camera: " + Camera.main?.name);
+        Debug.Log("Assigned player camera: " + (cam != null ? cam.name : "NULL"));
+
         // Handle movement input
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
 
         print("--------------" + moveInput);
-        print("cam is null" + cam == null);
+        print("cam is null: " + (cam == null));
+
+        if (cam == null) return;  // Prevents NullReferenceException
+
         // Convert input to world direction
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
         moveDir.y = 0f; // Prevent movement in the Y direction
