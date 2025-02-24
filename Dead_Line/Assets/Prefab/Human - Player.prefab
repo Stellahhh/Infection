@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 2838634510673149881}
   - component: {fileID: 6947799769017411356}
   - component: {fileID: 3346724599109371301}
+  - component: {fileID: 2721000410178442236}
   m_Layer: 6
   m_Name: Human - Player
   m_TagString: Human
@@ -353,6 +354,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929b5ab5bd0b24284a550167b4246fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombiePrefab: {fileID: 5814837833011159231, guid: ebbda1ef7731f4b1f93e980eb0b1aa12,
+  zombiePrefab: {fileID: 144359263796293244, guid: 6ab4c3f0f9d9b4a3b82797a39a29b5ca,
     type: 3}
-  inputActions: {fileID: 0}
+  inputActions: {fileID: -944628639613478452, guid: ef32e940fc5ac47319a0034f3d51b831,
+    type: 3}
+--- !u!114 &2721000410178442236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822913891371134526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84bc8588b6224f1aa662064ab341cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
