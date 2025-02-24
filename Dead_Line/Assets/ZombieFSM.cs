@@ -24,8 +24,8 @@ public class EnemyFSM : MonoBehaviour
             {
                 agent.isStopped = false;
                 agent.SetDestination(sightSensor.detectedObject.transform.position); 
-                print("Chasing Player: " + sightSensor.detectedObject.transform.position);
-                print("Agent Velocity: " + agent.speed);
+                //print("Chasing Player: " + sightSensor.detectedObject.transform.position);
+                //print("Agent Velocity: " + agent.speed);
             }
         else {
             agent.isStopped = true; 

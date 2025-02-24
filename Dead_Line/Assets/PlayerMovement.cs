@@ -18,37 +18,57 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Start()
     {
-        if (!isLocalPlayer) return; // Ensure this runs only for the local player
+        // Called after this object is fully initialized as the local player
+        if (!isLocalPlayer) return;
 
-        // Find the camera inside this player's prefab
-        playerCamera = GetComponentInChildren<Camera>();
-
-        if (playerCamera != null)
+        Camera myCam = GetComponentInChildren<Camera>();
+        if (myCam != null)
         {
-            playerCamera.gameObject.SetActive(true); // Enable only this player's camera
+            myCam.gameObject.SetActive(true); // Enable only this player's camera
+        }
+        else
+        {
+            Debug.LogError("Camera not found for local player.");
         }
 
-        // Disable all other player cameras
-        foreach (Camera cam in FindObjectsOfType<Camera>())
+        // Ensure player input and actions are set up
+        playerInput = GetComponent<PlayerInput>();
+        if (playerInput == null)
         {
-            if (cam != playerCamera)
-            {
-                cam.gameObject.SetActive(false);
-            }
+            Debug.LogError("PlayerInput component not found!");
+            return;
         }
-    
+
+        moveAction = playerInput.actions["Move"];
+        lookAction = playerInput.actions["Look"];
+        if (moveAction == null || lookAction == null)
+        {
+            Debug.LogError("Input actions not properly set up.");
+            return;
+        }
+
+        // Initialize character controller if needed
+        controller = GetComponent<CharacterController>();
+        if (controller == null)
+        {
+            Debug.LogError("CharacterController not found!");
+            return;
+        }
+
+        print("network identity" + (GetComponent<NetworkIdentity>() == null));
+        
     }
 
 
 
-private void Awake()
+    private void Awake()
     {
-        if (!isLocalPlayer) return;
+        //if (!isLocalPlayer) return;
 
-        if (controller == null)
-        {
-            controller = GetComponent<CharacterController>(); // Assign if missing
-        }
+        //if (controller == null)
+        //{
+        //    controller = GetComponent<CharacterController>(); // Assign if missing
+        //}
 
         //playerInput = GetComponent<PlayerInput>();
         //moveAction = playerInput.actions["Move"];
@@ -101,15 +121,11 @@ private void Awake()
         }
 
 
-        Debug.Log("Active camera: " + Camera.main?.name);
-        Debug.Log("Assigned player camera: " + (cam != null ? cam.name : "NULL"));
-
         // Handle movement input
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
 
-        print("--------------" + moveInput);
-        print("cam is null: " + (cam == null));
+   
 
         if (cam == null) return;  // Prevents NullReferenceException
 
