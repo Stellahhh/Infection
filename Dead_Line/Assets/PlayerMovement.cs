@@ -25,18 +25,26 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
+        moveAction.Enable();
         cam = Camera.main.transform;
     }
 
     void Update()
     {
-        Debug.Log(playerInput.inputIsActive);
-        // Get input from the new Input System
-        moveAction = playerInput.actions["Move"];
-        lookAction = playerInput.actions["Look"];
+        //Debug.Log(playerInput.inputIsActive);
+        //Debug.Log(moveAction);
+        //Debug.Log(moveAction.ReadValue<Vector2>());
+
+        //moveAction = playerInput.actions["Move"];
+        //moveAction.performed += ctx => Debug.Log("Move Input: " + ctx.ReadValue<Vector2>());
+        moveAction.Enable();
+        lookAction.Enable();
+
+
+
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
-        Debug.Log(moveInput);
+        
         // Convert input to world direction
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
         moveDir.y = 0f; // Prevent movement in the Y direction

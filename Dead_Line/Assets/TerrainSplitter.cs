@@ -1,65 +1,66 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainSplitter : MonoBehaviour
 {
     public Terrain originalTerrain;
+    private Terrain[] splitTerrains;
+    private Material[] terrainMaterials; // Store individual materials for each terrain
 
     void Start()
     {
         SplitTerrainIntoFour();
+        StartCoroutine(ChangeTerrainColors()); // Start the color-changing coroutine
     }
 
     public void SplitTerrainIntoFour()
     {
+        if (originalTerrain == null)
+        {
+            Debug.LogError("Original terrain reference is null!");
+            return;
+        }
+
         TerrainData originalData = originalTerrain.terrainData;
         int originalRes = originalData.heightmapResolution;
-        // Calculate new resolution for each quadrant. 
-        // Because heightmap resolution is (2^n)+1, splitting in half can be tricky.
-        // For example, if originalRes is 513, then newRes will be 257.
         int newRes = (originalRes - 1) / 2 + 1;
 
-        // Retrieve the full heightmap
         float[,] originalHeights = originalData.GetHeights(0, 0, originalRes, originalRes);
 
-        // Prepare height arrays for each quadrant
-        float[,] heightsBL = new float[newRes, newRes]; // Bottom Left
-        float[,] heightsBR = new float[newRes, newRes]; // Bottom Right
-        float[,] heightsTL = new float[newRes, newRes]; // Top Left
-        float[,] heightsTR = new float[newRes, newRes]; // Top Right
+        float[,] heightsBL = new float[newRes, newRes];
+        float[,] heightsBR = new float[newRes, newRes];
+        float[,] heightsTL = new float[newRes, newRes];
+        float[,] heightsTR = new float[newRes, newRes];
 
-        // Fill the quadrant height arrays.
         for (int y = 0; y < newRes; y++)
         {
             for (int x = 0; x < newRes; x++)
             {
-                // Bottom Left quadrant: starting at (0,0)
                 heightsBL[y, x] = originalHeights[y, x];
-
-                // Bottom Right quadrant: offset x by (newRes - 1)
                 heightsBR[y, x] = originalHeights[y, x + newRes - 1];
-
-                // Top Left quadrant: offset y by (newRes - 1)
                 heightsTL[y, x] = originalHeights[y + newRes - 1, x];
-
-                // Top Right quadrant: offset both x and y by (newRes - 1)
                 heightsTR[y, x] = originalHeights[y + newRes - 1, x + newRes - 1];
             }
         }
 
-        // Define the size for the new terrains (half the original width and length)
         Vector3 originalSize = originalData.size;
         Vector3 newSize = new Vector3(originalSize.x / 2f, originalSize.y, originalSize.z / 2f);
 
-        // Create and configure new TerrainData objects for each quadrant.
-        CreateTerrain("Terrain_BL", heightsBL, newSize, originalTerrain.transform.position);
-        CreateTerrain("Terrain_BR", heightsBR, newSize, originalTerrain.transform.position + new Vector3(newSize.x, 0, 0));
-        CreateTerrain("Terrain_TL", heightsTL, newSize, originalTerrain.transform.position + new Vector3(0, 0, newSize.z));
-        CreateTerrain("Terrain_TR", heightsTR, newSize, originalTerrain.transform.position + new Vector3(newSize.x, 0, newSize.z));
+        splitTerrains = new Terrain[4];
+        terrainMaterials = new Material[4];
+
+        splitTerrains[0] = CreateTerrain("Terrain_BL", heightsBL, newSize, originalTerrain.transform.position, 0);
+        splitTerrains[1] = CreateTerrain("Terrain_BR", heightsBR, newSize, originalTerrain.transform.position + new Vector3(newSize.x, 0, 0), 1);
+        splitTerrains[2] = CreateTerrain("Terrain_TL", heightsTL, newSize, originalTerrain.transform.position + new Vector3(0, 0, newSize.z), 2);
+        splitTerrains[3] = CreateTerrain("Terrain_TR", heightsTR, newSize, originalTerrain.transform.position + new Vector3(newSize.x, 0, newSize.z), 3);
+
+        // Destroy the original terrain safely
+        GameObject originalTerrainGO = originalTerrain.gameObject;
+        originalTerrain = null; // Clear reference before destroying
+        Destroy(originalTerrainGO);
     }
 
-    private void CreateTerrain(string name, float[,] heights, Vector3 size, Vector3 position)
+    private Terrain CreateTerrain(string name, float[,] heights, Vector3 size, Vector3 position, int index)
     {
         TerrainData newData = new TerrainData();
         newData.heightmapResolution = heights.GetLength(0);
@@ -69,5 +70,62 @@ public class TerrainSplitter : MonoBehaviour
         GameObject terrainGO = Terrain.CreateTerrainGameObject(newData);
         terrainGO.name = name;
         terrainGO.transform.position = position;
+
+        // Load the base TerrainMaterial from Resources
+        Material baseMaterial = Resources.Load<Material>("TerrainMaterial");
+
+        if (baseMaterial == null)
+        {
+            Debug.LogError("TerrainMaterial not found! Make sure you placed it in a Resources folder.");
+            return terrainGO.GetComponent<Terrain>();
+        }
+
+        // 🔥 Create a unique instance of the material for this terrain
+        Material terrainMaterial = new Material(baseMaterial);
+
+        terrainGO.GetComponent<Terrain>().materialTemplate = terrainMaterial;
+        terrainGO.GetComponent<Terrain>().Flush(); // Force update rendering
+
+        // Store material instance for color changes
+        terrainMaterials[index] = terrainMaterial;
+
+        return terrainGO.GetComponent<Terrain>();
     }
+
+
+
+
+    private IEnumerator ChangeTerrainColors()
+    {
+        Debug.Log("ChangeTerrainColors...");
+
+        while (true)
+        {
+            yield return new WaitForSeconds(5f); // Wait 5 seconds
+
+            if (splitTerrains == null || splitTerrains.Length < 4)
+            {
+                Debug.LogError("No split terrains found! Exiting color change coroutine.");
+                yield break;
+            }
+
+            int randomIndex = Random.Range(0, 4); // Select a random terrain
+            Debug.Log($"Select a random terrain: {randomIndex}");
+
+            for (int i = 0; i < splitTerrains.Length; i++)
+            {
+                if (splitTerrains[i] != null && terrainMaterials[i] != null)
+                {
+                    // ✅ Modify the unique material instance
+                    Color newColor = (i == randomIndex) ? Color.red : Color.green;
+                    terrainMaterials[i].SetColor("_BaseColor", newColor); // URP Shader
+                    terrainMaterials[i].SetColor("_Color", newColor); // Standard Shader
+
+                    Debug.Log($"{splitTerrains[i].name} is now {(i == randomIndex ? "RED" : "GREEN")}");
+                }
+            }
+        }
+    }
+
+
 }
