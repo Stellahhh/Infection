@@ -242,9 +242,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 6947799769017411356}
   moveSpeed: 30
-  rotationSpeed: 20
+  rotationSpeed: 30
   gravity: -9.81
   playerInput: {fileID: 3489410992263392030}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6f8c8ad9-29b9-432a-ab85-5d2924d521de
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  lookAction:
+    m_Name: Look
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b989bd73-8a83-4708-9667-4067d7de6fc5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &3489410992263392030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,3 +355,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 5814837833011159231, guid: ebbda1ef7731f4b1f93e980eb0b1aa12,
     type: 3}
+  inputActions: {fileID: 0}

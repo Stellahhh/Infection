@@ -11,7 +11,12 @@ PrefabInstance:
     - target: {fileID: 144359263796293244, guid: 6ab4c3f0f9d9b4a3b82797a39a29b5ca,
         type: 3}
       propertyPath: m_Name
-      value: Zombie Variant
+      value: AI_Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 638421359531084582, guid: 6ab4c3f0f9d9b4a3b82797a39a29b5ca,
+        type: 3}
+      propertyPath: distance
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1064700092893470257, guid: 6ab4c3f0f9d9b4a3b82797a39a29b5ca,
         type: 3}
@@ -62,6 +67,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831347226906099369, guid: 6ab4c3f0f9d9b4a3b82797a39a29b5ca,
+        type: 3}
+      propertyPath: m_Speed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
