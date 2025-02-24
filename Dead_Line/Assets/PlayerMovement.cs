@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Mirror;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public CharacterController controller;
     public float moveSpeed = 5f;
@@ -13,10 +14,22 @@ public class PlayerMovement : MonoBehaviour
     public PlayerInput playerInput;
     public InputAction moveAction;
     public InputAction lookAction;
-    
+    private Camera playerCamera;
+
+
+    private void Start()
+    {
+        if (!isLocalPlayer) return;
+        // Enable the camera only for the local player
+        playerCamera = GetComponentInChildren<Camera>();
+        playerCamera.gameObject.SetActive(true);
+        cam = Camera.main.transform;
+    }
 
     private void Awake()
     {
+        if (!isLocalPlayer) return;
+
         if (controller == null)
         {
             controller = GetComponent<CharacterController>(); // Assign if it's missing
@@ -25,30 +38,38 @@ public class PlayerMovement : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
+
         moveAction.Enable();
+        lookAction.Enable();
+
         cam = Camera.main.transform;
+        if (cam == null)
+        {
+            Debug.LogError("Camera.main is null! Please assign a camera with the 'MainCamera' tag.");
+        }
     }
 
     void Update()
     {
-        //Debug.Log(playerInput.inputIsActive);
-        //Debug.Log(moveAction);
-        //Debug.Log(moveAction.ReadValue<Vector2>());
+        if (!isLocalPlayer) return;
 
-        //moveAction = playerInput.actions["Move"];
-        //moveAction.performed += ctx => Debug.Log("Move Input: " + ctx.ReadValue<Vector2>());
+        
+        moveAction = playerInput.actions["Move"];
+        lookAction = playerInput.actions["Look"];
+
         moveAction.Enable();
         lookAction.Enable();
-
-
-
+        // Handle movement input
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
-        
+
+        print("--------------" + moveInput);
+        print("cam is null" + cam == null);
         // Convert input to world direction
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
         moveDir.y = 0f; // Prevent movement in the Y direction
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
+
         // Rotate the player using mouse input
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
 
@@ -59,10 +80,10 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * Time.deltaTime; // Apply gravity when not grounded
         }
-        
-            controller.Move(velocity * Time.deltaTime);
+
+        // Move the player with gravity applied
+        controller.Move(velocity * Time.deltaTime);
     }
-   
 }
