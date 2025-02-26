@@ -128,7 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72e67a4edbf14606b6ebae50ce16f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 1000
+  maxTime: 10
+  remainingTime: 0
   onDeath:
     m_PersistentCalls:
       m_Calls: []
