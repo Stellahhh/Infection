@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class TrackWinLose : MonoBehaviour
 {
-    public float gameDuration = 180f; // 3 minutes
-    private float timer;
+    public float gameDuration; // 3 minutes
+    public float timer; // for testing
     private bool gameEnded = false;
     private string winnerMessage = "";
 
@@ -40,7 +40,7 @@ public class TrackWinLose : MonoBehaviour
     {
         GameObject[] humans = GameObject.FindGameObjectsWithTag("Human");
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
-        
+
         // if both humans and zombies are eliminated before time runs out
         // possibly due to warzone
         if (humans.Length == 0 && zombies.Length == 0)
@@ -70,10 +70,10 @@ public class TrackWinLose : MonoBehaviour
 
     void DetermineWinnerOnTimeExpiry()
     {
-        if (gameEnded) return;
-        gameEnded = true;
+        print("Time's up! Checking win conditions...");
 
         GameObject[] humans = GameObject.FindGameObjectsWithTag("Human");
+        print("Humans left: " + humans.Length);
 
         // if there are still humans left after time runs out, humans win
         if (humans.Length > 0)
