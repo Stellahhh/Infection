@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class TrackWinLose : MonoBehaviour
 {
-    public float gameDuration; // 3 minutes
+    public float gameDuration = 180f; // 3 minutes
     private float timer;
     private bool gameEnded = false;
     private string winnerMessage = "";
 
-    // Start is called before the first frame update
     void Start()
     {
         timer = gameDuration;
@@ -23,13 +26,39 @@ public class TrackWinLose : MonoBehaviour
         while (timer > 0)
         {
             timer -= Time.deltaTime;
-
-            // Update UI Timer
-            // if (timerText != null)
-            //     timerText.text = "Time Left: " + Mathf.Ceil(timer) + "s";
             yield return null;
+
+            // check win conditions every 2 seconds 
+            if (timer % 2 < Time.deltaTime)
+            {
+                if (CheckWinConditions())
+                {
+                    yield break; // Exit if game has ended
+                }
+            }
         }
-        EndGame();
+        EndGame(); // If timer reaches 0, determine winner
+    }
+
+    bool CheckWinConditions()
+    {
+        GameObject[] humans = GameObject.FindGameObjectsWithTag("Human");
+        GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");
+
+        if (humans.Length == 0)
+        {
+            winnerMessage = "Zombies Win! All humans are infected...";
+            EndGame();
+            return true;
+        }
+        else if (zombies.Length == 0)
+        {
+            winnerMessage = "Humans Win! You guys are the last hope...";
+            EndGame();
+            return true;
+        }
+
+        return false;
     }
 
     void EndGame()
@@ -37,25 +66,8 @@ public class TrackWinLose : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
 
-        GameObject[] humans = GameObject.FindGameObjectsWithTag("Human");
-        if (humans.Length > 0)
-        {
-            winnerMessage = "Humans Win! You guys are the last hope...";
-        }
-        else
-        {
-            winnerMessage = "Zombies Win! All humans are infected...\n";
-        }
         PlayerPrefs.SetString("WinnerMessage", winnerMessage);
         SceneManager.LoadScene("ResultsScene");
-
-        // Call methods to display winner details
-        // DetermineWinners();
     }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 }
+
