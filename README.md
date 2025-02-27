@@ -97,9 +97,9 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
   - ~~Collision detection between player avatar and the environment objects~~
   - ~~Human & human collision and zombie-zombie collision~~
   - ~~Human & zombie collision~~
-- Implement death conditions
+- ~~Implement death conditions~~
   - ~~How zombies die of hunger~~
-  - How both humans and zombies die due to being outside of the safe zone
+  - ~~How both humans and zombies die due to being outside of the safe zone~~
 - ~~Implement time limit~~
 - ~~Implement win and lose condition~~
   - ~~Judge human wins or zombie wins~~
@@ -113,11 +113,18 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
 we will first implement the tasks that we did not implement for Part 1: 
-- implement basic elements in the map
-- implement random map generation
-- Collision between player/zombie and environment objects
-- Human/human and zombie/zombie collision
 - zombie moving speed increases as they get more hungry
+- render a 3D model of both zombie and human
+- render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)
+    - attach texture to it
+- implement random map generation
+- audio effect
+- smooth win/loose scene
+- implement user can jump
+- potentially add compass or mini map (2D)
+- add HP
+- add invisible boundary? or high mountains at the map boundary to prevent users from falling
+
 
 ## Development
 
@@ -169,5 +176,30 @@ Steps to enable multiplayer functionality:
 
 3. choose "host" for one, and "client" for the other
 4. start playing the game! Each player will control their real character
+
+
+5. <b>Adding NavMesh Surface to Newly Generated Terrain</b>
+
+- Implemented terrain splitting:
+    - The original terrain is split into four equal parts.
+    - The original terrain is destroyed after splitting.
+- After the new terrains are created, each of them automatically generates a new NavMesh Surface.
+    - AI Zombies can navigate on these new terrains.
+    - The NavMesh Surface is baked dynamically after splitting.
+
+6. <b>AI Zombies Chase Humans When Close</b>
+
+- Improved zombie AI behavior:
+    - Previously, zombies only chased humans if they were within a specific distance.
+    - Now, if a human enters a zombie’s detection range, zombies will immediately start chasing them.
+- Implemented using NavMeshAgent and real-time tracking to ensure smooth chasing.
+
+7. <b>Randomly Turning 1 of 4 Terrains Red & Destroying Characters</b>
+
+Every 5 seconds, one random terrain turns red.
+The remaining terrains turn green.
+If any humans or zombies are inside the red terrain, they are destroyed instantly.
+Implemented by checking X & Z coordinates of objects instead of using physics collisions.
+This ensures a smooth destruction system without relying on colliders.
 
 
