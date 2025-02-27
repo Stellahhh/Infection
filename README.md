@@ -88,13 +88,14 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
 - ~~Implement the map~~
   - Design the basic elements, such as trees, houses, water area, pit.
   - Design the random generation of the map
-  - <b>We did not implement random generation, instead we implemented a fixed terrain for testing purposes</b>
+  - <b>According to the mentor's feedbacks, we implemented a fixed terrain for testing purposes</b>
 - ~~Implement the 3D model for human and zombie~~
+  - <b>According to the mentor's feedbacks, we used simple 3D prefabs to represent human and zombie.
 - ~~Implement their movement~~
 - ~~Implement keyboard association with movement~~
-- Implement collision detection
-  - Collision detection between player avatar and the environment objects
-  - Human & human collision and zombie-zombie collision
+- ~~Implement collision detection~~
+  - ~~Collision detection between player avatar and the environment objects~~
+  - ~~Human & human collision and zombie-zombie collision~~
   - ~~Human & zombie collision~~
 - Implement death conditions
   - ~~How zombies die of hunger~~
@@ -124,13 +125,13 @@ we will first implement the tasks that we did not implement for Part 1:
 
 Describe the elements that you have coded so far for your game and how they work. Include screen captures and other figures.
 1. <b>environment setup</b>
-- implemented terrain
+- implemented terrain with the unity default terrain and the terrain brushes
 <img src="terrain.png" alt="terrain Image" width="500"/>
 
 - created character prefabs for both humans and zombies
-- movements associated with humans: move by WASD and can rotate the camera by moving the mouse
+- movements associated with humans: move by WASD and can rotate the camera by moving the mouse. (Implemented by Input System)
 2. <b>infection & collision</b>
-- zombies will automatically chase humans when they are within a certain detection distance
+- AI-zombies (for testing) will automatically chase humans when they are within a certain detection distance (Implemented by navigating mesh and tracking system)
 - zombies colliding humans will turn humans into zombies
 <img src="CollisionHumanTurnsToZombie.png" alt="Collision Image" width="500"/>
 
@@ -158,6 +159,8 @@ screenshots for different conditions:
 <img src="HumansWinBeforeTimeout.png" alt="Humans Win before Timeout Image" width="500"/>
 
 4. <b>Multiplayer implementation</b>
+
+We used Mirror to implement the multi-user game, which will create a local server to host the game.
 
 Steps to enable multiplayer functionality:
 1. build and run the project
