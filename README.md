@@ -100,10 +100,10 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
   - ~~How zombies die of hunger~~
   - How both humans and zombies die due to being outside of the safe zone
 - ~~Implement time limit~~
-- Implement win and lose condition
+- ~~Implement win and lose condition~~
   - ~~Judge human wins or zombie wins~~
-  - Calculate zombie's infection number
-  - Determine the last survivor and last reaper
+  - ~~Calculate zombie's infection number~~
+  - ~~Determine the last survivor and last reaper~~
  
 ### Additions: 
 - One significant addition to the project, which was not originally planned, was the implementation of <b>multiplayer functionality</b>. This feature is important for accurately testing win/loss conditions, ensuring that different scenarios, such as team eliminations and individual player outcomes, were handled correctly in a real-time environment.
