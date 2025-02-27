@@ -123,15 +123,19 @@ we will first implement the tasks that we did not implement for Part 1:
 ### Project Checkpoint 1-2: 
 
 Describe the elements that you have coded so far for your game and how they work. Include screen captures and other figures.
-1. environment setup
+1. <b>environment setup</b>
 - implemented terrain
+<img src="terrain.png" alt="terrain Image" width="500"/>
+
 - created character prefabs for both humans and zombies
 - movements associated with humans: move by WASD and can rotate the camera by moving the mouse
-2. infection & collision
+2. <b>infection & collision</b>
 - zombies will automatically chase humans when they are within a certain detection distance
 - zombies colliding humans will turn humans into zombies
+<img src="CollisionHumanTurnsToZombie.png" alt="Collision Image" width="500"/>
+
 - tracking infection stats: the zombie controller and human controller keep track of the total number of humans infected by each zombie, the last zombie to infect a human (Final Reaper), and the last human to be infected (Final Prey)
-3. game management & win/lose conditions
+3. <b>game management & win/lose conditions</b>
 - Game manager object sets game durations and tracks win and lose conditions by constantly checking the number of humans/zombies
 - when the game ends, players are taken to a Results Scene displaying the winner (and titles in case of zombies win)
 - win and lose conditions implemented with a results scene and tested:
@@ -143,12 +147,23 @@ Describe the elements that you have coded so far for your game and how they work
 | Time runs out, but at least one human is alive | Humans | **"Time's up! Humans win! You guys are the last hope!"** |
 | Both humans and zombies are eliminated **before** time runs out | None | **"It's a draw! Both sides have been eliminated..."** |
 
-- screenshots for different conditions:
-4. Multiplayer implementation
+screenshots for different conditions:
+- Time out Human Win
+<img src="TimeoutHumanWin.png" alt="Timeout Human Win Image" width="500"/>
+
+- Zombies Win before Timeout
+<img src="ZombiesWinBeforeTimeout.png" alt="Zombies Win before Timeout Image" width="500"/>
+
+- Humans Win before Timeout
+<img src="HumansWinBeforeTimeout.png" alt="Humans Win before Timeout Image" width="500"/>
+
+4. <b>Multiplayer implementation</b>
+
 Steps to enable multiplayer functionality:
 1. build and run the project
 2. run the game in unity console, will see control panels on both screens
-3. choose "host" for one, and "client" for the other
-4. start playing the game! Each player will control their real character
+<img src="control.png" alt="Control Image" width="500"/>
+4. choose "host" for one, and "client" for the other
+5. start playing the game! Each player will control their real character
 
 
