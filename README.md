@@ -123,6 +123,17 @@ we will first implement the tasks that we did not implement for Part 1:
 ### Project Checkpoint 1-2: 
 
 Describe the elements that you have coded so far for your game and how they work. Include screen captures and other figures.
+1. environment setup
+- implemented terrain
+- created character prefabs for both humans and zombies
+- movements associated with humans: move by WASD and can rotate the camera by moving the mouse
+2. infection & collision
+- zombies will automatically chase humans when they are within a certain detection distance
+- zombies colliding humans will turn humans into zombies
+- tracking infection stats: the zombie controller and human controller keep track of the total number of humans infected by each zombie, the last zombie to infect a human (Final Reaper), and the last human to be infected (Final Prey)
+3. game management & win/lose conditions
+- Game manager object sets game durations and tracks win and lose conditions by constantly checking the number of humans/zombies
+- when the game ends, players are taken to a Results Scene displaying the winner (and titles in case of zombies win)
 - win and lose conditions implemented with a results scene and tested:
 
 | Condition | Winner | Message |
@@ -131,6 +142,13 @@ Describe the elements that you have coded so far for your game and how they work
 | All zombies eliminated due to hunger **before** time runs out | Humans | **"Humans win! You guys are the last hope"** |
 | Time runs out, but at least one human is alive | Humans | **"Time's up! Humans win! You guys are the last hope!"** |
 | Both humans and zombies are eliminated **before** time runs out | None | **"It's a draw! Both sides have been eliminated..."** |
-- 
+
+- screenshots for different conditions:
+4. Multiplayer implementation
+Steps to enable multiplayer functionality:
+1. build and run the project
+2. run the game in unity console, will see control panels on both screens
+3. choose "host" for one, and "client" for the other
+4. start playing the game! Each player will control their real character
 
 
