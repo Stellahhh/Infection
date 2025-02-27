@@ -9,6 +9,12 @@ public class TrackWinLose : MonoBehaviour
     private bool gameEnded = false;
     private string winnerMessage = "";
 
+
+    // Track zombie awards
+    private static ZombieController apexPredator; // Zombie with most infections
+    private static ZombieController finalReaper; // Zombie who infected last human
+    private static HumanController finalPrey; // Last human to be infected
+
     void Start()
     {
         timer = gameDuration;
@@ -54,6 +60,8 @@ public class TrackWinLose : MonoBehaviour
         if (humans.Length == 0)
         {
             winnerMessage = "Zombies Win! All humans are infected...";
+            DetermineZombieWinners();
+
             EndGame();
             return true;
         }
@@ -66,6 +74,40 @@ public class TrackWinLose : MonoBehaviour
         }
 
         return false;
+    }
+
+     void DetermineZombieWinners()
+    {
+        // Find the zombie with the most infections (Apex Predator)
+        apexPredator = FindApexPredator();
+        
+        // Store last infecting zombie as "Final Reaper"
+        finalReaper = ZombieController.lastCatcher;
+        
+        // Store last human infected as "Final Prey"
+        finalPrey = HumanController.lastInfected;
+
+        // Store values in PlayerPrefs for ResultsScene
+        PlayerPrefs.SetString("ApexPredator", apexPredator != null ? apexPredator.name : "None");
+        PlayerPrefs.SetString("FinalReaper", finalReaper != null ? finalReaper.name : "None");
+        PlayerPrefs.SetString("FinalPrey", finalPrey != null ? finalPrey.name : "None");
+    }
+
+    ZombieController FindApexPredator()
+    {
+        ZombieController[] zombies = FindObjectsOfType<ZombieController>();
+        ZombieController topZombie = null;
+        int maxInfections = 0;
+
+        foreach (ZombieController zombie in zombies)
+        {
+            if (zombie.infectionCount > maxInfections)
+            {
+                maxInfections = zombie.infectionCount;
+                topZombie = zombie;
+            }
+        }
+        return topZombie;
     }
 
     void DetermineWinnerOnTimeExpiry()
