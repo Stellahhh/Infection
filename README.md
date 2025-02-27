@@ -163,7 +163,8 @@ Steps to enable multiplayer functionality:
 1. build and run the project
 2. run the game in unity console, will see control panels on both screens
 <img src="control.png" alt="Control Image" width="500"/>
-4. choose "host" for one, and "client" for the other
-5. start playing the game! Each player will control their real character
+
+3. choose "host" for one, and "client" for the other
+4. start playing the game! Each player will control their real character
 
 
