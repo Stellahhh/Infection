@@ -12,12 +12,21 @@ public class ResultsSceneManager : MonoBehaviour
 
     void Start()
     {
-        // Display main winner message
-        winnerText.text = PlayerPrefs.GetString("WinnerMessage", "No results available.");
+    // Display main winner message
+    winnerText.text = PlayerPrefs.GetString("WinnerMessage", "No results available.");
 
-        // Display special zombie titles
-        apexPredatorText.text = "Apex Predator: " + PlayerPrefs.GetString("ApexPredator", "None");
-        finalReaperText.text = "Final Reaper: " + PlayerPrefs.GetString("FinalReaper", "None");
-        finalPreyText.text = "Final Prey: " + PlayerPrefs.GetString("FinalPrey", "None");
+    string apexPredator = PlayerPrefs.GetString("ApexPredator", "");
+    string finalReaper = PlayerPrefs.GetString("FinalReaper", "");
+    string finalPrey = PlayerPrefs.GetString("FinalPrey", "");
+
+    // Only display zombie-related text if they exist
+    apexPredatorText.gameObject.SetActive(!string.IsNullOrEmpty(apexPredator));
+    finalReaperText.gameObject.SetActive(!string.IsNullOrEmpty(finalReaper));
+    finalPreyText.gameObject.SetActive(!string.IsNullOrEmpty(finalPrey));
+
+    // Set text values
+    if (!string.IsNullOrEmpty(apexPredator)) apexPredatorText.text = "Apex Predator: " + apexPredator;
+    if (!string.IsNullOrEmpty(finalReaper)) finalReaperText.text = "Final Reaper: " + finalReaper;
+    if (!string.IsNullOrEmpty(finalPrey)) finalPreyText.text = "Final Prey: " + finalPrey;
     }
 }

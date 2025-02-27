@@ -131,7 +131,16 @@ public class TrackWinLose : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
 
-        PlayerPrefs.SetString("WinnerMessage", winnerMessage);
+         PlayerPrefs.SetString("WinnerMessage", winnerMessage);
+
+        // Clear zombie-related values if humans win
+        if (!winnerMessage.Contains("Zombies Win"))
+        {
+            PlayerPrefs.DeleteKey("ApexPredator");
+            PlayerPrefs.DeleteKey("FinalReaper");
+            PlayerPrefs.DeleteKey("FinalPrey");
+        }
+
         SceneManager.LoadScene("ResultsScene");
     }
 }
