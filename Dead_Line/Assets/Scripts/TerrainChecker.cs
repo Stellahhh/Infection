@@ -1,3 +1,4 @@
+// Linda Fan, Stella Huo, Hanbei Zhou
 using UnityEngine;
 
 public class TerrainChecker : MonoBehaviour

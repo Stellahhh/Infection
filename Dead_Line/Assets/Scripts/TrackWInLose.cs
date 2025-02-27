@@ -1,3 +1,4 @@
+// Linda Fan, Stella Huo, Hanbei Zhou
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
