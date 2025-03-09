@@ -1002,6 +1002,11 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3294838418
       objectReference: {fileID: 0}
+    - target: {fileID: 7893083959562539092, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1280,7 +1285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638d18b4fe5b453bb0f8f79fce4d377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 40
+  gameDuration: 10000
   timer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
