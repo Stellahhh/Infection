@@ -1,11 +1,14 @@
 using UnityEngine;
 using Mirror;
 using UnityEngine.InputSystem; // Import New Input System
+using System.Collections;
 
 public class PlayerSwitch : NetworkBehaviour
 {
     public GameObject prefabA;
     public GameObject prefabB;
+    public AudioSource audioSource;
+    public AudioClip soundEffect;
 
     //private InputAction switchAction;
 
@@ -23,20 +26,26 @@ public class PlayerSwitch : NetworkBehaviour
     //}
 
 
+    IEnumerator DelayedSwitch()
+    {
+        audioSource.volume = 1.0f;
+        audioSource.PlayOneShot(soundEffect);
+        yield return new WaitForSeconds(soundEffect.length); // Wait for sound to finish
+        CmdSwitchPrefab();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!isOwned) return; // Ensure only the owner can trigger the switch
+        if (!isOwned) return;
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Zombie"))
         {
-            CmdSwitchPrefab();
+            StartCoroutine(DelayedSwitch());
         }
     }
-
     [Command]
     void CmdSwitchPrefab()
     {
-        print("switching...");
         GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
         Transform spawnPosition = transform; // Keep current position
 
