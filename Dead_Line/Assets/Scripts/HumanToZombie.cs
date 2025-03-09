@@ -1,55 +1,35 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
 using UnityEngine;
 using Mirror;
+using UnityEngine.InputSystem; // Import New Input System
 
-public class HumanToZombie : NetworkBehaviour
+public class PlayerSwitch : NetworkBehaviour
 {
-    public Material zombieMaterial;
-    private MeshRenderer meshRenderer;
+    public GameObject prefabA;
+    public GameObject prefabB;
 
-    //[SyncVar(hook = nameof(OnColorChanged))] // Syncs color changes
-    private Color zombieColor;
+    private InputAction switchAction;
 
-    void Start()
+    public override void OnStartAuthority()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        var playerInput = new InputAction("SwitchPlayer", binding: "<Keyboard>/space");
+        playerInput.performed += ctx => CmdSwitchPrefab(); // Trigger switch
+        playerInput.Enable();
+        switchAction = playerInput;
     }
 
-    [Command] // Runs on the server
-    void CmdTurnIntoZombie()
+    public override void OnStopAuthority()
     {
-        if (!isServer) return;
-
-        // Change color (syncs to all clients)
-        zombieColor = zombieMaterial.color;
-
-        // Change layer and tag
-        gameObject.layer = LayerMask.NameToLayer("Zombie");
-        gameObject.tag = "Zombie";
-
-        // Change name
-        gameObject.name = "Zombie " + gameObject.name.Substring(6);
-
-        // Add new component and remove old one
-        Hunger hunger = gameObject.AddComponent<Hunger>();
-        hunger.maxTime = 100;
-        Destroy(GetComponent<Life>());
+        switchAction.Disable(); // Prevent input when player is destroyed
     }
 
-    // Hook function: runs on clients when `zombieColor` changes
-    //void OnColorChanged(Color oldColor, Color newColor)
-    //{
-    //    if (meshRenderer != null)
-    //    {
-    //        meshRenderer.material.color = newColor;
-    //    }
-    //}
-
-    private void OnTriggerEnter(Collider other)
+    [Command]
+    void CmdSwitchPrefab()
     {
-        if (other.CompareTag("Zombie") && isLocalPlayer)
-        {
-            CmdTurnIntoZombie(); // Tell the server to change the player's appearance
-        }
+        print("switching...");
+        GameObject newPrefab = (gameObject.name.Contains("A")) ? prefabB : prefabA;
+        Transform spawnPosition = transform; // Keep current position
+
+        GameObject newPlayer = Instantiate(newPrefab, spawnPosition.position, spawnPosition.rotation);
+        NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
     }
 }

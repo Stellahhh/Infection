@@ -1119,6 +1119,10 @@ namespace Mirror
 
             if (playerSpawnMethod == PlayerSpawnMethod.Random)
             {
+
+                Transform newTransform = new GameObject("TempTransform").transform;
+                newTransform.position = new Vector3(400, 10, 90);
+                newTransform.rotation = Quaternion.identity;  
                 return startPositions[UnityEngine.Random.Range(0, startPositions.Count)];
             }
             else
