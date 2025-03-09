@@ -9,30 +9,33 @@ public class PlayerMovement : NetworkBehaviour
     public float moveSpeed = 5f;
     public float rotationSpeed = 10f;
     public float gravity = -9.81f;
+    public float jumpHeight = 2f; // New variable for jump strength
+    private int jumpsRemaining = 2; // 🔹 Allow double jump
 
     private Vector3 velocity;
     private Transform cam;
     public PlayerInput playerInput;
     public InputAction moveAction;
     public InputAction lookAction;
+    public InputAction jumpAction; // New InputAction for jump
+
     private Camera playerCamera;
+    private bool isGrounded;
 
     private void Start()
     {
-        // Called after this object is fully initialized as the local player
         if (!isLocalPlayer) return;
 
         Camera myCam = GetComponentInChildren<Camera>();
         if (myCam != null)
         {
-            myCam.gameObject.SetActive(true); // Enable only this player's camera
+            myCam.gameObject.SetActive(true);
         }
         else
         {
             Debug.LogError("Camera not found for local player.");
         }
 
-        // Ensure player input and actions are set up
         playerInput = GetComponent<PlayerInput>();
         if (playerInput == null)
         {
@@ -42,13 +45,14 @@ public class PlayerMovement : NetworkBehaviour
 
         moveAction = playerInput.actions["Move"];
         lookAction = playerInput.actions["Look"];
-        if (moveAction == null || lookAction == null)
+        jumpAction = playerInput.actions["Jump"]; // Assign jump action
+
+        if (moveAction == null || lookAction == null || jumpAction == null)
         {
             Debug.LogError("Input actions not properly set up.");
             return;
         }
 
-        // Initialize character controller if needed
         controller = GetComponent<CharacterController>();
         if (controller == null)
         {
@@ -57,39 +61,56 @@ public class PlayerMovement : NetworkBehaviour
         }
 
         print("network identity" + (GetComponent<NetworkIdentity>() == null));
-        
+
     }
 
 
 
     private void Awake()
     {
-       
+        //if (!isLocalPlayer) return;
+
+        //if (controller == null)
+        //{
+        //    controller = GetComponent<CharacterController>(); // Assign if missing
+        //}
+
+        //playerInput = GetComponent<PlayerInput>();
+        //moveAction = playerInput.actions["Move"];
+        //lookAction = playerInput.actions["Look"];
+        //moveAction.Enable();
+        //lookAction.Enable();
+
+        //// Try finding the camera within the player object
+        //Camera myCam = GetComponentInChildren<Camera>();
+
+        //if (myCam != null)
+        //{
+        //    cam = myCam.transform; // Assign camera transform
+        //}
+        //else
+        //{
+        //    Debug.LogError("No camera found in child objects of the player!");
+        //}
     }
 
     void Update()
     {
         if (!isLocalPlayer) return;
 
-
-        playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions["Move"];
-        lookAction = playerInput.actions["Look"];
+        // Ensure actions are enabled
         moveAction.Enable();
         lookAction.Enable();
+        jumpAction.Enable();
 
-        // Try finding the camera within the player object
+        // Handle camera
         Camera myCam = GetComponentInChildren<Camera>(true);
-
         playerCamera = GetComponentInChildren<Camera>();
-
         if (playerCamera != null)
         {
-            playerCamera.gameObject.SetActive(true); // Enable only this player's camera
+            playerCamera.gameObject.SetActive(true);
             cam = playerCamera.transform;
         }
-
-        // Disable all other player cameras
         foreach (Camera cam in FindObjectsOfType<Camera>())
         {
             if (cam != playerCamera)
@@ -98,34 +119,47 @@ public class PlayerMovement : NetworkBehaviour
             }
         }
 
+        if (cam == null) return;
+
+        // Ground Check
+        isGrounded = controller.isGrounded;
+        if (isGrounded)
+        {
+            jumpsRemaining = 2; // 🔹 Reset jump count when grounded
+            if (velocity.y < 0)
+            {
+                velocity.y = -2f; // Reset velocity when touching the ground
+            }
+        }
 
         // Handle movement input
         Vector2 moveInput = moveAction.ReadValue<Vector2>();
-        Vector2 lookInput = lookAction.ReadValue<Vector2>();
-
-   
-
-        if (cam == null) return;  // Prevents NullReferenceException
-
-        // Convert input to world direction
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
-        moveDir.y = 0f; // Prevent movement in the Y direction
+        moveDir.y = 0f;
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
 
         // Rotate the player using mouse input
+        Vector2 lookInput = lookAction.ReadValue<Vector2>();
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
 
-        // Apply gravity
-        if (controller.isGrounded)
+        // ✅ Double Jump Logic
+        if (jumpAction.WasPressedThisFrame() && jumpsRemaining > 0)
         {
-            velocity.y = -2f; // Small downward force to keep grounded
-        }
-        else
-        {
-            velocity.y += gravity * Time.deltaTime; // Apply gravity when not grounded
+            Debug.Log("Jump button pressed! Jumps left: " + jumpsRemaining);
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); // Apply jump force
+            jumpsRemaining--; // 🔹 Reduce jump count
         }
 
-        // Move the player with gravity applied
+        // ✅ Apply Gravity Properly
+        velocity.y += gravity * Time.deltaTime;
+
+        // ✅ Move Player with Updated Velocity
         controller.Move(velocity * Time.deltaTime);
+
+        // Debug check
+        if (jumpAction.WasPressedThisFrame())
+        {
+            Debug.Log("Jump action detected, velocity.y = " + velocity.y);
+        }
     }
 }

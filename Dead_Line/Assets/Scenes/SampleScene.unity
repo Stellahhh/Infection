@@ -994,6 +994,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 41f081d5c6d286c47a33bed3f84de79a,
         type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_Name
+      value: puppet_kid (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: sceneId
+      value: 3294838418
+      objectReference: {fileID: 0}
+    - target: {fileID: 7893083959562539092, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 452.99
       objectReference: {fileID: 0}
@@ -1280,7 +1300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638d18b4fe5b453bb0f8f79fce4d377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 1000000
+  gameDuration: 10000
   timer: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
