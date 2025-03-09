@@ -732,6 +732,7 @@ GameObject:
   - component: {fileID: 7893083959562539092}
   - component: {fileID: 686011445132475753}
   - component: {fileID: 7421182863943093749}
+  - component: {fileID: 6459685745756164082}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -772,7 +773,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: b10fec9bba2b7eb4285c00cedd56af11, type: 3}
   m_Controller: {fileID: 9100000, guid: b42940aef2afb8346bfc984741462a8a, type: 2}
   m_CullingMode: 1
@@ -835,10 +836,10 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   controller: {fileID: 7893083959562539092}
-  moveSpeed: 5
+  moveSpeed: 10
   rotationSpeed: 10
   gravity: -9.81
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 7951171472498401838}
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -952,6 +953,39 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &6459685745756164082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 9084458181851230346}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  onlySyncOnChange: 1
+  compressRotation: 1
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  timelineOffset: 1
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &2997943375068197822
 GameObject:
   m_ObjectHideFlags: 0

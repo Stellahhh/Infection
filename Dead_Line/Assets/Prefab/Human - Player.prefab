@@ -365,7 +365,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  zombieMaterial: {fileID: 2100000, guid: a3903f876e23143cd828e8fac43545ac, type: 2}
+  prefabA: {fileID: 0}
+  prefabB: {fileID: 0}
 --- !u!114 &2721000410178442236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5822913891371134526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ddd9a506f6ff493f959f0eb7f5fc21e, type: 3}
   m_Name: 
@@ -471,7 +472,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5822913891371134526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20973a8d7ea0e4166950682f4b86eb9c, type: 3}
   m_Name: 
