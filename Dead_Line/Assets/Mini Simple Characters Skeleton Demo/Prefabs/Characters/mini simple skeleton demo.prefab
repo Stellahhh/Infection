@@ -392,6 +392,7 @@ MonoBehaviour:
   moveSpeed: 5
   rotationSpeed: 10
   gravity: -9.81
+  jumpHeight: 2
   playerInput: {fileID: 331855923320442070}
   moveAction:
     m_Name: Move
@@ -407,6 +408,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: e3be78d1-0eda-4f54-ac3c-3d1dbd8e6afd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: aa7a5375-efb7-447b-a423-e2f99c3b22df
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
