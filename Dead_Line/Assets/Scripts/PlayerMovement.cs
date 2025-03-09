@@ -64,30 +64,7 @@ public class PlayerMovement : NetworkBehaviour
 
     private void Awake()
     {
-        //if (!isLocalPlayer) return;
-
-        //if (controller == null)
-        //{
-        //    controller = GetComponent<CharacterController>(); // Assign if missing
-        //}
-
-        //playerInput = GetComponent<PlayerInput>();
-        //moveAction = playerInput.actions["Move"];
-        //lookAction = playerInput.actions["Look"];
-        //moveAction.Enable();
-        //lookAction.Enable();
-
-        //// Try finding the camera within the player object
-        //Camera myCam = GetComponentInChildren<Camera>();
-
-        //if (myCam != null)
-        //{
-        //    cam = myCam.transform; // Assign camera transform
-        //}
-        //else
-        //{
-        //    Debug.LogError("No camera found in child objects of the player!");
-        //}
+       
     }
 
     void Update()
