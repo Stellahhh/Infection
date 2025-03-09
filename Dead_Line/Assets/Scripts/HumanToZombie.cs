@@ -25,7 +25,7 @@ public class PlayerSwitch : NetworkBehaviour
             audioSource.PlayOneShot(soundEffect);
             yield return new WaitForSeconds(soundEffect.length); // Wait for sound to finish
 
-            
+
         }
 
         // Switch the player prefab
@@ -59,16 +59,23 @@ public class PlayerSwitch : NetworkBehaviour
         }
     }
 
-    // Command to switch the player prefab on the server
     [Command]
     void CmdSwitchPrefab()
     {
         GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
-        Transform spawnPosition = transform; // Keep current position
 
-        // Instantiate the new player prefab on the server and replace the current player
-        GameObject newPlayer = Instantiate(newPrefab, spawnPosition.position, spawnPosition.rotation);
+        // ✅ Fix: Store the actual position & rotation before destroying
+        Vector3 lastPosition = transform.position;
+        Quaternion lastRotation = transform.rotation;
+
+        // ✅ Instantiate the new player prefab at the stored position/rotation
+        GameObject newPlayer = Instantiate(newPrefab, lastPosition, lastRotation);
+
+        // ✅ Ensure the new object is properly set up for networking
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
+
+        // ✅ Destroy the old object only after replacement
         NetworkServer.Destroy(gameObject);
     }
+
 }
