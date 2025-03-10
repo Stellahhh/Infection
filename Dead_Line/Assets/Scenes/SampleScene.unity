@@ -782,12 +782,11 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+  playerPrefab: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs:
-  - {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
+  spawnPrefabs: []
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -992,11 +991,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 41f081d5c6d286c47a33bed3f84de79a,
-        type: 3}
-      propertyPath: m_CullingMode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
       propertyPath: m_Name
@@ -1016,6 +1010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 452.99
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 41f081d5c6d286c47a33bed3f84de79a,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 41f081d5c6d286c47a33bed3f84de79a,
         type: 3}
