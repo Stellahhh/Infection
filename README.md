@@ -286,6 +286,9 @@ modified the win and lose scenes to make them more visually engaging.
 4. Start Playing! Each player controls a human character using the following controls:
 - WASD → Move
 - Mouse Movement → Change perspective
+- Space → Jump
+- M → open and close map
+- C → cursor appear / disappear
 
 Testing Key Features
 
