@@ -269,7 +269,7 @@ The map will consist of 9 different themes, randomly selected from existing 10 t
 2. Created zombie prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-simple-characters-skeleton-free-demo-262897)
 ![Zombie_prefab](zombie_prefab.png)
 3. Created human prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/puppet-kid-free-demo-230773)
-
+![Human_prefab](human_prefab.png)
 4. Added audio when zombie infected human with AudioClip downloaded from (https://sounddino.com/index.php?r=load&mp3&id=21841&l=2)
 
 5. Win and lose scene
