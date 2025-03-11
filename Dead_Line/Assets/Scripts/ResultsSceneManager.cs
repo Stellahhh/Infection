@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ResultsSceneManager : MonoBehaviour
 {
@@ -15,10 +16,18 @@ public class ResultsSceneManager : MonoBehaviour
     public GameObject apexPredator;
     public GameObject finalReaper;
     public GameObject finalPrey;
+    public Button backButton;
     public CanvasGroup fadeCanvas; 
 
     void Start()
     {
+        if (backButton != null)
+        {
+            // change the text of the button to "Restart Game"
+            backButton.GetComponentInChildren<Text>().text = "Restart Game";
+            backButton.gameObject.SetActive(true); // Show back button
+            backButton.onClick.AddListener(RestartGame);
+        }
         // Fade in effect
         StartCoroutine(FadeInScene());
 
@@ -111,5 +120,8 @@ public class ResultsSceneManager : MonoBehaviour
         // Show only humanWinMessageText
         humanWinMessageText.color = new Color(0.0f, 0.5f, 0.0f); // Dark Green (RGB: 0, 128, 0)
         humanWinMessageText.gameObject.SetActive(true);
+    }
+    public void RestartGame() {
+        SceneManager.LoadScene("SampleScene");
     }
 }
