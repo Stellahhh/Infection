@@ -1,5 +1,7 @@
 // Linda Fan, Stella Huo, Hanbei Zhou
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro; // For TextMeshPro support
 using UnityEngine.InputSystem;
 using Mirror;
 
@@ -11,7 +13,7 @@ public class ZombieMovement : NetworkBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 2f; // New variable for jump strength
     private int jumpsRemaining = 2; // 🔹 Allow double jump
-
+    public TextMeshProUGUI hungerText;
     public Hunger hungerScript; 
     private Vector3 velocity;
     private Transform cam;
@@ -36,7 +38,15 @@ public class ZombieMovement : NetworkBehaviour
         {
             Debug.LogError("Camera not found for local player.");
         }
-
+        GameObject hungerUI = GameObject.Find("HungerText");
+        if (hungerUI != null)
+        {
+            hungerText = hungerUI.GetComponent<TextMeshProUGUI>();
+        }
+        else
+        {
+            Debug.LogError("HungerText UI element not found!");
+        }
         playerInput = GetComponent<PlayerInput>();
         if (playerInput == null)
         {
@@ -76,6 +86,7 @@ public class ZombieMovement : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
         AdjustSpeedBasedOnHunger();
+        UpdateHungerUI(); 
         // Ensure actions are enabled
         moveAction.Enable();
         lookAction.Enable();
@@ -120,7 +131,7 @@ public class ZombieMovement : NetworkBehaviour
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
 
-        // ✅ Double Jump Logic
+        // Double Jump Logic
         if (jumpAction.WasPressedThisFrame() && jumpsRemaining > 0)
         {
             Debug.Log("Jump button pressed! Jumps left: " + jumpsRemaining);
@@ -128,10 +139,10 @@ public class ZombieMovement : NetworkBehaviour
             jumpsRemaining--; // 🔹 Reduce jump count
         }
 
-        // ✅ Apply Gravity Properly
+        // Apply Gravity Properly
         velocity.y += gravity * Time.deltaTime;
 
-        // ✅ Move Player with Updated Velocity
+        // Move Player with Updated Velocity
         controller.Move(velocity * Time.deltaTime);
 
         // Debug check
@@ -152,6 +163,13 @@ public class ZombieMovement : NetworkBehaviour
         else
         {
             moveSpeed = 10f; // Maximum speed when hunger time reaches zero
+        }
+    }
+    void UpdateHungerUI()
+    {
+        if (hungerText != null)
+        {
+            hungerText.text = "Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s";
         }
     }
 }
