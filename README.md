@@ -129,7 +129,7 @@ we will first implement the tasks that we did not implement for Part 1:
 Addition:
 - One significant addition is that we enabling multi-device, multi-player game, so that different computers connecting to the same WiFi can join the game. The game went smoothly with 4 players, and the server system could theortically hold 100 players.
 - Another addition is that players can now randomly spawn at different locations.
-
+- According to the feedback to the previous submission, we've hidden the cursor and the player could have to press 'C' to enable it.
 ## Development
 
 ### Project Checkpoint 1-2: 
