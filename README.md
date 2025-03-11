@@ -120,17 +120,50 @@ we will first implement the tasks that we did not implement for Part 1:
 - ~~implement random map generation~~
 - ~~audio effect~~
   - ~~add the zombie sound when human was captured~~
-- smooth win/loose scene
+- ~~smooth win/loose scene~~
 - ~~implement user can jump~~
 - ~~potentially add compass or mini map (2D)~~
 - add HP (currently we have not implemented reduce life mechanism, so we will move this to next stage)
 - ~~add invisible boundary? or high mountains at the map boundary to prevent users from falling~~
   - ~~add max and min for player position~~
+- (feedback from previous assignment) add back button to re-start the game. (Currently not implementing it since it involves manipulation of the server state in Mirror multi-player system. We will keep working on it in the next checkpoint.)
+- (feedback from previous assignment) add UI element such as timer. (Currently not implemented due to limited time -- we've created UI elements such as minimap as introduced below, and we will implement the timer in the next checkpoint.)
+- (feedback from previous assignment) implementing zombie chasing function. (Not implemented, since the in real game the zombie are real player instead of AI, so the chasing function is not required.)
+
 
 Addition:
 - One significant addition is that we enabling multi-device, multi-player game, so that different computers connecting to the same WiFi can join the game. The game went smoothly with 4 players, and the server system could theortically hold 100 players.
 - Another addition is that players can now randomly spawn at different locations.
 - According to the feedback to the previous submission, we've hidden the cursor and the player could have to press 'C' to enable it.
+
+### Project Part 3: Visual Effects
+Since we are using a low-poly world, we don't need extensive visual effect to achieve a realistic and immersive feelings. We plan to add the following visual effects details to make the game more engaging, but our plan will focus on further developing our functionality.
+
+Special effects:
+- Add random weather conditions to increase the difficulty of the game
+  - fog condition
+  - raining condition
+  - snowing condition
+- Add blood to the player's sight if they are captured by the combie (blood particle)
+- Add special effects for the relevant scene elements
+  - Add the moving effect for water.
+  - Add the smoke effect for the smoke emited by the train.
+  - Add the fire effect for the fire in the camping land.
+- Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)
+
+
+Further functionality implementation:
+- Add the randomized "war zone" that will reduce the life amount for human.
+- Add the return button (suggested by the previous feedback) so that the client can restart the game. 
+- Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.
+- Randomly assigning a specific proportion of players to be born as zombie.
+
+Further UI and rendering implementation:
+- Add the HP bar for human and remaining time bar for zombie
+- Add animation for the player movements
+
+
+
 ## Development
 
 ### Project Checkpoint 1-2: 
@@ -210,7 +243,7 @@ This ensures a smooth destruction system without relying on colliders.
 
 ### Project Part 2: 3D Scenes and Models 
 
-** Funcionality Improvement**
+**Funcionality Improvement**
 
 1. Map function
 After pressing "M" on the keyboard, a map will appear showing the real-time top-down view of the area that's captured by a camera at the top.
@@ -221,13 +254,13 @@ The player can jump by pressing space bar. The player can at most jump twice.
 
 3. Prefab switching function
 The human prefab will become zombie prefab their rigid body detects a collision.
-![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)
+![before collision](before_collision.png)![during collision](during_collision.png)![after collision](after_collision.png)
 
 4. Terrain random generating function
 The map will consist of 9 different themes, randomly selected from existing 10 themes. They will make up a 3x3 grid map to add more diversity and variability.
 ![randomMap1](randomMap1.png)![randomMap2](randomMap2.png)
 
-** 3D model and rendering **
+**3D model and rendering**
 
 1. Created environment with (https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-atmospheric-locations-pack-278928)
 ![Environment 1](environment1.png)![Environment 2](environment2.png)
@@ -236,7 +269,34 @@ The map will consist of 9 different themes, randomly selected from existing 10 t
 2. Created zombie prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-simple-characters-skeleton-free-demo-262897)
 ![Zombie_prefab](zombie_prefab.png)
 3. Created human prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/puppet-kid-free-demo-230773)
-
+![Human_prefab](human_prefab.png)
 4. Added audio when zombie infected human with AudioClip downloaded from (https://sounddino.com/index.php?r=load&mp3&id=21841&l=2)
 
 5. Win and lose scene
+modified the win and lose scenes to make them more visually engaging.
+![Win Scene](win_scene.png)![Lose Scene](lose_scene.png)
+
+
+
+### Setup & Running the Game
+
+1. Build and Run the Project
+2. Run the Game in the Unity console and start the game in Unity’s Play mode. Control panels will appear on both screens.
+3. Choose Multiplayer Roles: Select "Host" on one instance and "Client" on the other.
+4. Start Playing! Each player controls a human character using the following controls:
+- WASD → Move
+- Mouse Movement → Change perspective
+- Space → Jump
+- M → open and close map
+- C → cursor appear / disappear
+
+Testing Key Features
+
+Zombie Interactions:
+The game has a few zombies at certain locations, which may make them difficult to find. For easier testing, can manually drag a zombie prefab into the scene:
+- Locate the prefab at:
+Assets/Mini Simple Characters Skeleton Demo/Prefabs/Characters/mini simple skeleton demo.prefab
+- Place it near a player to test collisions between humans and zombies.
+
+Game Duration Customization:
+- The game duration can be adjusted in the TrackWinOrLose script in Game Manager
