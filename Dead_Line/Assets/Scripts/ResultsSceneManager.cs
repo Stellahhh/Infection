@@ -109,7 +109,7 @@ public class ResultsSceneManager : MonoBehaviour
         finalPrey?.SetActive(false);
 
         // Show only humanWinMessageText
-        humanWinMessageText.color = Color.green;
+        humanWinMessageText.color = new Color(0.0f, 0.5f, 0.0f); // Dark Green (RGB: 0, 128, 0)
         humanWinMessageText.gameObject.SetActive(true);
     }
 }
