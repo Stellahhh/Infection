@@ -64,17 +64,17 @@ public class PlayerSwitch : NetworkBehaviour
     {
         GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
 
-        // ✅ Fix: Store the actual position & rotation before destroying
+        // Fix: Store the actual position & rotation before destroying
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 
-        // ✅ Instantiate the new player prefab at the stored position/rotation
+        // Instantiate the new player prefab at the stored position/rotation
         GameObject newPlayer = Instantiate(newPrefab, lastPosition, lastRotation);
 
-        // ✅ Ensure the new object is properly set up for networking
+        // Ensure the new object is properly set up for networking
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
 
-        // ✅ Destroy the old object only after replacement
+        // Destroy the old object only after replacement
         NetworkServer.Destroy(gameObject);
     }
 

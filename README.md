@@ -114,17 +114,21 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
 
 we will first implement the tasks that we did not implement for Part 1: 
 - zombie moving speed increases as they get more hungry
-- render a 3D model of both zombie and human
-- render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)
-    - attach texture to it
-- implement random map generation
-- audio effect
+- ~~render a 3D model of both zombie and human~~
+- ~~render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)~~
+    - ~~attach texture to it~~
+- ~~implement random map generation~~
+- ~~audio effect~~
+  - ~~add the zombie sound when human was captured~~
 - smooth win/loose scene
-- implement user can jump
-- potentially add compass or mini map (2D)
+- ~~implement user can jump~~
+- ~~potentially add compass or mini map (2D)~~
 - add HP
 - add invisible boundary? or high mountains at the map boundary to prevent users from falling
 
+Addition:
+- One significant addition is that we enabling multi-device, multi-player game, so that different computers connecting to the same WiFi can join the game. The game went smoothly with 4 players, and the server system could theortically hold 100 players.
+- Another addition is that players can now randomly spawn at different locations.
 
 ## Development
 
@@ -201,5 +205,9 @@ The remaining terrains turn green.
 If any humans or zombies are inside the red terrain, they are destroyed instantly.
 Implemented by checking X & Z coordinates of objects instead of using physics collisions.
 This ensures a smooth destruction system without relying on colliders.
+
+
+### Project Part 2: 3D Scenes and Models 
+
 
 

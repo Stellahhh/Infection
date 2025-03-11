@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 7421182863943093749}
   - component: {fileID: 6459685745756164082}
   - component: {fileID: 6370252296397613921}
+  - component: {fileID: 9113790581775730843}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -1170,6 +1171,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &9113790581775730843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae1fda30c0b49b58ba61b2ea993e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 7951171472498401838}
 --- !u!1 &2997943375068197822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2906,6 +2920,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapUI: {fileID: 431274328067462667}
-  minimapCamera: {fileID: 0}
   toggleMapAction: {fileID: -6796147467313879933, guid: ef32e940fc5ac47319a0034f3d51b831,
     type: 3}
