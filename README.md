@@ -126,7 +126,7 @@ we will first implement the tasks that we did not implement for Part 1:
 - add HP (currently we have not implemented reduce life mechanism, so we will move this to next stage)
 - ~~add invisible boundary? or high mountains at the map boundary to prevent users from falling~~
   - ~~add max and min for player position~~
-- (feedback from previous assignment) add back button to re-start the game. (Currently not implementing it since it involves manipulation of the server state in Mirror multi-player system. We will keep working on it in the next checkpoint.)
+- (feedback from previous assignment) ~~add back button to re-start the game.~~
 - (feedback from previous assignment) add UI element such as timer. (Currently not implemented due to limited time -- we've created UI elements such as minimap as introduced below, and we will implement the timer in the next checkpoint.)
 - (feedback from previous assignment) implementing zombie chasing function. (Not implemented, since the in real game the zombie are real player instead of AI, so the chasing function is not required.)
 
