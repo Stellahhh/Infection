@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 6459685745756164082}
   - component: {fileID: 6370252296397613921}
   - component: {fileID: 9113790581775730843}
-  - component: {fileID: 5138903211955027441}
+  - component: {fileID: 4795602712024475147}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 7951171472498401838}
---- !u!114 &5138903211955027441
+--- !u!114 &4795602712024475147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1167,10 +1167,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2725162522574613967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ae1fda30c0b49b58ba61b2ea993e3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 54b49b8e40bc54c8c889f54ac9049060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
 --- !u!1 &2997943375068197822
 GameObject:
   m_ObjectHideFlags: 0

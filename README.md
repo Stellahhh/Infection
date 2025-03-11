@@ -113,7 +113,7 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
 we will first implement the tasks that we did not implement for Part 1: 
-- zombie moving speed increases as they get more hungry
+- ~~zombie moving speed increases as they get more hungry~~
 - ~~render a 3D model of both zombie and human~~
 - ~~render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)~~
     - ~~attach texture to it~~
@@ -124,7 +124,8 @@ we will first implement the tasks that we did not implement for Part 1:
 - ~~implement user can jump~~
 - ~~potentially add compass or mini map (2D)~~
 - add HP
-- add invisible boundary? or high mountains at the map boundary to prevent users from falling
+- ~~add invisible boundary? or high mountains at the map boundary to prevent users from falling~~
+  - ~~add max and min for player position~~
 
 Addition:
 - One significant addition is that we enabling multi-device, multi-player game, so that different computers connecting to the same WiFi can join the game. The game went smoothly with 4 players, and the server system could theortically hold 100 players.
@@ -209,5 +210,15 @@ This ensures a smooth destruction system without relying on colliders.
 
 ### Project Part 2: 3D Scenes and Models 
 
+** Funcionality Improvement**
 
+1. Map function
+After pressing "M" on the keyboard, a map will appear showing the real-time top-down view of the area that's captured by a camera at the top.
+![mini map](miniMap.png)
 
+2. Jump function
+The player can jump by pressing space bar. The player can at most jump twice.
+
+3. Prefab switching function
+The human prefab will become zombie prefab their rigid body detects a collision.
+![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)

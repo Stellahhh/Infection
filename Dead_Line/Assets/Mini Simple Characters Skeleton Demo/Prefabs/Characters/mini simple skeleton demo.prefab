@@ -317,12 +317,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2468889828458600031}
   - component: {fileID: 1116371902028168016}
-  - component: {fileID: 6055177102449234157}
   - component: {fileID: 331855923320442070}
   - component: {fileID: 3535821913445418793}
   - component: {fileID: 1024867470135821380}
   - component: {fileID: 3080008742549372907}
   - component: {fileID: 2728557824507295904}
+  - component: {fileID: 4782782485740496536}
+  - component: {fileID: -350536867098004823}
+  - component: {fileID: 5553523589735381568}
   m_Layer: 7
   m_Name: mini simple skeleton demo
   m_TagString: Zombie
@@ -375,27 +377,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6055177102449234157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696834749189059949}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f447eecb9ced4f4e9ed56385b60e9a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  controller: {fileID: 3535821913445418793}
-  moveSpeed: 5
-  rotationSpeed: 10
-  gravity: -9.81
-  jumpHeight: 2
-  playerInput: {fileID: 331855923320442070}
 --- !u!114 &331855923320442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,6 +505,57 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &4782782485740496536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b49b8e40bc54c8c889f54ac9049060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-350536867098004823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e72e67a4edbf14606b6ebae50ce16f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 1000
+  remainingTime: 100
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5553523589735381568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99ff41fc0472043928c87a5717f8b5a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  controller: {fileID: 3535821913445418793}
+  moveSpeed: 5
+  rotationSpeed: 10
+  gravity: -9.81
+  jumpHeight: 2
+  hungerScript: {fileID: -350536867098004823}
+  playerInput: {fileID: 331855923320442070}
 --- !u!1 &1818926580354158373
 GameObject:
   m_ObjectHideFlags: 0
