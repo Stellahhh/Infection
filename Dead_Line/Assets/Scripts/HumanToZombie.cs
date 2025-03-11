@@ -12,49 +12,57 @@ public class PlayerSwitch : NetworkBehaviour
     public AudioClip soundEffect;
     public Image screenOverlay; // Reference to UI Image for red screen effect
 
-    // Coroutine to handle delayed switch and sound effect
     IEnumerator DelayedSwitch()
     {
-        // If this is the local player, start the fade effect
         if (isLocalPlayer)
         {
+            Debug.Log("Starting red screen fade effect");
+            
+            // Ensure the screen overlay is active
+            screenOverlay.gameObject.SetActive(true);
+            
             // Fade to red
             yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.6f), 1.0f));
 
             // Play the sound effect
             audioSource.PlayOneShot(soundEffect);
-            yield return new WaitForSeconds(soundEffect.length); // Wait for sound to finish
+            yield return new WaitForSeconds(soundEffect.length);
 
-
+            // Fade back to normal
+            yield return StartCoroutine(FadeScreen(new Color(1, 0, 0, 0.6f), Color.clear, 1.0f));
+            
+            Debug.Log("Finished red screen fade effect");
         }
 
         // Switch the player prefab
         CmdSwitchPrefab();
-        // Fade back to normal
-        yield return StartCoroutine(FadeScreen(new Color(1, 0, 0, 0.6f), Color.clear, 1.0f));
     }
 
-    // Handle the fade effect of the screen
     IEnumerator FadeScreen(Color startColor, Color endColor, float duration)
     {
         float elapsed = 0f;
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            screenOverlay.color = Color.Lerp(startColor, endColor, elapsed / duration);
+            if (screenOverlay != null)
+            {
+                screenOverlay.color = Color.Lerp(startColor, endColor, elapsed / duration);
+            }
             yield return null;
         }
-        screenOverlay.color = endColor; // Ensure final color is set
+        if (screenOverlay != null)
+        {
+            screenOverlay.color = endColor; // Ensure final color is set
+        }
     }
 
-    // Triggered when colliding with an object
     private void OnTriggerEnter(Collider other)
     {
         if (!isOwned) return;
 
-        // Check if the collision is with the "Zombie" layer
-        if (other.gameObject.layer == LayerMask.NameToLayer("Zombie"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Zombie") || gameObject.layer == LayerMask.NameToLayer("Zombie"))
         {
+            Debug.Log("Collided with Zombie - Starting Coroutine");
             StartCoroutine(DelayedSwitch());
         }
     }
@@ -64,18 +72,13 @@ public class PlayerSwitch : NetworkBehaviour
     {
         GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
 
-        // ✅ Fix: Store the actual position & rotation before destroying
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 
-        // ✅ Instantiate the new player prefab at the stored position/rotation
         GameObject newPlayer = Instantiate(newPrefab, lastPosition, lastRotation);
 
-        // ✅ Ensure the new object is properly set up for networking
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
 
-        // ✅ Destroy the old object only after replacement
         NetworkServer.Destroy(gameObject);
     }
-
 }

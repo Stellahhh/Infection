@@ -15,9 +15,9 @@ public class PlayerMovement : NetworkBehaviour
     private Vector3 velocity;
     private Transform cam;
     public PlayerInput playerInput;
-    public InputAction moveAction;
-    public InputAction lookAction;
-    public InputAction jumpAction; // New InputAction for jump
+    private InputAction moveAction;
+    private InputAction lookAction;
+    private InputAction jumpAction; // New InputAction for jump
 
     private Camera playerCamera;
     private bool isGrounded;

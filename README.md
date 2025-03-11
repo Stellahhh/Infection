@@ -4,11 +4,11 @@
 
 List your team members here. Link to each member's individual github account.
 
-| Member    | Github |
-| -------- | ------- |
-| Stella Huo  | https://github.com/Stellahhh    |
-| Hanbei Zhou | https://github.com/HanbeiZhou     |
-| Linda Fan    | https://github.com/yfan43    |
+| Member      | Github                        |
+| ----------- | ----------------------------- |
+| Stella Huo  | https://github.com/Stellahhh  |
+| Hanbei Zhou | https://github.com/HanbeiZhou |
+| Linda Fan   | https://github.com/yfan43     |
 
 ## Game Summary
 
@@ -113,19 +113,24 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
 we will first implement the tasks that we did not implement for Part 1: 
-- zombie moving speed increases as they get more hungry
-- render a 3D model of both zombie and human
-- render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)
-    - attach texture to it
-- implement random map generation
-- audio effect
+- ~~zombie moving speed increases as they get more hungry~~
+- ~~render a 3D model of both zombie and human~~
+- ~~render a 3D model for the scene/environment (include objects such as tree, house, rock, road, etc.)~~
+    - ~~attach texture to it~~
+- ~~implement random map generation~~
+- ~~audio effect~~
+  - ~~add the zombie sound when human was captured~~
 - smooth win/loose scene
-- implement user can jump
-- potentially add compass or mini map (2D)
-- add HP
-- add invisible boundary? or high mountains at the map boundary to prevent users from falling
+- ~~implement user can jump~~
+- ~~potentially add compass or mini map (2D)~~
+- add HP (currently we have not implemented reduce life mechanism, so we will move this to next stage)
+- ~~add invisible boundary? or high mountains at the map boundary to prevent users from falling~~
+  - ~~add max and min for player position~~
 
-
+Addition:
+- One significant addition is that we enabling multi-device, multi-player game, so that different computers connecting to the same WiFi can join the game. The game went smoothly with 4 players, and the server system could theortically hold 100 players.
+- Another addition is that players can now randomly spawn at different locations.
+- According to the feedback to the previous submission, we've hidden the cursor and the player could have to press 'C' to enable it.
 ## Development
 
 ### Project Checkpoint 1-2: 
@@ -148,12 +153,12 @@ Describe the elements that you have coded so far for your game and how they work
 - when the game ends, players are taken to a Results Scene displaying the winner (and titles in case of zombies win)
 - win and lose conditions implemented with a results scene and tested:
 
-| Condition | Winner | Message |
-| --------- | ------- | ------- |
-| All humans turned to zombies **before** time runs out | Zombies | **"Zombies win! All humans are infected"** |
-| All zombies eliminated due to hunger **before** time runs out | Humans | **"Humans win! You guys are the last hope"** |
-| Time runs out, but at least one human is alive | Humans | **"Time's up! Humans win! You guys are the last hope!"** |
-| Both humans and zombies are eliminated **before** time runs out | None | **"It's a draw! Both sides have been eliminated..."** |
+| Condition                                                       | Winner  | Message                                                  |
+| --------------------------------------------------------------- | ------- | -------------------------------------------------------- |
+| All humans turned to zombies **before** time runs out           | Zombies | **"Zombies win! All humans are infected"**               |
+| All zombies eliminated due to hunger **before** time runs out   | Humans  | **"Humans win! You guys are the last hope"**             |
+| Time runs out, but at least one human is alive                  | Humans  | **"Time's up! Humans win! You guys are the last hope!"** |
+| Both humans and zombies are eliminated **before** time runs out | None    | **"It's a draw! Both sides have been eliminated..."**    |
 
 screenshots for different conditions:
 - Time out Human Win
@@ -203,3 +208,35 @@ Implemented by checking X & Z coordinates of objects instead of using physics co
 This ensures a smooth destruction system without relying on colliders.
 
 
+### Project Part 2: 3D Scenes and Models 
+
+** Funcionality Improvement**
+
+1. Map function
+After pressing "M" on the keyboard, a map will appear showing the real-time top-down view of the area that's captured by a camera at the top.
+![mini map](miniMap.png)
+
+2. Jump function
+The player can jump by pressing space bar. The player can at most jump twice.
+
+3. Prefab switching function
+The human prefab will become zombie prefab their rigid body detects a collision.
+![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)
+
+4. Terrain random generating function
+The map will consist of 9 different themes, randomly selected from existing 10 themes. They will make up a 3x3 grid map to add more diversity and variability.
+![randomMap1](randomMap1.png)![randomMap2](randomMap2.png)
+
+** 3D model and rendering **
+
+1. Created environment with (https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-atmospheric-locations-pack-278928)
+![Environment 1](environment1.png)![Environment 2](environment2.png)
+![Environment 3](environment3.png)![Environment 4](environment4.png)
+
+2. Created zombie prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-simple-characters-skeleton-free-demo-262897)
+![Zombie_prefab](zombie_prefab.png)
+3. Created human prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/puppet-kid-free-demo-230773)
+
+4. Added audio when zombie infected human with AudioClip downloaded from (https://sounddino.com/index.php?r=load&mp3&id=21841&l=2)
+
+5. Win and lose scene
