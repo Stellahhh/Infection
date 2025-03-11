@@ -4,11 +4,11 @@
 
 List your team members here. Link to each member's individual github account.
 
-| Member    | Github |
-| -------- | ------- |
-| Stella Huo  | https://github.com/Stellahhh    |
-| Hanbei Zhou | https://github.com/HanbeiZhou     |
-| Linda Fan    | https://github.com/yfan43    |
+| Member      | Github                        |
+| ----------- | ----------------------------- |
+| Stella Huo  | https://github.com/Stellahhh  |
+| Hanbei Zhou | https://github.com/HanbeiZhou |
+| Linda Fan   | https://github.com/yfan43     |
 
 ## Game Summary
 
@@ -123,7 +123,7 @@ we will first implement the tasks that we did not implement for Part 1:
 - smooth win/loose scene
 - ~~implement user can jump~~
 - ~~potentially add compass or mini map (2D)~~
-- add HP
+- add HP (currently we have not implemented reduce life mechanism, so we will move this to next stage)
 - ~~add invisible boundary? or high mountains at the map boundary to prevent users from falling~~
   - ~~add max and min for player position~~
 
@@ -153,12 +153,12 @@ Describe the elements that you have coded so far for your game and how they work
 - when the game ends, players are taken to a Results Scene displaying the winner (and titles in case of zombies win)
 - win and lose conditions implemented with a results scene and tested:
 
-| Condition | Winner | Message |
-| --------- | ------- | ------- |
-| All humans turned to zombies **before** time runs out | Zombies | **"Zombies win! All humans are infected"** |
-| All zombies eliminated due to hunger **before** time runs out | Humans | **"Humans win! You guys are the last hope"** |
-| Time runs out, but at least one human is alive | Humans | **"Time's up! Humans win! You guys are the last hope!"** |
-| Both humans and zombies are eliminated **before** time runs out | None | **"It's a draw! Both sides have been eliminated..."** |
+| Condition                                                       | Winner  | Message                                                  |
+| --------------------------------------------------------------- | ------- | -------------------------------------------------------- |
+| All humans turned to zombies **before** time runs out           | Zombies | **"Zombies win! All humans are infected"**               |
+| All zombies eliminated due to hunger **before** time runs out   | Humans  | **"Humans win! You guys are the last hope"**             |
+| Time runs out, but at least one human is alive                  | Humans  | **"Time's up! Humans win! You guys are the last hope!"** |
+| Both humans and zombies are eliminated **before** time runs out | None    | **"It's a draw! Both sides have been eliminated..."**    |
 
 screenshots for different conditions:
 - Time out Human Win
@@ -223,8 +223,9 @@ The player can jump by pressing space bar. The player can at most jump twice.
 The human prefab will become zombie prefab their rigid body detects a collision.
 ![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)
 
-4. Terrin random generating function
-TODO
+4. Terrain random generating function
+The map will consist of 9 different themes, randomly selected from existing 10 themes. They will make up a 3x3 grid map to add more diversity and variability.
+![randomMap1](randomMap1.png)![randomMap2](randomMap2.png)
 
 ** 3D model and rendering **
 
