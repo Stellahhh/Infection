@@ -254,7 +254,7 @@ The player can jump by pressing space bar. The player can at most jump twice.
 
 3. Prefab switching function
 The human prefab will become zombie prefab their rigid body detects a collision.
-![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)
+![before collision](before_collision.png)![during collision](during_collision.png)![after collision](after_collision.png)
 
 4. Terrain random generating function
 The map will consist of 9 different themes, randomly selected from existing 10 themes. They will make up a 3x3 grid map to add more diversity and variability.
