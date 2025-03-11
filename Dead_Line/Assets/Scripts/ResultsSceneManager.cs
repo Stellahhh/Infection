@@ -6,28 +6,110 @@ using UnityEngine.UI;
 
 public class ResultsSceneManager : MonoBehaviour
 {
-    public Text winnerText;
+    public Text winMessageText;
+    public Text humanWinMessageText; // The message shown when humans win
     public Text apexPredatorText;
     public Text finalReaperText;
     public Text finalPreyText;
+    
+    public GameObject apexPredator;
+    public GameObject finalReaper;
+    public GameObject finalPrey;
+    public CanvasGroup fadeCanvas; 
 
     void Start()
     {
-    // Display main winner message
-    winnerText.text = PlayerPrefs.GetString("WinnerMessage", "No results available.");
+        // Fade in effect
+        StartCoroutine(FadeInScene());
 
-    string apexPredator = PlayerPrefs.GetString("ApexPredator", "");
-    string finalReaper = PlayerPrefs.GetString("FinalReaper", "");
-    string finalPrey = PlayerPrefs.GetString("FinalPrey", "");
+        // Display main winner message
+        string winner = PlayerPrefs.GetString("WinnerMessage", "No results available.");
+        winMessageText.text = winner;
+        humanWinMessageText.text = winner;
 
-    // Only display zombie-related text if they exist
-    apexPredatorText.gameObject.SetActive(!string.IsNullOrEmpty(apexPredator));
-    finalReaperText.gameObject.SetActive(!string.IsNullOrEmpty(finalReaper));
-    finalPreyText.gameObject.SetActive(!string.IsNullOrEmpty(finalPrey));
+        // Get zombie-related names
+        string apexPredatorName = PlayerPrefs.GetString("ApexPredator", "");
+        string finalReaperName = PlayerPrefs.GetString("FinalReaper", "");
+        string finalPreyName = PlayerPrefs.GetString("FinalPrey", "");
 
-    // Set text values
-    if (!string.IsNullOrEmpty(apexPredator)) apexPredatorText.text = "Apex Predator: " + apexPredator;
-    if (!string.IsNullOrEmpty(finalReaper)) finalReaperText.text = "Final Reaper: " + finalReaper;
-    if (!string.IsNullOrEmpty(finalPrey)) finalPreyText.text = "Final Prey: " + finalPrey;
+        // Display zombie-related names
+        apexPredatorText.text = "Apex Predator: " + apexPredatorName;
+        finalReaperText.text = "Final Reaper: " + finalReaperName;
+        finalPreyText.text = "Final Prey: " + finalPreyName;
+
+        // If Zombies win, show zombie characters
+        if (winner.ToLower().Contains("zombie"))
+        {
+            DisplayWinMessage(winMessageText.text, Color.red);
+            ShowZombieCharacters(true);
+        }
+        // If Humans win, disable everything except humanWinMessageText
+        else if (winner.ToLower().Contains("human"))
+        {
+            ShowOnlyHumanWinMessage();
+        }
+    }
+
+    void DisplayWinMessage(string message, Color color)
+    {
+        winMessageText.text = message;
+        winMessageText.color = color;
+        StartCoroutine(AnimateWinMessage());
+    }
+
+    IEnumerator FadeInScene()
+    {
+        fadeCanvas.alpha = 0;
+        while (fadeCanvas.alpha < 1)
+        {
+            fadeCanvas.alpha += Time.deltaTime * 0.5f;
+            yield return null;
+        }
+    }
+
+    IEnumerator AnimateWinMessage()
+    {
+        winMessageText.transform.localScale = Vector3.zero;
+        float time = 0f;
+        while (time < 1f)
+        {
+            time += Time.deltaTime;
+            winMessageText.transform.localScale = Vector3.Lerp(Vector3.zero, Vector3.one, time);
+            yield return null;
+        }
+    }
+
+    void ShowZombieCharacters(bool isActive)
+    {
+        Debug.Log("Setting zombie character visibility: " + isActive);
+
+        apexPredator?.SetActive(isActive);
+        finalReaper?.SetActive(isActive);
+        finalPrey?.SetActive(isActive);
+
+        apexPredatorText?.gameObject.SetActive(isActive);
+        finalReaperText?.gameObject.SetActive(isActive);
+        finalPreyText?.gameObject.SetActive(isActive);
+        humanWinMessageText?.gameObject.SetActive(!isActive);
+    }
+
+    void ShowOnlyHumanWinMessage()
+    {
+        Debug.Log("Hiding everything except humanWinMessageText");
+
+        // Disable all other UI elements
+        winMessageText.gameObject.SetActive(false);
+        apexPredatorText.gameObject.SetActive(false);
+        finalReaperText.gameObject.SetActive(false);
+        finalPreyText.gameObject.SetActive(false);
+
+        // Disable all zombie-related game objects
+        apexPredator?.SetActive(false);
+        finalReaper?.SetActive(false);
+        finalPrey?.SetActive(false);
+
+        // Show only humanWinMessageText
+        humanWinMessageText.color = Color.green;
+        humanWinMessageText.gameObject.SetActive(true);
     }
 }
