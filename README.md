@@ -222,3 +222,20 @@ The player can jump by pressing space bar. The player can at most jump twice.
 3. Prefab switching function
 The human prefab will become zombie prefab their rigid body detects a collision.
 ![before collision](before_collision.png)![collision](during_collision.png)![after collision](after_collision.png)
+
+4. Terrin random generating function
+TODO
+
+** 3D model and rendering **
+
+1. Created environment with (https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-atmospheric-locations-pack-278928)
+![Environment 1](environment1.png)![Environment 2](environment2.png)
+![Environment 3](environment3.png)![Environment 4](environment4.png)
+
+2. Created zombie prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/fantasy/mini-simple-characters-skeleton-free-demo-262897)
+![Zombie_prefab](zombie_prefab.png)
+3. Created human prefab with (https://assetstore.unity.com/packages/3d/characters/humanoids/puppet-kid-free-demo-230773)
+
+4. Added audio when zombie infected human with AudioClip downloaded from (https://sounddino.com/index.php?r=load&mp3&id=21841&l=2)
+
+5. Win and lose scene
