@@ -971,33 +971,6 @@ MonoBehaviour:
   - {fileID: 1739153130918889006, guid: 277229067b269ba46a0c9a7b1d685454, type: 3}
   - {fileID: 6068730432161939225, guid: df6e0d5705c11244c8b08313c0fe392b, type: 3}
   startPosition: {x: 0, y: 0, z: 0}
---- !u!1 &1150471716 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
-    type: 3}
-  m_PrefabInstance: {fileID: 1897885781}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1150471728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1150471716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33ae1fda30c0b49b58ba61b2ea993e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toggleCursorAction:
-    m_Name: Toggle Cursor
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 6aef7974-aba0-4bc6-a458-058724f496c2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!1 &1284674015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,11 +1346,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: puppet_kid (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3430579931731131654, guid: b4235d9df06b17d498218a340b679137,
-        type: 3}
-      propertyPath: minimapCamera
-      value: 
-      objectReference: {fileID: 1992925995}
     - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
       propertyPath: sceneId
@@ -1436,11 +1404,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1150471728}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4235d9df06b17d498218a340b679137, type: 3}
 --- !u!1 &1992925992
 GameObject:

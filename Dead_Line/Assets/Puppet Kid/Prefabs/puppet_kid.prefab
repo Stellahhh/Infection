@@ -807,6 +807,7 @@ GameObject:
   - component: {fileID: 6459685745756164082}
   - component: {fileID: 6370252296397613921}
   - component: {fileID: 9113790581775730843}
+  - component: {fileID: 5138903211955027441}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -919,33 +920,6 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 2
   playerInput: {fileID: 7951171472498401838}
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 1364d6d5-a472-4900-8bac-1b2afd3461ef
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a9e56ca1-636d-4738-8861-f9df555ef983
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  jumpAction:
-    m_Name: Jump
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e0f996af-e0c3-4966-9d41-33893dea4715
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &7951171472498401838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,6 +1158,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 7951171472498401838}
+--- !u!114 &5138903211955027441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ae1fda30c0b49b58ba61b2ea993e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!1 &2997943375068197822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2920,5 +2907,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapUI: {fileID: 431274328067462667}
-  toggleMapAction: {fileID: -6796147467313879933, guid: ef32e940fc5ac47319a0034f3d51b831,
-    type: 3}
+  playerInput: {fileID: 7951171472498401838}

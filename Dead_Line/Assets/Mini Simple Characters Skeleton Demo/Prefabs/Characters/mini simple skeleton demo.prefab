@@ -396,33 +396,6 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 2
   playerInput: {fileID: 331855923320442070}
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 39517b23-a311-497f-84e8-f90b3c1badcd
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: e3be78d1-0eda-4f54-ac3c-3d1dbd8e6afd
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  jumpAction:
-    m_Name: Jump
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: aa7a5375-efb7-447b-a423-e2f99c3b22df
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
 --- !u!114 &331855923320442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +485,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -822,8 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapUI: {fileID: 7763982611927767816}
-  toggleMapAction: {fileID: -6796147467313879933, guid: ef32e940fc5ac47319a0034f3d51b831,
-    type: 3}
+  playerInput: {fileID: 331855923320442070}
 --- !u!1 &2775847670977943499
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +848,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2083067035957254919}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
