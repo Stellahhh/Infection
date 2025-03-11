@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;
 
-public class PlayerMovement : NetworkBehaviour
+public class ZombieMovement : NetworkBehaviour
 {
     public CharacterController controller;
     public float moveSpeed = 5f;
@@ -12,6 +12,7 @@ public class PlayerMovement : NetworkBehaviour
     public float jumpHeight = 2f; // New variable for jump strength
     private int jumpsRemaining = 2; // 🔹 Allow double jump
 
+    public Hunger hungerScript; 
     private Vector3 velocity;
     private Transform cam;
     public PlayerInput playerInput;
@@ -74,7 +75,7 @@ public class PlayerMovement : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
-
+        AdjustSpeedBasedOnHunger();
         // Ensure actions are enabled
         moveAction.Enable();
         lookAction.Enable();
@@ -137,6 +138,20 @@ public class PlayerMovement : NetworkBehaviour
         if (jumpAction.WasPressedThisFrame())
         {
             Debug.Log("Jump action detected, velocity.y = " + velocity.y);
+        }
+    }
+    void AdjustSpeedBasedOnHunger()
+    {
+        // Example: As remainingTime decreases, increase the speed.
+        // You can change this multiplier for the exact scaling behavior you want.
+        if (hungerScript.remainingTime > 0)
+        {
+            // You can adjust this formula to your desired speed increase curve
+            moveSpeed = Mathf.Lerp(5f, 10f, 1 - (hungerScript.remainingTime / 100f)); // Speed increases as remainingTime decreases
+        }
+        else
+        {
+            moveSpeed = 10f; // Maximum speed when hunger time reaches zero
         }
     }
 }

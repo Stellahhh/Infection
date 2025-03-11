@@ -1346,11 +1346,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: puppet_kid (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 3430579931731131654, guid: b4235d9df06b17d498218a340b679137,
-        type: 3}
-      propertyPath: minimapCamera
-      value: 
-      objectReference: {fileID: 1992925995}
     - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
       propertyPath: sceneId
