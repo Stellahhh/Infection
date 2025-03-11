@@ -26,47 +26,54 @@ public class DynamicMapGenerator : MonoBehaviour
         ShuffleList(shuffledLocations);
         List<GameObject> selectedLocations = shuffledLocations.GetRange(0, 9);
 
-        // Store size information
-        Vector3[,] prefabSizes = new Vector3[3, 3];
-
-        // ✅ Generate a 3x3 grid while aligning prefabs dynamically
-        Vector3 lastPos = startPosition;
+        // Start positioning
+        float rowStartX = startPosition.x;
+        float currentZ = startPosition.z;
 
         for (int x = 0; x < 3; x++)
         {
+            float maxRowHeight = 0f; // Track tallest prefab in row
+            float currentX = rowStartX;
+
             for (int z = 0; z < 3; z++)
             {
-                // Pick a random prefab
+                // Pick a prefab
                 GameObject locationPrefab = selectedLocations[x * 3 + z];
 
-                // Instantiate to get its real-world size
-                GameObject spawnedObject = Instantiate(locationPrefab, lastPos, Quaternion.identity);
+                // Instantiate at the calculated position
+                GameObject spawnedObject = Instantiate(locationPrefab, Vector3.zero, Quaternion.identity);
 
-                // Get size from Renderer bounds
-                Bounds bounds = GetBounds(spawnedObject);
-                Vector3 prefabSize = bounds.size;
+                // ✅ Correct Position to Align Prefabs Properly
+                Bounds bounds = GetMeshBounds(spawnedObject);
+                Vector3 bottomLeft = bounds.min;  // Get bottom-left of prefab
+                Vector3 correctPosition = new Vector3(currentX - bottomLeft.x, 0, currentZ - bottomLeft.z);
+                spawnedObject.transform.position = correctPosition;
 
-                prefabSizes[x, z] = prefabSize;
+                // ✅ Move next object in the row to align to the right edge of the current prefab
+                currentX += bounds.size.x;
 
-                // Adjust the next position based on current prefab size
-                if (z < 2) lastPos.z += prefabSize.z;
+                // Track the tallest prefab for row height
+                if (bounds.size.z > maxRowHeight)
+                {
+                    maxRowHeight = bounds.size.z;
+                }
             }
 
-            // Move to the next row and reset Z position
-            if (x < 2) lastPos = new Vector3(lastPos.x + prefabSizes[x, 0].x, 0, startPosition.z);
+            // ✅ Move to the next row using the tallest prefab's height
+            currentZ += maxRowHeight;
         }
     }
 
-    // ✅ Helper Function: Get Object Bounds
-    Bounds GetBounds(GameObject obj)
+    // ✅ Helper Function: Get Mesh Bounds Instead of Renderer Bounds
+    Bounds GetMeshBounds(GameObject obj)
     {
-        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
-        if (renderers.Length == 0) return new Bounds(obj.transform.position, Vector3.zero);
+        MeshFilter[] meshFilters = obj.GetComponentsInChildren<MeshFilter>();
+        if (meshFilters.Length == 0) return new Bounds(obj.transform.position, Vector3.zero);
 
-        Bounds bounds = renderers[0].bounds;
-        foreach (Renderer r in renderers)
+        Bounds bounds = meshFilters[0].sharedMesh.bounds;
+        foreach (MeshFilter mf in meshFilters)
         {
-            bounds.Encapsulate(r.bounds);
+            bounds.Encapsulate(mf.sharedMesh.bounds);
         }
         return bounds;
     }
