@@ -23,14 +23,12 @@ public class PlayerSwitch : NetworkBehaviour
             screenOverlay.gameObject.SetActive(true);
             
             // Fade to red
-            yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.6f), 1.0f));
+            yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.3f), 1.0f));
 
             // Play the sound effect
             audioSource.PlayOneShot(soundEffect);
             yield return new WaitForSeconds(soundEffect.length);
 
-            // Fade back to normal
-            yield return StartCoroutine(FadeScreen(new Color(1, 0, 0, 0.6f), Color.clear, 1.0f));
             
             Debug.Log("Finished red screen fade effect");
         }
@@ -72,7 +70,7 @@ public class PlayerSwitch : NetworkBehaviour
     void CmdSwitchPrefab()
     {
         GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
-
+        print("becoming zombie...");
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 

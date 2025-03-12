@@ -1,19 +1,22 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
-using Mirror;
 using UnityEngine;
+using Mirror;
 
-public class PlayerSpawner : NetworkBehaviour
+public class PlayerSpawn : NetworkBehaviour
 {
-    public GameObject playerPrefab;
+    public Vector3 minSpawnPosition = new Vector3(10f, 10f, 10f);
+    public Vector3 maxSpawnPosition = new Vector3(135, 10f, 135f);
 
-    public void SpawnPlayer()
+    public override void OnStartLocalPlayer()
     {
-        if (isServer)
+        if (isLocalPlayer)
         {
-            GameObject player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
-            NetworkServer.AddPlayerForConnection(connectionToClient, player);
-            NetworkIdentity playerIdentity = player.GetComponent<NetworkIdentity>();
-            playerIdentity.AssignClientAuthority(connectionToClient);
+            Vector3 randomSpawn = new Vector3(
+                Random.Range(minSpawnPosition.x, maxSpawnPosition.x),
+                Random.Range(minSpawnPosition.y, maxSpawnPosition.y),
+                Random.Range(minSpawnPosition.z, maxSpawnPosition.z)
+            );
+
+            transform.position = randomSpawn;
         }
     }
 }

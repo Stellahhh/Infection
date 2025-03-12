@@ -13,7 +13,7 @@ public class ZombieMovement : NetworkBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 2f; // New variable for jump strength
     private int jumpsRemaining = 2; // 🔹 Allow double jump
-    public TextMeshProUGUI hungerText;
+    [SerializeField] TextMeshProUGUI hungerText;
     public Hunger hungerScript; 
     private Vector3 velocity;
     private Transform cam;
@@ -85,6 +85,7 @@ public class ZombieMovement : NetworkBehaviour
     void Update()
     {
         if (!isLocalPlayer) return;
+
         AdjustSpeedBasedOnHunger();
         UpdateHungerUI(); 
         // Ensure actions are enabled
@@ -167,9 +168,10 @@ public class ZombieMovement : NetworkBehaviour
     }
     void UpdateHungerUI()
     {
-        if (hungerText != null)
-        {
-            hungerText.text = "Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s";
-        }
+       
+        hungerText.text = "lala";
+        print("Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s");
+        //hungerText.text = "Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s";
+        
     }
 }
