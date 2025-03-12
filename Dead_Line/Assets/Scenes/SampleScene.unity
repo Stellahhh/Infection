@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: downtown with environment
       objectReference: {fileID: 0}
+    - target: {fileID: 2967699284760061925, guid: 388b740f7906b1b4ab4bb69f4a0b7cb3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7048148758624978485, guid: 388b740f7906b1b4ab4bb69f4a0b7cb3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -351,6 +356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: mini simple skeleton demo (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2468889828458600031, guid: 4a46e821c58b5cd42b14eaab6d197266,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -418,6 +428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: camping forest with environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021199384441735918, guid: 49a222b06343c1b478e144dd7d8890a6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3021199384441735919, guid: 49a222b06343c1b478e144dd7d8890a6,
         type: 3}
@@ -536,6 +551,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wild west railway station with environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068730432161939225, guid: df6e0d5705c11244c8b08313c0fe392b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -824,7 +844,7 @@ Transform:
   m_GameObject: {fileID: 1033632465}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 446.41, y: 10, z: 99.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -941,7 +961,7 @@ Transform:
   m_GameObject: {fileID: 1219613617}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 563.9165, y: 0, z: 87.08211}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1122,6 +1142,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: autumn atmosphere forest with environment
       objectReference: {fileID: 0}
+    - target: {fileID: 4245952273932977870, guid: fe9cb1b9b4e174249a889ab3e78e65e0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1166,7 +1191,7 @@ Transform:
   m_GameObject: {fileID: 1576841634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 453.16394, y: 145.17686, z: 105.48738}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1278,6 +1303,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: christmas village with environment
       objectReference: {fileID: 0}
+    - target: {fileID: 8478092790448266739, guid: 330ccb941fa6927429b6f863e48b7395,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8478092790448266748, guid: 330ccb941fa6927429b6f863e48b7395,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1345,6 +1375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: puppet_kid (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
@@ -1620,7 +1655,7 @@ Transform:
   m_GameObject: {fileID: 2013240815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 444.59573, y: 132, z: 106.890594}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1656,7 +1691,7 @@ PrefabInstance:
     - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
         type: 3}
