@@ -3,8 +3,8 @@ using Mirror;
 
 public class PlayerSpawn : NetworkBehaviour
 {
-    public Vector3 minSpawnPosition = new Vector3(10f, 10f, 10f);
-    public Vector3 maxSpawnPosition = new Vector3(135, 10f, 135f);
+    public Vector3 minSpawnPosition = new Vector3(10f, 20f, 10f);
+    public Vector3 maxSpawnPosition = new Vector3(135, 20f, 135f);
 
     public override void OnStartLocalPlayer()
     {

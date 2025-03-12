@@ -23,7 +23,7 @@ public class DynamicMapGenerator : MonoBehaviour
 
         // ✅ Shuffle the list and pick 9 random prefabs
         List<GameObject> shuffledLocations = new List<GameObject>(locationPrefabs);
-        ShuffleList(shuffledLocations);
+        //ShuffleList(shuffledLocations);
         List<GameObject> selectedLocations = shuffledLocations.GetRange(0, 9);
 
         // Start positioning

@@ -857,6 +857,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1219613619}
   - component: {fileID: 1219613620}
+  - component: {fileID: 1219613621}
   m_Layer: 0
   m_Name: DynamicMapGenerator
   m_TagString: Untagged
@@ -891,6 +892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5ec6e0b674da4639a632173060abe80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   locationPrefabs:
   - {fileID: 4245952273932977870, guid: fe9cb1b9b4e174249a889ab3e78e65e0, type: 3}
   - {fileID: 3021199384441735918, guid: 49a222b06343c1b478e144dd7d8890a6, type: 3}
@@ -903,6 +907,23 @@ MonoBehaviour:
   - {fileID: 1739153130918889006, guid: 277229067b269ba46a0c9a7b1d685454, type: 3}
   - {fileID: 6068730432161939225, guid: df6e0d5705c11244c8b08313c0fe392b, type: 3}
   startPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &1219613621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219613617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 1852846882
+  _assetId: 0
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1001 &1436528850
 PrefabInstance:
   m_ObjectHideFlags: 0
