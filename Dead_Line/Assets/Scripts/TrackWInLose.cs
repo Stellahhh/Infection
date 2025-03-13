@@ -9,6 +9,7 @@ public class TrackWinLose : MonoBehaviour
     public float timer; // for testing
     private bool gameEnded = false;
     private string winnerMessage = "";
+    private int humanCount = 0;
 
 
     // Track zombie awards
@@ -70,6 +71,7 @@ public class TrackWinLose : MonoBehaviour
         else if (zombies.Length == 0)
         {
             winnerMessage = "Humans Win! You guys are the last hope...";
+            humanCount = humans.Length;
             EndGame();
             return true;
         }
@@ -122,6 +124,7 @@ public class TrackWinLose : MonoBehaviour
         if (humans.Length > 0)
         {
             winnerMessage = "Time's up! Humans Win! You guys are the last hope...";
+            humanCount = humans.Length;
         }
 
         EndGame();
@@ -132,7 +135,8 @@ public class TrackWinLose : MonoBehaviour
         if (gameEnded) return;
         gameEnded = true;
 
-         PlayerPrefs.SetString("WinnerMessage", winnerMessage);
+        PlayerPrefs.SetString("WinnerMessage", winnerMessage);
+        PlayerPrefs.SetInt("HumanCount", humanCount);
 
         // Clear zombie-related values if humans win
         if (!winnerMessage.Contains("Zombies Win"))
