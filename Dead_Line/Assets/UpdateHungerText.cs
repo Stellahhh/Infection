@@ -17,7 +17,7 @@ public class HungerUIUpdater : MonoBehaviour
     {
       
             // Update UI with the remaining hunger time
-        hungerText.text = "Time remaining: " + Mathf.Ceil(hungerScript.remainingTime).ToString() + "s";
+        hungerText.text = Mathf.Ceil(hungerScript.remainingTime).ToString();
         
     }
 }
