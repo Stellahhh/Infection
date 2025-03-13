@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class ResultsSceneManager : MonoBehaviour
@@ -16,11 +17,20 @@ public class ResultsSceneManager : MonoBehaviour
     public GameObject apexPredator;
     public GameObject finalReaper;
     public GameObject finalPrey;
+    public GameObject background;
+    public GameObject whiteBackground;
     public Button backButton;
     public CanvasGroup fadeCanvas; 
 
     void Start()
     {
+
+        // enable cursor 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        // disable background first 
+        background.SetActive(false);
+        whiteBackground.SetActive(true);
         if (backButton != null)
         {
             // change the text of the button to "Restart Game"
@@ -89,22 +99,44 @@ public class ResultsSceneManager : MonoBehaviour
     }
 
     void ShowZombieCharacters(bool isActive)
+{
+    Debug.Log("Setting zombie character visibility: " + isActive);
+
+    if (apexPredator != null)
     {
-        Debug.Log("Setting zombie character visibility: " + isActive);
-
-        apexPredator?.SetActive(isActive);
-        finalReaper?.SetActive(isActive);
-        finalPrey?.SetActive(isActive);
-
-        apexPredatorText?.gameObject.SetActive(isActive);
-        finalReaperText?.gameObject.SetActive(isActive);
-        finalPreyText?.gameObject.SetActive(isActive);
-        humanWinMessageText?.gameObject.SetActive(!isActive);
+        apexPredator.SetActive(isActive);
+        apexPredator.transform.SetParent(GameObject.Find("PrefabContainer").transform); // Attach to Canvas
+        // apexPredator.transform.localPosition = new Vector3(-2, -1, 0); // Adjust X, Y, Z
+        // apexPredator.transform.localScale = Vector3.one * 0.5f; // Scale it down
     }
+
+    if (finalReaper != null)
+    {
+        finalReaper.SetActive(isActive);
+        finalReaper.transform.SetParent(GameObject.Find("PrefabContainer").transform);
+        // finalReaper.transform.localPosition = new Vector3(0, -1, 0); // Centered
+        // finalReaper.transform.localScale = Vector3.one * 0.5f;
+    }
+
+    if (finalPrey != null)
+    {
+        finalPrey.SetActive(isActive);
+        finalPrey.transform.SetParent(GameObject.Find("PrefabContainer").transform);
+        // finalPrey.transform.localPosition = new Vector3(2, -1, 0); // Right side
+        // finalPrey.transform.localScale = Vector3.one * 0.5f;
+    }
+
+    // Show/hide the corresponding text
+    apexPredatorText?.gameObject.SetActive(isActive);
+    finalReaperText?.gameObject.SetActive(isActive);
+    finalPreyText?.gameObject.SetActive(isActive);
+    humanWinMessageText?.gameObject.SetActive(!isActive);
+}
+
 
     void ShowOnlyHumanWinMessage()
     {
-        Debug.Log("Hiding everything except humanWinMessageText");
+        // Debug.Log("Hiding everything except humanWinMessageText");
 
         // Disable all other UI elements
         winMessageText.gameObject.SetActive(false);
@@ -120,8 +152,15 @@ public class ResultsSceneManager : MonoBehaviour
         // Show only humanWinMessageText
         humanWinMessageText.color = new Color(0.0f, 0.5f, 0.0f); // Dark Green (RGB: 0, 128, 0)
         humanWinMessageText.gameObject.SetActive(true);
+
+        // int humanCount = PlayerPrefs.GetInt("HumanCount", 0);
+
     }
     public void RestartGame() {
+        Debug.Log("Restarting game...");
+        Time.timeScale = 1;
+        whiteBackground.SetActive(false);
+        background.SetActive(true);
         SceneManager.LoadScene("SampleScene");
     }
 }
