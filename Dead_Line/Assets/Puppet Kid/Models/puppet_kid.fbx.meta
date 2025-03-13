@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: b10fec9bba2b7eb4285c00cedd56af11
+AssetOrigin:
+  serializedVersion: 1
+  productId: 230773
+  packageName: Puppet | Kid | Free Demo
+  packageVersion: 1.1
+  assetPath: Assets/Puppet Kid/Models/puppet_kid.fbx
+  uploadId: 607947
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -16,8 +23,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -162,9 +167,9 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -646,10 +651,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 230773
-  packageName: Puppet | Kid | Free Demo
-  packageVersion: 1.1
-  assetPath: Assets/Puppet Kid/Models/puppet_kid.fbx
-  uploadId: 607947
