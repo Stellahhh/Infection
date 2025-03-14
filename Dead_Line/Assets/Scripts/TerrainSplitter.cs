@@ -122,7 +122,7 @@ public class TerrainSplitter : MonoBehaviour
                     terrainMaterials[i].SetColor("_BaseColor", newColor); // URP Shader
                     terrainMaterials[i].SetColor("_Color", newColor); // Standard Shader
 
-                    Debug.Log($"{splitTerrains[i].name} is now {(i == randomIndex ? "RED" : "GREEN")}");
+                    // Debug.Log($"{splitTerrains[i].name} is now {(i == randomIndex ? "RED" : "GREEN")}");
                 }
             }
         }

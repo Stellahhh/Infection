@@ -24,6 +24,7 @@ public class RandomMapGenerator : MonoBehaviour
         // ✅ Shuffle the list and pick 9 random prefabs
         List<GameObject> shuffledLocations = new List<GameObject>(locationPrefabs);
         ShuffleList(shuffledLocations);
+        Debug.Log("list is shuffled");
         List<GameObject> selectedLocations = shuffledLocations.GetRange(0, 9);
 
         // ✅ Generate a 3x3 grid

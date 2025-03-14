@@ -52,15 +52,19 @@ public class DynamicMapGenerator : NetworkBehaviour
 
         Random.InitState(seed); // Set the seed so all clients generate the same map
 
-        if (locationPrefabs.Count < 9)
+        if (locationPrefabs.Count == 0)
         {
-            Debug.LogError("Not enough prefabs! Add at least 9 location prefabs.");
+            Debug.LogError("No prefabs available in locationPrefabs list!");
             return;
         }
 
-        List<GameObject> shuffledLocations = new List<GameObject>(locationPrefabs);
-        //ShuffleList(shuffledLocations);
-        List<GameObject> selectedLocations = shuffledLocations.GetRange(0, 9);
+        // ✅ Randomly pick 9 prefabs (allowing duplicates)
+        List<GameObject> selectedLocations = new List<GameObject>();
+        for (int i = 0; i < 9; i++)
+        {
+            int randomIndex = Random.Range(0, locationPrefabs.Count);
+            selectedLocations.Add(locationPrefabs[randomIndex]);
+        }
 
         float rowStartX = startPosition.x;
         float currentZ = startPosition.z;
@@ -106,17 +110,5 @@ public class DynamicMapGenerator : NetworkBehaviour
             bounds.Encapsulate(mf.sharedMesh.bounds);
         }
         return bounds;
-    }
-
-    // ✅ Fisher-Yates Shuffle for Consistent Randomization
-    void ShuffleList(List<GameObject> list)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int randomIndex = Random.Range(0, i + 1);
-            GameObject temp = list[i];
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
-        }
     }
 }
