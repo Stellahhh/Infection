@@ -4,7 +4,7 @@ public class PlayerBoundary : MonoBehaviour
 {
     // private Vector3 minBounds = new Vector3(394.06f, 0f, 88.5f); // Minimum bounds (X, Y, Z)
     // private Vector3 maxBounds = new Vector3(542.34f, 100f, 159.58f); // Maximum bounds (X, Y, Z)
-    private Vector3 minBounds = new Vector3(0f, 0f, 0f); // Minimum bounds (X, Y, Z)
+    private Vector3 minBounds = new Vector3(10f, 0f, 10f); // Minimum bounds (X, Y, Z)
     private Vector3 maxBounds = new Vector3(135f, 100f, 135f); // Maximum bounds (X, Y, Z)
 
     void Update()
