@@ -24,7 +24,7 @@ public class ZombieMovement : NetworkBehaviour
 
     private Camera playerCamera;
     private bool isGrounded;
-    public Animator animator;
+    // public Animator animator;
     private void Start()
     {
         if (!isLocalPlayer) return;
@@ -87,7 +87,6 @@ public class ZombieMovement : NetworkBehaviour
         if (!isLocalPlayer) return;
 
         AdjustSpeedBasedOnHunger();
-        UpdateHungerUI(); 
         // Ensure actions are enabled
         moveAction.Enable();
         lookAction.Enable();
@@ -129,15 +128,15 @@ public class ZombieMovement : NetworkBehaviour
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
 
 
-         if (moveInput.magnitude > 0f)
-        {
-            animator.SetBool("isWalking", true);  // Trigger walk animation
-        }
-        else
-        {
-            animator.SetBool("isWalking", false); // Stop walking animation
-        }
-        // Rotate the player using mouse input
+        //  if (moveInput.magnitude > 0f)
+        // {
+        //     animator.SetBool("isWalking", true);  // Trigger walk animation
+        // }
+        // else
+        // {
+        //     animator.SetBool("isWalking", false); // Stop walking animation
+        // }
+        //Rotate the player using mouse input
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
 
@@ -147,24 +146,19 @@ public class ZombieMovement : NetworkBehaviour
             Debug.Log("Jump button pressed! Jumps left: " + jumpsRemaining);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); // Apply jump force
             jumpsRemaining--; // 🔹 Reduce jump count
-            animator.SetBool("isJumping", true);
+            //animator.SetBool("isJumping", true);
         }
         
 
         // Apply Gravity Properly
         velocity.y += gravity * Time.deltaTime;
-        if (isGrounded && velocity.y <= 0)
-        {
-            animator.SetBool("isJumping", false); // Set jumping to false if grounded
-        }
+        // if (isGrounded && velocity.y <= 0)
+        // {
+        //     animator.SetBool("isJumping", false); // Set jumping to false if grounded
+        // }
         // Move Player with Updated Velocity
         controller.Move(velocity * Time.deltaTime);
 
-        // Debug check
-        if (jumpAction.WasPressedThisFrame())
-        {
-            Debug.Log("Jump action detected, velocity.y = " + velocity.y);
-        }
     }
     void AdjustSpeedBasedOnHunger()
     {
@@ -180,12 +174,5 @@ public class ZombieMovement : NetworkBehaviour
             moveSpeed = 10f; // Maximum speed when hunger time reaches zero
         }
     }
-    void UpdateHungerUI()
-    {
-       
-        hungerText.text = "lala";
-        print("Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s");
-        //hungerText.text = "Remaining Time: " + Mathf.Ceil(hungerScript.remainingTime) + "s";
-        
-    }
+   
 }
