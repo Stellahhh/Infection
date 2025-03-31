@@ -13,7 +13,6 @@ public class ZombieMovement : NetworkBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 2f; // New variable for jump strength
     private int jumpsRemaining = 2; // 🔹 Allow double jump
-    [SerializeField] TextMeshProUGUI hungerText;
     public Hunger hungerScript; 
     private Vector3 velocity;
     private Transform cam;
@@ -38,15 +37,15 @@ public class ZombieMovement : NetworkBehaviour
         {
             Debug.LogError("Camera not found for local player.");
         }
-        GameObject hungerUI = GameObject.Find("HungerText");
-        if (hungerUI != null)
-        {
-            hungerText = hungerUI.GetComponent<TextMeshProUGUI>();
-        }
-        else
-        {
-            Debug.LogError("HungerText UI element not found!");
-        }
+        // GameObject hungerUI = GameObject.Find("HungerText");
+        // if (hungerUI != null)
+        // {
+        //     hungerText = hungerUI.GetComponent<TextMeshProUGUI>();
+        // }
+        // else
+        // {
+        //     Debug.LogError("HungerText UI element not found!");
+        // }
         playerInput = GetComponent<PlayerInput>();
         if (playerInput == null)
         {
