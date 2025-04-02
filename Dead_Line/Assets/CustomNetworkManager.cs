@@ -6,6 +6,7 @@ public class CustomNetworkManager : NetworkManager
     public GameObject prefabA; // 10% chance
     public GameObject prefabB; // 90% chance
     public Vector3 spawnCenter = new Vector3(67.5f, 10f, 67.5f); // Center of the spawn area
+    public float zombieProportion = 0.1f;
     public float spawnRange = 60; // Half-width of the spawn area
 
     private int totalPlayers = 0; // Track total players
@@ -20,7 +21,7 @@ public class CustomNetworkManager : NetworkManager
         );
 
         print(randomPosition);
-        GameObject chosenPrefab = (Random.value < 1f) ? prefabB : prefabA;
+        GameObject chosenPrefab = (Random.value < zombieProportion) ? prefabB : prefabA;
 
         // Instantiate and spawn the player
         GameObject player = Instantiate(chosenPrefab, randomPosition, Quaternion.identity);
