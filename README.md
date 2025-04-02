@@ -167,7 +167,7 @@ Further UI and rendering implementation:
 
 
 Additions:
-1. We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions
+1. ~~We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions~~
 
 2. ~~We implemented dynamic skybox switching based on player movement. When a human or zombie enters a new environment tile, the skybox updates to match the scene's theme.~~ 
 
@@ -337,7 +337,8 @@ modified the win and lose scenes to make them more visually engaging.
 3. Added snow effect for the snow-covering village with particle system.
 - The snowflake source image is obtained from https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Winter-PNG/Transparent_Snowflake_Clipart.png?m=1629833801
 
-
+4. Added audio to results scene based on the player's role. Human and zombie players now hear different win or lose audio clips depending on whether their side won or lost. 
+- audio resources: https://uppbeat.io/sfx/category/music-clips/orchestra and https://pixabay.com/sound-effects/search/lose/ 
 
 
 ### Setup & Running the Game
