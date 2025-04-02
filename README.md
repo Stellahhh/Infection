@@ -169,6 +169,9 @@ Further UI and rendering implementation:
 Additions:
 1. We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions
 
+2. Skybox 
+TODO
+
 ### Project Part 3: Sound, UI, and Animation (Chap 14, 15, 17)
 
 Sound effect:
