@@ -864,7 +864,7 @@ MonoBehaviour:
   prefabA: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137, type: 3}
   prefabB: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
   spawnCenter: {x: 67.5, y: 10, z: 67.5}
-  zombieProportion: 1
+  zombieProportion: 0.1
   spawnRange: 60
 --- !u!1 &1219613617
 GameObject:
