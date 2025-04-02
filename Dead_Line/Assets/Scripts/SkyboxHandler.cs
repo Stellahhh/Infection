@@ -9,7 +9,7 @@ public class SkyboxHandler : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print("triggered by " + other.gameObject.name);
-        if (other.CompareTag("Human"))
+        if (other.CompareTag("Human") || other.CompareTag("Zombie"))
         {
             print("new skybox triggered by human");
             RenderSettings.skybox = skyboxMaterial;

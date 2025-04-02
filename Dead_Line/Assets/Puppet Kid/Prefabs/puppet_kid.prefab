@@ -1023,6 +1023,7 @@ GameObject:
   - component: {fileID: 5625392761112492344}
   - component: {fileID: 6276262958408013260}
   - component: {fileID: 895462561106534951}
+  - component: {fileID: 5472877332793996403}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -1433,6 +1434,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarTransform: {fileID: 2638770537600964746}
+--- !u!114 &5472877332793996403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b583be1de5d46758992d46b34984f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2997943375068197822
 GameObject:
   m_ObjectHideFlags: 0

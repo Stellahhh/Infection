@@ -22,6 +22,10 @@ public class ResultsSceneManager : MonoBehaviour
     public Button backButton;
     public CanvasGroup fadeCanvas; 
 
+    public AudioSource audioSource;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+
     void Start()
     {
 
@@ -67,6 +71,8 @@ public class ResultsSceneManager : MonoBehaviour
         {
             ShowOnlyHumanWinMessage();
         }
+
+        PlayResultAudio();
     }
 
     void DisplayWinMessage(string message, Color color)
@@ -98,8 +104,7 @@ public class ResultsSceneManager : MonoBehaviour
         }
     }
 
-    void ShowZombieCharacters(bool isActive)
-{
+    void ShowZombieCharacters(bool isActive) {
     Debug.Log("Setting zombie character visibility: " + isActive);
 
     if (apexPredator != null)
@@ -155,6 +160,52 @@ public class ResultsSceneManager : MonoBehaviour
 
         // int humanCount = PlayerPrefs.GetInt("HumanCount", 0);
 
+    }
+
+    void PlayResultAudio()
+    {
+        string winner = PlayerPrefs.GetString("winner", "");
+        string playerRole = PlayerPrefs.GetString("PlayerRole", "");
+        string playerName = PlayerPrefs.GetString("PlayerName", "");
+        string finalPrey = PlayerPrefs.GetString("FinalPrey", "");
+
+        bool isZombie = playerRole == "Zombie";
+        bool isHuman = playerRole == "Human";
+
+        if (playerName == finalPrey && winClip != null)
+        {
+            audioSource.clip = winClip; // Play special clip for final prey
+        }
+        else if (winner.ToLower().Contains("zombies"))
+        {
+            audioSource.clip = isZombie ? winClip : loseClip;
+            // if (isZombie)
+            // {
+            //     Debug.Log("zombies win and you are a zombie, play win clip");
+            // }
+            // else
+            // {
+            //     Debug.Log("zombies win and you are a human, play lose clip");
+            // }
+        }
+        else if (winner.ToLower().Contains("humans"))
+        {
+            audioSource.clip = isHuman ? winClip : loseClip;
+            // if (isHuman)
+            // {
+            //     Debug.Log("humans win and you are a human, play win clip");
+            // }
+            // else
+            // {
+            //     Debug.Log("humans win and you are a zombie, play lose clip");
+            // }
+        }
+        else
+        {
+            audioSource.clip = loseClip; 
+        }
+
+        audioSource.Play();
     }
     public void RestartGame() {
         Debug.Log("Restarting game...");

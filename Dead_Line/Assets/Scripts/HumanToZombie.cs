@@ -24,7 +24,10 @@ public class PlayerSwitch : NetworkBehaviour
             
             // Fade to red
         //yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.3f), 1.0f));
-
+            
+            // update the player role for future reference
+            PlayerPrefs.SetString("PlayerRole", "Zombie");
+            
             // Play the sound effect
             audioSource.PlayOneShot(soundEffect);
             yield return new WaitForSeconds(soundEffect.length);
