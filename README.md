@@ -169,8 +169,7 @@ Further UI and rendering implementation:
 Additions:
 1. We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions
 
-2. Skybox 
-TODO
+2. ~~We implemented dynamic skybox switching based on player movement. When a human or zombie enters a new environment tile, the skybox updates to match the scene's theme.~~ 
 
 ### Project Part 3: Sound, UI, and Animation (Chap 14, 15, 17)
 
