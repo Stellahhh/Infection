@@ -1055,6 +1055,7 @@ Transform:
   - {fileID: 8099561606691109680}
   - {fileID: 8229250761149984331}
   - {fileID: 158858622184163166}
+  - {fileID: 8693550370459790461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &816150696546891863
@@ -1076,7 +1077,6 @@ MonoBehaviour:
   prefabB: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
   audioSource: {fileID: 6370252296397613921}
   soundEffect: {fileID: 8300000, guid: 2b504077d77e6427b9257e43f6cdf5ff, type: 3}
-  screenOverlay: {fileID: 8621894300095980245}
 --- !u!114 &2714849776194066337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2707,6 +2707,55 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.76174545, z: 0.42809284}
     m_Extent: {x: 0.31330565, y: 0.12091404, z: 0.0802328}
   m_DirtyAABB: 0
+--- !u!1 &6003391563721389242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8693550370459790461}
+  - component: {fileID: 1165307845822752474}
+  m_Layer: 0
+  m_Name: PPvolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8693550370459790461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003391563721389242}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.04362052, y: 1.3117492, z: 0.58305943}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9084458181851230346}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165307845822752474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003391563721389242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 887d3d10d5a06445888361fcdc5be5e4, type: 2}
 --- !u!1 &6088362233553179560
 GameObject:
   m_ObjectHideFlags: 0

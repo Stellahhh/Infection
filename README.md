@@ -140,27 +140,29 @@ Addition:
 Since we are using a low-poly world, we don't need extensive visual effect to achieve a realistic and immersive feelings. We plan to add the following visual effects details to make the game more engaging, but our plan will focus on further developing our functionality.
 
 Special effects:
-- Add random weather conditions to increase the difficulty of the game
+- ~~Add random weather conditions to increase the difficulty of the game~~
   - fog condition
   - raining condition
-  - snowing condition
-- Add blood to the player's sight if they are captured by the combie (blood particle)
+  - ~~snowing condition~~
+  we implemented snowing condition for the snow village; didn
+- ~~Add blood to the player's sight if they are captured by the combie (blood particle)~~
 - Add special effects for the relevant scene elements
   - Add the moving effect for water.
   - Add the smoke effect for the smoke emited by the train.
   - Add the fire effect for the fire in the camping land.
-- Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)
+- ~~Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)~~
 
 
 Further functionality implementation:
 - Add the randomized "war zone" that will reduce the life amount for human.
-- Add the return button (suggested by the previous feedback) so that the client can restart the game. 
-- Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.
-- Randomly assigning a specific proportion of players to be born as zombie.
+- ~~Add the return button (suggested by the previous feedback) so that the client can restart the game.~~ 
+- ~~Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.~~
+- R~~andomly assigning a specific proportion of players to be born as zombie.~~
 
 Further UI and rendering implementation:
-- Add the HP bar for human and remaining time bar for zombie
+- ~~Add the HP bar for human and remaining time bar for zombie~~
 - Add animation for the player movements
+  We created the set of animations, but applying them impairs the network synchronization. We are still working on how to apply animation while keep the clients' position synched through server.
 
 
 
