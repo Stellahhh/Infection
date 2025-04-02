@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3626449032674212017}
   - component: {fileID: -7944945837765325051}
+  - component: {fileID: 1928523154032094092}
+  - component: {fileID: 3262724396003732376}
   m_Layer: 0
   m_Name: wild west railway station with environment
   m_TagString: Untagged
@@ -152,6 +154,40 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!65 &1928523154032094092
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068730432161939225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 45, y: 30, z: 45}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3262724396003732376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068730432161939225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9749ec9e9649041c4ba10530efa79cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxMaterial: {fileID: 2100000, guid: 7fa133c086eec49709c9fff299490574, type: 2}
 --- !u!1001 &289757638379855858
 PrefabInstance:
   m_ObjectHideFlags: 0

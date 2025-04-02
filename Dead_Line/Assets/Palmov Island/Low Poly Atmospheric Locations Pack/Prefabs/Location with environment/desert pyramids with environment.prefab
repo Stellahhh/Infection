@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7877468419587357376}
   - component: {fileID: 2263626605304031771}
+  - component: {fileID: 8994297442085981977}
+  - component: {fileID: -5427629354893710688}
   m_Layer: 0
   m_Name: desert pyramids with environment
   m_TagString: Untagged
@@ -97,6 +99,40 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &8994297442085981977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877468419587357377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9749ec9e9649041c4ba10530efa79cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxMaterial: {fileID: 2100000, guid: 4c2918589190c42cfbc5ecbfedb997dd, type: 2}
+--- !u!65 &-5427629354893710688
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877468419587357377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 45, y: 30, z: 45}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4771413555554393069
 PrefabInstance:
   m_ObjectHideFlags: 0

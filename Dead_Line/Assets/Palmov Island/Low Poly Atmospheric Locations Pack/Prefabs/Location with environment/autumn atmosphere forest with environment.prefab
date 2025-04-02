@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4245952273932977865}
   - component: {fileID: -7936612485522487325}
+  - component: {fileID: -6385921208097717672}
+  - component: {fileID: 8940264863132023666}
   m_Layer: 0
   m_Name: autumn atmosphere forest with environment
   m_TagString: Untagged
@@ -122,6 +124,40 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &-6385921208097717672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245952273932977870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9749ec9e9649041c4ba10530efa79cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxMaterial: {fileID: 2100000, guid: 87328efbaa3b5434daaec4fb64e3d1ce, type: 2}
+--- !u!65 &8940264863132023666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4245952273932977870}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 45, y: 30, z: 45}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4245952272399181532
 PrefabInstance:
   m_ObjectHideFlags: 0
