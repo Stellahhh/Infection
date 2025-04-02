@@ -136,31 +136,62 @@ Addition:
 - Another addition is that players can now randomly spawn at different locations.
 - According to the feedback to the previous submission, we've hidden the cursor and the player could have to press 'C' to enable it.
 
-### Project Part 3: Visual Effects
+### Project Part 3: Visual Effects (Chap 11 - 13)
 Since we are using a low-poly world, we don't need extensive visual effect to achieve a realistic and immersive feelings. We plan to add the following visual effects details to make the game more engaging, but our plan will focus on further developing our functionality.
 
 Special effects:
-- Add random weather conditions to increase the difficulty of the game
+- ~~Add random weather conditions to increase the difficulty of the game~~
   - fog condition
   - raining condition
-  - snowing condition
-- Add blood to the player's sight if they are captured by the combie (blood particle)
+  - ~~snowing condition~~
+  We implemented snowing condition for the snow village. There is no suitable scenes for fog or rain condition.
+- ~~Add blood to the player's sight if they are captured by the combie (blood particle)~~
 - Add special effects for the relevant scene elements
   - Add the moving effect for water.
   - Add the smoke effect for the smoke emited by the train.
   - Add the fire effect for the fire in the camping land.
-- Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)
+  
+- ~~Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)~~
 
 
 Further functionality implementation:
 - Add the randomized "war zone" that will reduce the life amount for human.
-- Add the return button (suggested by the previous feedback) so that the client can restart the game. 
-- Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.
-- Randomly assigning a specific proportion of players to be born as zombie.
+- ~~Add the return button (suggested by the previous feedback) so that the client can restart the game.~~ 
+- ~~Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.~~
+- ~~Randomly assigning a specific proportion of players to be born as zombie.~~
 
 Further UI and rendering implementation:
-- Add the HP bar for human and remaining time bar for zombie
+- ~~Add the HP bar for human and remaining time bar for zombie~~
 - Add animation for the player movements
+  We created the set of animations, but applying them impairs the network synchronization. We are still working on how to apply animation while keep the clients' position synched through server.
+
+
+Additions:
+1. We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions
+
+2. Skybox 
+TODO
+
+### Project Part 3: Sound, UI, and Animation (Chap 14, 15, 17)
+
+Sound effect:
+- Create zombie growls when they are close.
+- Create the sound of foot steps that can indicate the direction and distance.
+
+UI:
+- Make zombie and human more distinguishable on map, such as having specific icon for zombies and humans (as suggested in the feedback).
+- Create an additional scene before the players entering the game, so that they can customize the appearance and the name of their character (as suggested in the feedback).
+
+Animation:
+- Create the animation for zombie and human movement (including stay still, walking, and jumping).
+- Make synchronization functional after animation application.
+
+Other functionality improvement:
+- Address collision problems 
+  - Camera v.s. the environment (currently, sometimes camera will get into other objects)
+  - Character v.s. the environment (currently, sometimes character will float or bury in the ground)
+
+
 
 
 
@@ -278,6 +309,34 @@ modified the win and lose scenes to make them more visually engaging.
 
 
 
+### Project Part 3: UI and Effects
+
+**Funcionality Improvement**
+1. Randomized zombie & human spawn
+- When a new client joins the game, they will have 1/10 chance of being born as a zombie. Additionally, the starting location of each player is completely randomized.
+
+- The Zombie Proportion can be edited in SampleScene/NetworkManager's inspector (Custom Network Manager/Zombie Proportion)
+
+
+**UI Improvement**
+1. Added hungry bar and HP bar for humans and zombies so that they can see their HP and hungry level directly.
+![HP bar for human](HP_bar.png)
+![HP (hungry) bar for zombie](hungry_bar.png)
+
+**Effect Improvement**
+1. Added different post-processing effect for human and zombies, such that human's view is sunny and bright, while zombie's view is dark and bloody.
+![Human's view](human_view.png)
+![Zombie's view](zombie_view.png)
+
+2. Used blood image overlay to create the bloody effect on zombie's view. 
+- Image source: https://www.freeiconspng.com/thumbs/blood-splatter-png/blood-spatter-high-velocity-blunt-spatter-png-20.png
+
+3. Added snow effect for the snow-covering village with particle system.
+- The snowflake source image is obtained from https://gallery.yopriceville.com/var/resizes/Free-Clipart-Pictures/Winter-PNG/Transparent_Snowflake_Clipart.png?m=1629833801
+
+
+
+
 ### Setup & Running the Game
 
 1. Build and Run the Project
@@ -291,6 +350,11 @@ modified the win and lose scenes to make them more visually engaging.
 - C → cursor appear / disappear
 
 Testing Key Features
+
+
+Human and Zombie spawn:
+- By default, there would be 1/10 of new players become zombie
+- The Zombie Proportion can be edited in SampleScene/NetworkManager's inspector (Custom Network Manager/Zombie Proportion)
 
 Zombie Interactions:
 The game has a few zombies at certain locations, which may make them difficult to find. For easier testing, can manually drag a zombie prefab into the scene:

@@ -11,7 +11,7 @@ public class PlayerSwitch : NetworkBehaviour
     public GameObject prefabB;
     public AudioSource audioSource;
     public AudioClip soundEffect;
-    public Image screenOverlay; // Reference to UI Image for red screen effect
+    //public Image screenOverlay; // Reference to UI Image for red screen effect
 
     IEnumerator DelayedSwitch()
     {
@@ -20,10 +20,10 @@ public class PlayerSwitch : NetworkBehaviour
             Debug.Log("Starting red screen fade effect");
             
             // Ensure the screen overlay is active
-            screenOverlay.gameObject.SetActive(true);
+            //screenOverlay.gameObject.SetActive(true);
             
             // Fade to red
-            yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.3f), 1.0f));
+        //yield return StartCoroutine(FadeScreen(Color.clear, new Color(1, 0, 0, 0.3f), 1.0f));
 
             // Play the sound effect
             audioSource.PlayOneShot(soundEffect);
@@ -37,23 +37,23 @@ public class PlayerSwitch : NetworkBehaviour
         CmdSwitchPrefab();
     }
 
-    IEnumerator FadeScreen(Color startColor, Color endColor, float duration)
-    {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            if (screenOverlay != null)
-            {
-                screenOverlay.color = Color.Lerp(startColor, endColor, elapsed / duration);
-            }
-            yield return null;
-        }
-        if (screenOverlay != null)
-        {
-            screenOverlay.color = endColor; // Ensure final color is set
-        }
-    }
+    // IEnumerator FadeScreen(Color startColor, Color endColor, float duration)
+    // {
+    //     float elapsed = 0f;
+    //     while (elapsed < duration)
+    //     {
+    //         elapsed += Time.deltaTime;
+    //         if (screenOverlay != null)
+    //         {
+    //             screenOverlay.color = Color.Lerp(startColor, endColor, elapsed / duration);
+    //         }
+    //         yield return null;
+    //     }
+    //     // if (screenOverlay != null)
+    //     // {
+    //     //     screenOverlay.color = endColor; // Ensure final color is set
+    //     // }
+    // }
 
     private void OnTriggerEnter(Collider other)
     {
