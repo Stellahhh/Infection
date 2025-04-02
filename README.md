@@ -323,6 +323,10 @@ modified the win and lose scenes to make them more visually engaging.
 ![HP bar for human](HP_bar.png)
 ![HP (hungry) bar for zombie](hungry_bar.png)
 
+2. Added unique skyboxes for each map tile — now when humans or zombies move between areas, the skybox changes to match the new theme.
+![skybox day](skybox1.png)
+![skybox night](skybox2.png)
+
 **Effect Improvement**
 1. Added different post-processing effect for human and zombies, such that human's view is sunny and bright, while zombie's view is dark and bloody.
 ![Human's view](human_view.png)
