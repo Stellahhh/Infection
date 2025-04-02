@@ -169,8 +169,7 @@ Further UI and rendering implementation:
 Additions:
 1. We implemented the victory and lose sound effect at the win/lose scene, such that each player will experience different win/lose conditions
 
-2. Skybox 
-TODO
+2. ~~We implemented dynamic skybox switching based on player movement. When a human or zombie enters a new environment tile, the skybox updates to match the scene's theme.~~ 
 
 ### Project Part 3: Sound, UI, and Animation (Chap 14, 15, 17)
 
@@ -322,6 +321,10 @@ modified the win and lose scenes to make them more visually engaging.
 1. Added hungry bar and HP bar for humans and zombies so that they can see their HP and hungry level directly.
 ![HP bar for human](HP_bar.png)
 ![HP (hungry) bar for zombie](hungry_bar.png)
+
+2. Added unique skyboxes for each map tile — now when humans or zombies move between areas, the skybox changes to match the new theme.
+![skybox day](skybox1.png)
+![skybox night](skybox2.png)
 
 **Effect Improvement**
 1. Added different post-processing effect for human and zombies, such that human's view is sunny and bright, while zombie's view is dark and bloody.
