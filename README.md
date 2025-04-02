@@ -144,12 +144,13 @@ Special effects:
   - fog condition
   - raining condition
   - ~~snowing condition~~
-  we implemented snowing condition for the snow village; didn
+  We implemented snowing condition for the snow village. There is no suitable scenes for fog or rain condition.
 - ~~Add blood to the player's sight if they are captured by the combie (blood particle)~~
 - Add special effects for the relevant scene elements
   - Add the moving effect for water.
   - Add the smoke effect for the smoke emited by the train.
   - Add the fire effect for the fire in the camping land.
+  
 - ~~Add different visual effect when player is human and when player is zombie (zombie's view can be covered by blood)~~
 
 
@@ -157,7 +158,7 @@ Further functionality implementation:
 - Add the randomized "war zone" that will reduce the life amount for human.
 - ~~Add the return button (suggested by the previous feedback) so that the client can restart the game.~~ 
 - ~~Attach to the win and lose scene to the specific condition of each player, so that different player will see different win/lose scenes.~~
-- R~~andomly assigning a specific proportion of players to be born as zombie.~~
+- ~~Randomly assigning a specific proportion of players to be born as zombie.~~
 
 Further UI and rendering implementation:
 - ~~Add the HP bar for human and remaining time bar for zombie~~
