@@ -15,23 +15,32 @@ public class DynamicMapGenerator : NetworkBehaviour
 
     private void Start()
     {
-        if (isServer) // Only the server (host) generates the map
+        if (isServer)
         {
-            seed = Random.Range(0, 100000); // Generate a random seed
+            seed = Random.Range(0, 100000);
             GenerateMap(seed);
         }
-        else
+        // Remove CmdRequestMap from Start – it may be too early
+    }
+
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        if (!isServer)
         {
-            CmdRequestMap(); // Clients request the map seed from the server
+            CmdRequestMap();
         }
     }
 
     // ✅ Clients Request Map from Server
     [Command(requiresAuthority = false)]
-    void CmdRequestMap(NetworkConnectionToClient conn = null)
-    {
-        TargetReceiveSeed(conn, seed);
-    }
+        void CmdRequestMap(NetworkConnectionToClient conn = null)
+        {
+            if (conn != null)
+            {
+                TargetReceiveSeed(conn, seed);
+            }
+        }
 
     // ✅ Server Sends the Seed to the Client
     [TargetRpc]
@@ -59,7 +68,7 @@ public class DynamicMapGenerator : NetworkBehaviour
         }
 
         List<GameObject> shuffledLocations = new List<GameObject>(locationPrefabs);
-        //ShuffleList(shuffledLocations);
+        ShuffleList(shuffledLocations);
         List<GameObject> selectedLocations = shuffledLocations.GetRange(0, 9);
 
         float rowStartX = startPosition.x;
