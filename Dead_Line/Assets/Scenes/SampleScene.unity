@@ -841,11 +841,13 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+  playerPrefab: {fileID: 410974520245823083, guid: 1aaf45fea9e84da4dbd0224c5d4c2ffe,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
+  - {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -864,7 +866,7 @@ MonoBehaviour:
   prefabA: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137, type: 3}
   prefabB: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266, type: 3}
   spawnCenter: {x: 67.5, y: 10, z: 67.5}
-  zombieProportion: 0.1
+  zombieProportion: 0.5
   spawnRange: 60
 --- !u!1 &1219613617
 GameObject:
@@ -1619,7 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638d18b4fe5b453bb0f8f79fce4d377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 30
+  gameDuration: 100000
   timer: 0
 --- !u!1001 &2069145723
 PrefabInstance:
