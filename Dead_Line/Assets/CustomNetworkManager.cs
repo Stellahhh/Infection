@@ -13,21 +13,26 @@ public class CustomNetworkManager : NetworkManager
 
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
+        
         // Decide which prefab to spawn
-        Vector3 randomPosition = new Vector3(
-            Random.Range(spawnCenter.x - spawnRange, spawnCenter.x + spawnRange),
-            spawnCenter.y,
-            Random.Range(spawnCenter.z - spawnRange, spawnCenter.z + spawnRange)
-        );
+        // Vector3 randomPosition = new Vector3(
+        //     Random.Range(spawnCenter.x - spawnRange, spawnCenter.x + spawnRange),
+        //     spawnCenter.y,
+        //     Random.Range(spawnCenter.z - spawnRange, spawnCenter.z + spawnRange)
+        // );
 
-        print(randomPosition);
+
+        Vector3 randomPosition = new Vector3(10, 10, 10);
         GameObject chosenPrefab = (Random.value < zombieProportion) ? prefabB : prefabA;
 
         // Instantiate and spawn the player
         GameObject player = Instantiate(chosenPrefab, randomPosition, Quaternion.identity);
+        player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
 
         totalPlayers++; // Increment count
     }
+
+
     
 }

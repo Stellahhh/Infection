@@ -26,6 +26,7 @@ public class ZombieMovement : NetworkBehaviour
     // public Animator animator;
     private void Start()
     {
+        
         if (!isLocalPlayer) return;
 
         Camera myCam = GetComponentInChildren<Camera>();
@@ -37,15 +38,7 @@ public class ZombieMovement : NetworkBehaviour
         {
             Debug.LogError("Camera not found for local player.");
         }
-        // GameObject hungerUI = GameObject.Find("HungerText");
-        // if (hungerUI != null)
-        // {
-        //     hungerText = hungerUI.GetComponent<TextMeshProUGUI>();
-        // }
-        // else
-        // {
-        //     Debug.LogError("HungerText UI element not found!");
-        // }
+        
         playerInput = GetComponent<PlayerInput>();
         if (playerInput == null)
         {
@@ -70,7 +63,7 @@ public class ZombieMovement : NetworkBehaviour
             return;
         }
 
-        print("network identity" + (GetComponent<NetworkIdentity>() == null));
+        
 
     }
 

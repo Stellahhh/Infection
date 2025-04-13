@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: -350536867098004823}
   - component: {fileID: 5553523589735381568}
   - component: {fileID: 2182498649425437995}
+  - component: {fileID: 2302491526869896387}
   m_Layer: 7
   m_Name: mini simple skeleton demo
   m_TagString: Zombie
@@ -481,6 +482,7 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   onlySyncOnChangeCorrectionMultiplier: 2
+  useFixedUpdate: 0
   rotationSensitivity: 0.01
   positionPrecision: 0.01
   scalePrecision: 0.01
@@ -520,7 +522,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696834749189059949}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99ff41fc0472043928c87a5717f8b5a1, type: 3}
   m_Name: 
@@ -548,6 +550,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarTransform: {fileID: 881635845162976199}
+--- !u!114 &2302491526869896387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f447eecb9ced4f4e9ed56385b60e9a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  controller: {fileID: 3535821913445418793}
+  moveSpeed: 5
+  rotationSpeed: 10
+  gravity: -9.81
+  jumpHeight: 2
+  playerInput: {fileID: 331855923320442070}
 --- !u!1 &1818926580354158373
 GameObject:
   m_ObjectHideFlags: 0

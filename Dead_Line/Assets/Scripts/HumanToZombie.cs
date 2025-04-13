@@ -7,8 +7,8 @@ using UnityEngine.UI; // For Image reference
 
 public class PlayerSwitch : NetworkBehaviour
 {
-    public GameObject prefabA;
-    public GameObject prefabB;
+    public GameObject human_prefab;
+    public GameObject zombie_prefab;
     public AudioSource audioSource;
     public AudioClip soundEffect;
     //public Image screenOverlay; // Reference to UI Image for red screen effect
@@ -72,15 +72,21 @@ public class PlayerSwitch : NetworkBehaviour
     [Command]
     void CmdSwitchPrefab()
     {
-        GameObject newPrefab = (gameObject.name.Contains("puppet_kid")) ? prefabB : prefabA;
-        print("becoming zombie...");
+
+        print("becoming zombie... at" + transform.position);
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 
-        GameObject newPlayer = Instantiate(newPrefab, lastPosition, lastRotation);
+        GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);
 
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
 
+        newPlayer.transform.position = lastPosition;
+        newPlayer.transform.rotation = lastRotation;
+        
+        print(newPlayer.transform.position);
+
         NetworkServer.Destroy(gameObject);
     }
+    
 }
