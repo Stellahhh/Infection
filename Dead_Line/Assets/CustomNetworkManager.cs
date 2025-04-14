@@ -20,7 +20,7 @@ public class CustomNetworkManager : NetworkManager
             spawnCenter.y,
             Random.Range(spawnCenter.z - spawnRange, spawnCenter.z + spawnRange)
         );
-        GameObject chosenPrefab = (Random.value < zombieProportion) ? human_prefab : zombie_prefab;
+        GameObject chosenPrefab = (Random.value < zombieProportion) ? zombie_prefab : human_prefab;
 
         // Instantiate and spawn the player
         GameObject player = Instantiate(chosenPrefab, randomPosition, Quaternion.identity);
