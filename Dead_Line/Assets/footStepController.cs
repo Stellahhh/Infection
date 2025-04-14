@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FootStepController : MonoBehaviour
 {
+    public CharacterController controller;
     public AudioClip[] footstepClips;
     public float stepDistance = 2.0f;  // How far to walk before playing next footstep
     public float volume = 0.8f;
@@ -16,9 +17,10 @@ public class FootStepController : MonoBehaviour
 
     void Update()
     {
+        
         float moved = Vector3.Distance(transform.position, lastStepPosition);
 
-        if (moved >= stepDistance && !audioSource.isPlaying)
+        if (moved >= stepDistance && !audioSource.isPlaying && controller.isGrounded)
         {
             PlayFootstep();
             lastStepPosition = transform.position;
