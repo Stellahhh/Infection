@@ -174,16 +174,16 @@ Additions:
 ### Project Part 3: Sound, UI, and Animation (Chap 14, 15, 17)
 
 Sound effect:
-- Create zombie growls when they are close.
-- Create the sound of foot steps that can indicate the direction and distance.
+- ~~Create zombie growls when they are close.~~
+- ~~Create the sound of foot steps that can indicate the direction and distance.~~
 
 UI:
 - Make zombie and human more distinguishable on map, such as having specific icon for zombies and humans (as suggested in the feedback).
 - Create an additional scene before the players entering the game, so that they can customize the appearance and the name of their character (as suggested in the feedback).
 
 Animation:
-- Create the animation for zombie and human movement (including stay still, walking, and jumping).
-- Make synchronization functional after animation application.
+- ~~Create the animation for zombie and human movement (including stay still, walking, and jumping).~~
+- ~~Make synchronization functional after animation application.~~
 
 Other functionality improvement:
 - Address collision problems 
