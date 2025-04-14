@@ -23,7 +23,7 @@ public class ZombieMovement : NetworkBehaviour
 
     private Camera playerCamera;
     private bool isGrounded;
-    // public Animator animator;
+    public Animator animator;
     private void Start()
     {
         
@@ -120,14 +120,15 @@ public class ZombieMovement : NetworkBehaviour
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
 
 
-        //  if (moveInput.magnitude > 0f)
-        // {
-        //     animator.SetBool("isWalking", true);  // Trigger walk animation
-        // }
-        // else
-        // {
-        //     animator.SetBool("isWalking", false); // Stop walking animation
-        // }
+         if (moveInput.magnitude > 0f)
+        {
+            animator.SetBool("isWalking", true);  // Trigger walk animation
+        }
+        else
+        {
+            animator.SetBool("isWalking", false); // Stop walking animation
+        }
+
         //Rotate the player using mouse input
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
         transform.Rotate(Vector3.up * lookInput.x * rotationSpeed * Time.deltaTime);
@@ -138,17 +139,17 @@ public class ZombieMovement : NetworkBehaviour
             Debug.Log("Jump button pressed! Jumps left: " + jumpsRemaining);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); // Apply jump force
             jumpsRemaining--; // 🔹 Reduce jump count
-            //animator.SetBool("isJumping", true);
+            animator.SetBool("isJumping", true);
         }
         
 
         // Apply Gravity Properly
         velocity.y += gravity * Time.deltaTime;
-        // if (isGrounded && velocity.y <= 0)
-        // {
-        //     animator.SetBool("isJumping", false); // Set jumping to false if grounded
-        // }
-        // Move Player with Updated Velocity
+        if (isGrounded && velocity.y <= 0)
+        {
+            animator.SetBool("isJumping", false); // Set jumping to false if grounded
+        }
+        //Move Player with Updated Velocity
         controller.Move(velocity * Time.deltaTime);
 
     }

@@ -795,7 +795,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   human_prefab: {fileID: 2725162522574613967}
-  zombie_prefab: {fileID: 1696834749189059949, guid: 4a46e821c58b5cd42b14eaab6d197266,
+  zombie_prefab: {fileID: 2725162522574613967, guid: 6c7a01b41b6044619a4bbf423ec82d5f,
     type: 3}
   audioSource: {fileID: 6370252296397613921}
   soundEffect: {fileID: 8300000, guid: 2b504077d77e6427b9257e43f6cdf5ff, type: 3}
@@ -836,6 +836,7 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 2
   playerInput: {fileID: 7951171472498401838}
+  animator: {fileID: 6276262958408013260}
 --- !u!114 &7951171472498401838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
@@ -1129,7 +1130,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b10fec9bba2b7eb4285c00cedd56af11, type: 3}
   m_Controller: {fileID: 9100000, guid: b42940aef2afb8346bfc984741462a8a, type: 2}
   m_CullingMode: 0

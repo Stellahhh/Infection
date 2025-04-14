@@ -78,15 +78,16 @@ public class PlayerSwitch : NetworkBehaviour
         Quaternion lastRotation = transform.rotation;
 
         GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);
-
+        GameObject oldPlayer = gameObject;  
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
-
+        newPlayer.name = $"Zombie [connId={connectionToClient.connectionId}]";
         newPlayer.transform.position = lastPosition;
         newPlayer.transform.rotation = lastRotation;
         
         print(newPlayer.transform.position);
+        NetworkServer.Destroy(oldPlayer);
 
-        NetworkServer.Destroy(gameObject);
     }
+    
     
 }

@@ -20,7 +20,7 @@ public class PlayerMovement : NetworkBehaviour
     private InputAction jumpAction; // New InputAction for jump
 
     private Camera playerCamera;
-    //public Animator animator;
+    public Animator animator;
     private bool isGrounded;
 
     private void Start()
@@ -115,14 +115,14 @@ public class PlayerMovement : NetworkBehaviour
         Vector3 moveDir = cam.forward * moveInput.y + cam.right * moveInput.x;
         moveDir.y = 0f;
         controller.Move(moveDir * moveSpeed * Time.deltaTime);
-        // if (moveInput.magnitude > 0f)
-        // {
-        //     animator.SetBool("isWalking", true);  // Trigger walk animation
-        // }
-        // else
-        // {
-        //     animator.SetBool("isWalking", false); // Stop walking animation
-        // }
+        if (moveInput.magnitude > 0f)
+        {
+            animator.SetBool("isWalking", true);  // Trigger walk animation
+        }
+        else
+        {
+            animator.SetBool("isWalking", false); // Stop walking animation
+        }
 
         // Rotate the player using mouse input
         Vector2 lookInput = lookAction.ReadValue<Vector2>();
@@ -134,7 +134,7 @@ public class PlayerMovement : NetworkBehaviour
             Debug.Log("Jump button pressed! Jumps left: " + jumpsRemaining);
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity); // Apply jump force
             jumpsRemaining--; // 🔹 Reduce jump count
-            //animator.SetBool("isJumping", true);
+            animator.SetBool("isJumping", true);
         }
 
         
@@ -145,7 +145,7 @@ public class PlayerMovement : NetworkBehaviour
         velocity.y += gravity * Time.deltaTime;
         if (isGrounded && velocity.y <= 0)
         {
-            //animator.SetBool("isJumping", false); // Set jumping to false if grounded
+            animator.SetBool("isJumping", false); // Set jumping to false if grounded
         }
         // ✅ Move Player with Updated Velocity
         controller.Move(velocity * Time.deltaTime);

@@ -945,7 +945,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9084458181851230346}
-  - component: {fileID: 5132396434455476269}
   - component: {fileID: 7951171472498401838}
   - component: {fileID: 7893083959562539092}
   - component: {fileID: 686011445132475753}
@@ -953,7 +952,6 @@ GameObject:
   - component: {fileID: 6459685745756164082}
   - component: {fileID: 9113790581775730843}
   - component: {fileID: 4795602712024475147}
-  - component: {fileID: 7173165298455236681}
   - component: {fileID: 5625392761112492344}
   - component: {fileID: 6276262958408013260}
   - component: {fileID: 5472877332793996403}
@@ -991,27 +989,6 @@ Transform:
   - {fileID: 2446912660950675716}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5132396434455476269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f447eecb9ced4f4e9ed56385b60e9a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  controller: {fileID: 7893083959562539092}
-  moveSpeed: 10
-  rotationSpeed: 10
-  gravity: -9.81
-  jumpHeight: 2
-  playerInput: {fileID: 7951171472498401838}
 --- !u!114 &7951171472498401838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,23 +1143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54b49b8e40bc54c8c889f54ac9049060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7173165298455236681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27ac6e3845bd94bf4867723c64821ef9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  minSpawnPosition: {x: 10, y: 20, z: 10}
-  maxSpawnPosition: {x: 130, y: 20, z: 130}
 --- !u!114 &5625392761112492344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +1150,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
   m_Name: 
@@ -1208,9 +1168,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725162522574613967}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: b10fec9bba2b7eb4285c00cedd56af11, type: 3}
-  m_Controller: {fileID: 9100000, guid: b42940aef2afb8346bfc984741462a8a, type: 2}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 41f081d5c6d286c47a33bed3f84de79a, type: 3}
+  m_Controller: {fileID: 9100000, guid: 69ce5dd747afb75488c00ed0f554f1d6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1289,6 +1249,7 @@ MonoBehaviour:
   jumpHeight: 2
   hungerScript: {fileID: 4714397996044919791}
   playerInput: {fileID: 7951171472498401838}
+  animator: {fileID: 6276262958408013260}
 --- !u!1 &2944582386504539544
 GameObject:
   m_ObjectHideFlags: 0
