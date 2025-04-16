@@ -57,7 +57,8 @@ public class PlayerSwitch : NetworkBehaviour
         GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);
         GameObject oldPlayer = gameObject;  
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
-        newPlayer.name = $"Zombie [connId={connectionToClient.connectionId}]";
+        String name = oldPlayer.name;
+        newPlayer.name = $"Zombie ({name})";
         newPlayer.transform.position = lastPosition;
         newPlayer.transform.rotation = lastRotation;
         
