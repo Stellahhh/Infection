@@ -594,6 +594,7 @@ GameObject:
   - component: {fileID: 4854632183885841888}
   - component: {fileID: 2063970263527811686}
   - component: {fileID: 5448730106696471935}
+  - component: {fileID: 4594540505313404942}
   m_Layer: 6
   m_Name: Human Camera
   m_TagString: Untagged
@@ -719,6 +720,15 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!45 &4594540505313404942
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2715996403507879334}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &2725162522574613967
 GameObject:
   m_ObjectHideFlags: 0
