@@ -179,7 +179,7 @@ Sound effect:
 
 UI:
 - Make zombie and human more distinguishable on map, such as having specific icon for zombies and humans (as suggested in the feedback).
-- Create an additional scene before the players entering the game, so that they can customize the appearance and the name of their character (as suggested in the feedback).
+- ~~Create an additional scene before the players entering the game, so that they can customize the appearance and the name of their character (as suggested in the feedback).~~
 
 Animation:
 - ~~Create the animation for zombie and human movement (including stay still, walking, and jumping).~~
@@ -189,8 +189,10 @@ Other functionality improvement:
 - Address collision problems 
   - Camera v.s. the environment (currently, sometimes camera will get into other objects)
   - Character v.s. the environment (currently, sometimes character will float or bury in the ground)
+- ~~Make skybox perspective-specific (from instructors feedback)~~
 
 
+### Project Part 4: Finishing Touches
 
 
 
@@ -340,6 +342,11 @@ modified the win and lose scenes to make them more visually engaging.
 4. Added audio to results scene based on the player's role. Human and zombie players now hear different win or lose audio clips depending on whether their side won or lost. 
 - audio resources: https://uppbeat.io/sfx/category/music-clips/orchestra and https://pixabay.com/sound-effects/search/lose/ 
 
+### Project Checkpoint 3-4: Sound, UI, and Animation
+1. Added a lobby scene to prompt users to input their names before loading the game scene
+![lobby](lobby.png)
+
+2. Improvement: Assign skybox materials to each player's local camera instead of globally. Allow each user to see different skyboxes based on their current zone
 
 ### Setup & Running the Game
 
