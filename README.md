@@ -179,6 +179,7 @@ Sound effect:
 
 UI:
 - Make zombie and human more distinguishable on map, such as having specific icon for zombies and humans (as suggested in the feedback).
+It is hard to assign icon for each individuals on camera. Additionally, it makes the game more challenging when the zombie and humans are more blend-in to the environment.
 - ~~Create an additional scene before the players entering the game, so that they can customize the appearance and the name of their character (as suggested in the feedback).~~
 
 Animation:
@@ -186,9 +187,9 @@ Animation:
 - ~~Make synchronization functional after animation application.~~
 
 Other functionality improvement:
-- Address collision problems 
-  - Camera v.s. the environment (currently, sometimes camera will get into other objects)
-  - Character v.s. the environment (currently, sometimes character will float or bury in the ground)
+- ~~Address collision problems ~~
+  - ~~Camera v.s. the environment (currently, sometimes camera will get into other objects)~~
+  - ~~Character v.s. the environment (currently, sometimes character will float or bury in the ground)~~
 - ~~Make skybox perspective-specific (from instructors feedback)~~
 
 
@@ -361,6 +362,28 @@ modified the win and lose scenes to make them more visually engaging.
    - When entering a disabled tile, the player's camera skybox changes to a **galaxy-themed sky** (can be swapped for a bloody sky later).  
    - If not in danger, the default skybox is applied.  
    - Each player sees a local skybox based on their current tile.
+
+
+3. Animation
+- Added animation (idle, running, and jumping) for zombies and humans.
+- Maked sure the synchronization of animation among different clients.
+
+4. Sound effects
+- Added sound of footsteps for both human and zombie (https://assetstore.unity.com/packages/tools/network/mirror-129321)
+- Added growling sound of zombies to indicate their presence. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
+- Added hissing sound when human is captured by the zombie and turning into zombie. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
+- Those sound effects will change logistically based on the distance to the sound source.
+
+4. War Zone
+
+5. Improved collision.
+- Added collision box to the camera to prevent them from entering into the objects.
+- Make the collision box of zombie and human more aligned with the mesh.
+
+
+
+
+
 
 ### Setup & Running the Game
 
