@@ -90,7 +90,7 @@ Sketch out a rough idea of what parts of your game you will implement for the ne
   - Design the random generation of the map
   - <b>According to the mentor's feedbacks, we implemented a fixed terrain for testing purposes</b>
 - ~~Implement the 3D model for human and zombie~~
-  - <b>According to the mentor's feedbacks, we used simple 3D prefabs to represent human and zombie.
+  - <b>According to the mentor's feedbacks, we used simple 3D prefabs to represent human and zombie.</b>
 - ~~Implement their movement~~
 - ~~Implement keyboard association with movement~~
 - ~~Implement collision detection~~
