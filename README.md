@@ -349,34 +349,33 @@ modified the win and lose scenes to make them more visually engaging.
 
 2. Improvement: Assign skybox materials to each player's local camera instead of globally. Allow each user to see different skyboxes based on their current zone
   
-3. Random Tile Disabling
+3. [War Zone] Random Tile Disabling
    - One tile is disabled at game start; more are disabled every 60 seconds.  
    - Disabled tiles are tracked by position in a `HashSet`.
   
-4. Player Detection + UI Warning
+4. [War Zone] Player Detection + UI Warning
    - Each player checks if they’re standing on a disabled tile using a custom XZ bound check.  
    - If so, a UI warning appears ("⚠️ Danger Zone! Get Out!"), followed by damage after 10s.  
    - UI hides and damage stops when the player leaves.
 
-5. Dynamic Skybox Change 
+5. [War Zone] Dynamic Skybox Change 
    - When entering a disabled tile, the player's camera skybox changes to a **galaxy-themed sky** (can be swapped for a bloody sky later).  
    - If not in danger, the default skybox is applied.  
    - Each player sees a local skybox based on their current tile.
 
 
-3. Animation
+6. Animation
 - Added animation (idle, running, and jumping) for zombies and humans.
 - Maked sure the synchronization of animation among different clients.
 
-4. Sound effects
+7. Sound effects
 - Added sound of footsteps for both human and zombie (https://assetstore.unity.com/packages/tools/network/mirror-129321)
 - Added growling sound of zombies to indicate their presence. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Added hissing sound when human is captured by the zombie and turning into zombie. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Those sound effects will change logistically based on the distance to the sound source.
 
-4. War Zone
 
-5. Improved collision.
+8. Improved collision.
 - Added collision box to the camera to prevent them from entering into the objects.
 - Make the collision box of zombie and human more aligned with the mesh.
 
@@ -412,3 +411,17 @@ Assets/Mini Simple Characters Skeleton Demo/Prefabs/Characters/mini simple skele
 
 Game Duration Customization:
 - The game duration can be adjusted in the TrackWinOrLose script in Game Manager
+
+
+War Zone
+- **[War Zone] Random Tile Disabling:**
+  - One tile is disabled at game start; more are disabled every 60 seconds.
+  - Disabled tiles are tracked using a `HashSet` of tile positions.
+- **[War Zone] Player Detection + UI Warning:**
+  - Players check if they're standing on a disabled tile using a custom XZ-bound check.
+  - If so, a warning UI appears ("⚠️ Danger Zone! Get Out!") and damage starts after 10 seconds.
+  - Warning disappears and damage stops when the player exits the zone.
+- **[War Zone] Dynamic Skybox Change:**
+  - Players entering a disabled tile see a **galaxy-themed skybox**.
+  - When they leave the zone, the skybox returns to default.
+  - Skybox is applied per-player, allowing unique views for different zones.
