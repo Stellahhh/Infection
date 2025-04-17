@@ -11,24 +11,23 @@ public class PlayerSwitch : NetworkBehaviour
     public GameObject zombie_prefab;
     public AudioSource catchAudioSource;
     public AudioClip catchAudioEffect;
-    //public Image screenOverlay; // Reference to UI Image for red screen effect
-
+    
+    
     IEnumerator DelayedSwitch()
     {
         if (isLocalPlayer)
         {
-            Debug.Log("Starting red screen fade effect");
-            
             
             // update the player role for future reference
             PlayerPrefs.SetString("PlayerRole", "Zombie");
             
             // Play the sound effect
             catchAudioSource.PlayOneShot(catchAudioEffect);
+            // to make the sound fully played
             yield return new WaitForSeconds(catchAudioEffect.length);
 
             
-            Debug.Log("Finished red screen fade effect");
+            
         }
 
         // Switch the player prefab
@@ -50,7 +49,7 @@ public class PlayerSwitch : NetworkBehaviour
     void CmdSwitchPrefab()
     {
 
-        print("becoming zombie... at" + transform.position);
+        //print("becoming zombie at" + transform.position);
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 
@@ -62,7 +61,6 @@ public class PlayerSwitch : NetworkBehaviour
         newPlayer.transform.position = lastPosition;
         newPlayer.transform.rotation = lastRotation;
         
-        print(newPlayer.transform.position);
         NetworkServer.Destroy(oldPlayer);
 
     }
