@@ -21,7 +21,7 @@ public class CharacterSwitcher : NetworkBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("collide!");
+        //if collide with zombie
         if (isLocalPlayer && other.CompareTag("Zombie"))
         {
             SwitchCharacter();
@@ -37,7 +37,7 @@ public class CharacterSwitcher : NetworkBehaviour
             NetworkServer.Destroy(currentPlayer);
         }
 
-        // Instantiate the new player prefab (zombie)
+        // Instantiate the zombie prefab
         currentPlayer = Instantiate(zombiePrefab, transform.position, transform.rotation);
         NetworkServer.AddPlayerForConnection(connectionToClient, currentPlayer);
     }

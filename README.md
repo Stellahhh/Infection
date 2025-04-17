@@ -193,9 +193,27 @@ Other functionality improvement:
 - ~~Make skybox perspective-specific (from instructors feedback)~~
 
 
-### Project Part 4: Finishing Touches
+### Project Part 4: Finishing Touches (Chapt 18, 19)
+1. UI and visual
+- Improve the UI elements (HP, hungry bar, minimap) so that they stay in the same position for different screen and monitor sizes.
+- Improve the appearance of the UI elements (adding different HP and hungery bar frames for human and zombie)
+- Improve war zone effects
+  - have war zone effects (e.g., having red particles floating)
+  - have red skybox for war zone.
 
+2. Debug and Test
+  - Test zombie win logic when all humans are infected or eliminated. Verify that the apex predator, final reaper, and final prey roles are correctly assigned and corresponding player names are displayed in the results screen
+  - Test the synchronization when there are multiple (more than 3) players joined.
+  - Optimization and efficiency check:
+    - Check the CPU and GPU usage of the game. 
+    - Test the delay time when many players are joined.
+    - Test the maximum number of clients the server can host without significant delay.
 
+3. Functionality:
+- Include the AI Zombie that could automatically chase players.
+- Solve the problem of the human can share zombie's PP effect when they are close to the zombie.
+- Try to implement the remote multiplayer (so that the users don't necessarily join the same Wi-Fi.)
+ 
 
 ## Development
 
