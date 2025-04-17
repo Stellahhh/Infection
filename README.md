@@ -361,6 +361,8 @@ modified the win and lose scenes to make them more visually engaging.
 4. Added audio to results scene based on the player's role. Human and zombie players now hear different win or lose audio clips depending on whether their side won or lost. 
 - audio resources: https://uppbeat.io/sfx/category/music-clips/orchestra and https://pixabay.com/sound-effects/search/lose/ 
 
+
+
 ### Project Checkpoint 3-4: Sound, UI, and Animation
 1. Added a lobby scene to prompt users to input their names before loading the game scene
 ![lobby](lobby.png)
@@ -374,13 +376,12 @@ modified the win and lose scenes to make them more visually engaging.
 4. [War Zone] Player Detection + UI Warning
    - Each player checks if they’re standing on a disabled tile using a custom XZ bound check.  
    - If so, a UI warning appears ("⚠️ Danger Zone! Get Out!"), followed by damage after 10s.  
-   - UI hides and damage stops when the player leaves.
+   - UI hides and damage stops when the player leaves. ![Danger Zone](danger_zone.png)
 
-5. [War Zone] Dynamic Skybox Change 
-   - When entering a disabled tile, the player's camera skybox changes to a **galaxy-themed sky** (can be swapped for a bloody sky later).  
+5. Dynamic Skybox Change 
+   - When entering a disabled tile, the player's camera skybox changes to a **galaxy-themed sky** (can be swapped for a bloody sky later).  ![danger_zone_sky](danger_zone_sky.png)
    - If not in danger, the default skybox is applied.  
    - Each player sees a local skybox based on their current tile.
-
 
 6. Animation
 - Added animation (idle, running, and jumping) for zombies and humans.
@@ -391,7 +392,7 @@ modified the win and lose scenes to make them more visually engaging.
 - Added growling sound of zombies to indicate their presence. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Added hissing sound when human is captured by the zombie and turning into zombie. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Those sound effects will change logistically based on the distance to the sound source.
-
+- The footsteps' frequency is based on the moving speed of the players. The footstep only appear when player is on the ground.
 
 8. Improved collision.
 - Added collision box to the camera to prevent them from entering into the objects.
@@ -404,18 +405,26 @@ modified the win and lose scenes to make them more visually engaging.
 
 ### Setup & Running the Game
 
+Local Mode:
 1. Build and Run the Project
-2. Run the Game in the Unity console and start the game in Unity’s Play mode. Control panels will appear on both screens.
-3. Choose Multiplayer Roles: Select "Host" on one instance and "Client" on the other.
-4. Start Playing! Each player controls a human character using the following controls:
+2. Run the Game in the Unity console and start the game in Unity’s Play mode. Control panels will appear on both screens.![Control Panel](control_panel.png)
+3. In control panel, the center field is IP address field (currently displaying "10.203.153.144"). Replace it with "localhost."
+4. Choose Multiplayer Roles: Select "Host" on one instance and "Client" on the other.
+
+Online Mode:
+1. Play our game on two devices with one is "server" and the other is "client." Both devices should be in the same Wi-Fi. 
+2. Type "ipconfig getifaddr en0" in the server device's terminal to find the IP address and paste it to both devise's IP address field.
+3. In the server device, choose "Host;" in the client device, choose "Client."
+
+Start Playing! Each player controls a human character using the following controls:
 - WASD → Move
 - Mouse Movement → Change perspective
 - Space → Jump
 - M → open and close map
 - C → cursor appear / disappear
 
-Testing Key Features
 
+***Testing Key Features***
 
 Human and Zombie spawn:
 - By default, there would be 1/10 of new players become zombie
@@ -424,12 +433,29 @@ Human and Zombie spawn:
 Zombie Interactions:
 The game has a few zombies at certain locations, which may make them difficult to find. For easier testing, can manually drag a zombie prefab into the scene:
 - Locate the prefab at:
-Assets/Mini Simple Characters Skeleton Demo/Prefabs/Characters/mini simple skeleton demo.prefab
+Assets/Puppet Kid/Prefabs/zombie.prefab **We modified the zombie prefab in checkpoint 4**
 - Place it near a player to test collisions between humans and zombies.
 
 Game Duration Customization:
 - The game duration can be adjusted in the TrackWinOrLose script in Game Manager
 
+Testing Sound Effect
+- When moving around, you can hear footstep with frequency proportional to the moving speed
+- To test the sound distance, place a zombie near the player (see Zombie Interations above)
+- The zombie growl sound should be louder if your character is closer to it.
+- You should hear the hiss of the zombie when your character (human) collide with the zombie.
+
+Testing Lobby Scene: 
+Run the game from lobby scene
+
+Testing Animation
+- With online mode, simply observe the other player's animation during movement.
+- With local mode, you need to move the camera to see the animation of your own character:
+  - In hierachy, find your character (e.g., "Human (my name)").
+  - Find the Human Camera
+  - Set the position Z of the camera to -3.
+
+Testing War Zone effect
 
 War Zone
 - **[War Zone] Random Tile Disabling:**
