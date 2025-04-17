@@ -456,8 +456,6 @@ Testing Animation
   - Set the position Z of the camera to -3.
 
 Testing War Zone effect
-
-War Zone
 - **[War Zone] Random Tile Disabling:**
   - One tile is disabled at game start; more are disabled every 60 seconds.
   - Disabled tiles are tracked using a `HashSet` of tile positions.
