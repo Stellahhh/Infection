@@ -1,4 +1,6 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Make sure the only the local player's camera is set active
+
 using Mirror;
 using UnityEngine;
 

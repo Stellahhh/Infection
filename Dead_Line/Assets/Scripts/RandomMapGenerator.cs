@@ -1,4 +1,5 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Generate random map at the beginning of each game
 using UnityEngine;
 using System.Collections.Generic;
 

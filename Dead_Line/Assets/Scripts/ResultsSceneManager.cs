@@ -1,4 +1,5 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Create the result scene depending on the game ending result (zombie win or human win)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

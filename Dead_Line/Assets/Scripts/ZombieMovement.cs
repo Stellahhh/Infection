@@ -1,4 +1,6 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Handle the movement of zombie with user input system. Also handles the animations 
+// associated with the movement
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // For TextMeshPro support
@@ -67,12 +69,6 @@ public class ZombieMovement : NetworkBehaviour
 
     }
 
-
-
-    private void Awake()
-    {
-        
-    }
 
     void Update()
     {

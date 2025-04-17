@@ -1,4 +1,5 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Control the player movement with input; Handle the animations associated with movement
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Mirror;

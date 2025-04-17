@@ -1,3 +1,5 @@
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Set the customized name for each player
 using Mirror;
 using UnityEngine;
 

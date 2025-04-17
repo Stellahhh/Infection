@@ -1,4 +1,5 @@
-// Linda Fan, Stella Huo, Hanbei Zhou
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// AI zombies that can automatically chasing humans
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,5 @@
+// Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
+// Ensure the player isn't spawned outside of the map
 using UnityEngine;
 using Mirror;
 
