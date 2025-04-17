@@ -1,32 +1,56 @@
+// Linda Fan, Stella Huo, Hanbei Zhou
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SkyboxHandler : MonoBehaviour
 {
-    public Material skyboxMaterial; // Assign skybox material in inspector
+    public Material skyboxMaterial; // Assign default skybox for this region in inspector
 
     private void OnTriggerEnter(Collider other)
     {
+        // Only respond to player types
         if (other.CompareTag("Human") || other.CompareTag("Zombie"))
         {
-            // print("new skybox triggered by human");
-            // RenderSettings.skybox = skyboxMaterial;
-            // DynamicGI.UpdateEnvironment(); // Ensures lighting updates
             Debug.Log("Skybox zone triggered by: " + other.name);
 
-            // Get the player's camera
+            // Get the player's camera component
             Camera playerCamera = other.GetComponentInChildren<Camera>();
             if (playerCamera != null)
             {
+                // Get or add Skybox component to the camera
                 Skybox camSkybox = playerCamera.GetComponent<Skybox>();
                 if (camSkybox == null)
                 {
                     camSkybox = playerCamera.gameObject.AddComponent<Skybox>();
                 }
 
-                camSkybox.material = skyboxMaterial;
-                DynamicGI.UpdateEnvironment(); // Optional: only needed if lighting needs update
+                // Check if this tile is currently disabled
+                bool isDisabled = DynamicMapGenerator.Instance.DisabledTilePositions.Contains(transform.position);
+
+                // Choose the appropriate material
+                Material chosenSkybox;
+                if (isDisabled)
+                {
+                    // Load fallback "Skybox" from Resources folder
+                    chosenSkybox = Resources.Load<Material>("Skybox");
+                    if (chosenSkybox == null)
+                    {
+                        Debug.LogWarning("Fallback skybox 'Skybox' not found in Resources.");
+                        return;
+                    }
+                }
+                else
+                {
+                    chosenSkybox = skyboxMaterial;
+                }
+
+                // Assign the material to the camera skybox
+                camSkybox.material = chosenSkybox;
+
+                // Optionally update lighting if environment needs it
+                DynamicGI.UpdateEnvironment();
             }
         }
     }
