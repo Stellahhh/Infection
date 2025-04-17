@@ -26,9 +26,7 @@ public class PlayerSwitch : NetworkBehaviour
             catchAudioSource.PlayOneShot(catchAudioEffect);
             // to make the sound fully played
             yield return new WaitForSeconds(catchAudioEffect.length);
-
-            
-            
+   
         }
 
         // Switch the player prefab
