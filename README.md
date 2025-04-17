@@ -350,18 +350,15 @@ modified the win and lose scenes to make them more visually engaging.
 2. Improvement: Assign skybox materials to each player's local camera instead of globally. Allow each user to see different skyboxes based on their current zone
 
 
-### Project Part 4: Animation and UI
-1. Animation
+3. Animation
 - Added animation (idle, running, and jumping) for zombies and humans.
 - Maked sure the synchronization of animation among different clients.
 
-2. Sound effects
+4. Sound effects
 - Added sound of footsteps for both human and zombie (https://assetstore.unity.com/packages/tools/network/mirror-129321)
 - Added growling sound of zombies to indicate their presence. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Added hissing sound when human is captured by the zombie and turning into zombie. (https://assetstore.unity.com/packages/audio/sound-fx/creatures/zombie-voice-audio-pack-free-196645)
 - Those sound effects will change logistically based on the distance to the sound source.
-
-3. Lobby
 
 4. War Zone
 
