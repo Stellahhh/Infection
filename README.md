@@ -347,6 +347,20 @@ modified the win and lose scenes to make them more visually engaging.
 ![lobby](lobby.png)
 
 2. Improvement: Assign skybox materials to each player's local camera instead of globally. Allow each user to see different skyboxes based on their current zone
+  
+3. Random Tile Disabling
+   - One tile is disabled at game start; more are disabled every 60 seconds.  
+   - Disabled tiles are tracked by position in a `HashSet`.
+  
+4. Player Detection + UI Warning
+   - Each player checks if they’re standing on a disabled tile using a custom XZ bound check.  
+   - If so, a UI warning appears ("⚠️ Danger Zone! Get Out!"), followed by damage after 10s.  
+   - UI hides and damage stops when the player leaves.
+
+5. Dynamic Skybox Change 
+   - When entering a disabled tile, the player's camera skybox changes to a **galaxy-themed sky** (can be swapped for a bloody sky later).  
+   - If not in danger, the default skybox is applied.  
+   - Each player sees a local skybox based on their current tile.
 
 ### Setup & Running the Game
 
