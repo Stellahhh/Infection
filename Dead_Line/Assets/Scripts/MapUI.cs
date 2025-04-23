@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class MapUI : MonoBehaviour
 {
     public GameObject mapUI; // The local minimap for this player
+    public GameObject mapFrame;
     public PlayerInput playerInput; // Reference to PlayerInput component
 
     private bool isMapVisible = false;
@@ -14,7 +15,7 @@ public class MapUI : MonoBehaviour
     void Start()
     {
         mapUI.SetActive(false); // Hide the map at start
-
+        mapFrame.SetActive(false);
         // Find the toggle action from PlayerInput
         toggleMapAction = playerInput.actions["ToggleMap"]; // Ensure "ToggleMap" matches the Input Action name in your Input Actions asset
 
@@ -42,5 +43,6 @@ public class MapUI : MonoBehaviour
         print("Press M to toggle the map");
         isMapVisible = !isMapVisible;
         mapUI.SetActive(isMapVisible);
+        mapFrame.SetActive(isMapVisible);
     }
 }

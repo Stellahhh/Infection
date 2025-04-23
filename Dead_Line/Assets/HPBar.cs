@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HPBar : MonoBehaviour
 {
-    public RectTransform hpBarTransform; // The RectTransform of the HP bar fill
+    public Image hpBar; 
     //public Text hpText; // The Text UI element displaying HP value
     private Life playerLife;
 
@@ -12,15 +12,14 @@ public class HPBar : MonoBehaviour
     void Start()
     {
         playerLife = FindObjectOfType<Life>(); // Get player reference
-        originalWidth = hpBarTransform.sizeDelta.x; // Store the initial bar width
+        
     }
 
     void Update()
 {
     if (playerLife != null)
     {
-        float hpRatio = playerLife.amount / 10000f;
-        hpBarTransform.sizeDelta = new Vector2(originalWidth * hpRatio, hpBarTransform.sizeDelta.y);
+        hpBar.fillAmount =  playerLife.amount / 100f;
     }
 }
 }
