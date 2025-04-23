@@ -616,9 +616,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1033632466}
-  - component: {fileID: 1033632469}
   - component: {fileID: 1033632471}
   - component: {fileID: 1033632470}
+  - component: {fileID: 1033632473}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -641,30 +641,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1033632469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033632465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  port: 7777
-  NoDelay: 1
-  SendTimeout: 5000
-  ReceiveTimeout: 30000
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  serverSendQueueLimitPerConnection: 10000
-  serverReceiveQueueLimitPerConnection: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
-  clientSendQueueLimit: 10000
-  clientReceiveQueueLimit: 10000
 --- !u!114 &1033632470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +675,7 @@ MonoBehaviour:
   offlineScene: 
   onlineScene: 
   offlineSceneLoadDelay: 0
-  transport: {fileID: 1033632469}
+  transport: {fileID: 1033632473}
   networkAddress: 10.203.153.144
   maxConnections: 100
   disconnectInactiveConnections: 0
@@ -730,8 +706,32 @@ MonoBehaviour:
   zombie_prefab: {fileID: 2725162522574613967, guid: 6c7a01b41b6044619a4bbf423ec82d5f,
     type: 3}
   spawnCenter: {x: 67.5, y: 10, z: 67.5}
-  zombieProportion: 0
+  zombieProportion: 0.5
   spawnRange: 60
+--- !u!114 &1033632473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033632465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 7777
+  NoDelay: 1
+  SendTimeout: 5000
+  ReceiveTimeout: 30000
+  serverMaxMessageSize: 16384
+  serverMaxReceivesPerTick: 10000
+  serverSendQueueLimitPerConnection: 10000
+  serverReceiveQueueLimitPerConnection: 10000
+  clientMaxMessageSize: 16384
+  clientMaxReceivesPerTick: 1000
+  clientSendQueueLimit: 10000
+  clientReceiveQueueLimit: 10000
 --- !u!1 &1219613617
 GameObject:
   m_ObjectHideFlags: 0
