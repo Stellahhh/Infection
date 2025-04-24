@@ -22,7 +22,7 @@ public class ZombieMovement : NetworkBehaviour
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction; // New InputAction for jump
-
+    public GameObject canvas;
     private Camera playerCamera;
     private bool isGrounded;
     public Animator animator;
@@ -30,7 +30,7 @@ public class ZombieMovement : NetworkBehaviour
     {
         
         if (!isLocalPlayer) return;
-
+        canvas.SetActive(true);
         Camera myCam = GetComponentInChildren<Camera>();
         if (myCam != null)
         {

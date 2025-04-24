@@ -23,11 +23,11 @@ public class PlayerMovement : NetworkBehaviour
     private Camera playerCamera;
     public Animator animator;
     private bool isGrounded;
-
+    public GameObject canvas;
     private void Start()
     {
         if (!isLocalPlayer) return;
-
+        canvas.SetActive(true);
         Camera myCam = GetComponentInChildren<Camera>();
         if (myCam != null)
         {

@@ -12,7 +12,7 @@ public class PlayerSwitch : NetworkBehaviour
     public GameObject zombie_prefab;
     public AudioSource catchAudioSource;
     public AudioClip catchAudioEffect;
-    
+    public GameObject canvas;
     
     IEnumerator DelayedSwitch()
     {
@@ -59,7 +59,7 @@ public class PlayerSwitch : NetworkBehaviour
         newPlayer.name = $"Zombie ({name})";
         newPlayer.transform.position = lastPosition;
         newPlayer.transform.rotation = lastRotation;
-        
+        canvas.SetActive(false);
         NetworkServer.Destroy(oldPlayer);
 
     }
