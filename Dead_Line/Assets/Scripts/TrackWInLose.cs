@@ -97,6 +97,7 @@ public class TrackWinLose : MonoBehaviour
     {
         // Find the zombie with the most infections (Apex Predator)
         apexPredator = FindApexPredator();
+        Debug.Log("Apex Predator: " + (apexPredator != null ? apexPredator.name : "None"));
         
         // Store last infecting zombie as "Final Reaper"
         finalReaper = ZombieController.lastCatcher;

@@ -180,26 +180,26 @@ public class ResultsSceneManager : MonoBehaviour
         else if (winner.ToLower().Contains("zombies"))
         {
             audioSource.clip = isZombie ? winClip : loseClip;
-            // if (isZombie)
-            // {
-            //     Debug.Log("zombies win and you are a zombie, play win clip");
-            // }
-            // else
-            // {
-            //     Debug.Log("zombies win and you are a human, play lose clip");
-            // }
+            if (isZombie)
+            {
+                Debug.Log("zombies win and you are a zombie, play win clip");
+            }
+            else
+            {
+                Debug.Log("zombies win and you are a human, play lose clip");
+            }
         }
         else if (winner.ToLower().Contains("humans"))
         {
             audioSource.clip = isHuman ? winClip : loseClip;
-            // if (isHuman)
-            // {
-            //     Debug.Log("humans win and you are a human, play win clip");
-            // }
-            // else
-            // {
-            //     Debug.Log("humans win and you are a zombie, play lose clip");
-            // }
+            if (isHuman)
+            {
+                Debug.Log("humans win and you are a human, play win clip");
+            }
+            else
+            {
+                Debug.Log("humans win and you are a zombie, play lose clip");
+            }
         }
         else
         {

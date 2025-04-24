@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 5553523589735381568}
   - component: {fileID: 2182498649425437995}
   - component: {fileID: 2302491526869896387}
+  - component: {fileID: 8864642070637788565}
   m_Layer: 7
   m_Name: mini simple skeleton demo
   m_TagString: Zombie
@@ -537,6 +538,8 @@ MonoBehaviour:
   jumpHeight: 2
   hungerScript: {fileID: -350536867098004823}
   playerInput: {fileID: 331855923320442070}
+  canvas: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &2182498649425437995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,7 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af82ab6bce86648c1aaec6dd05edb0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBarTransform: {fileID: 881635845162976199}
+  hpBar: {fileID: 0}
 --- !u!114 &2302491526869896387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,6 +574,24 @@ MonoBehaviour:
   gravity: -9.81
   jumpHeight: 2
   playerInput: {fileID: 331855923320442070}
+  animator: {fileID: 0}
+  canvas: {fileID: 0}
+--- !u!114 &8864642070637788565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696834749189059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ac976fa6b6e4d749005166734380aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  infectionCount: 0
 --- !u!1 &1818926580354158373
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapUI: {fileID: 7763982611927767816}
+  mapFrame: {fileID: 0}
   playerInput: {fileID: 331855923320442070}
 --- !u!1 &2732759298907598300
 GameObject:

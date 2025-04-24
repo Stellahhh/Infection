@@ -40,6 +40,20 @@ public class PlayerSwitch : NetworkBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Zombie") || gameObject.layer == LayerMask.NameToLayer("Zombie"))
         {
             Debug.Log("Collided with Zombie - Starting Coroutine");
+
+            ZombieController zombieController = other.GetComponent<ZombieController>();
+            if (zombieController != null)
+            {
+                zombieController.IncrementInfection(); // Track infection count
+            }
+
+            // You can track last prey too if needed
+            HumanController humanController = GetComponent<HumanController>();
+            if (humanController != null)
+            {
+                HumanController.lastInfected = humanController;
+            }
+
             StartCoroutine(DelayedSwitch());
         }
     }
@@ -53,6 +67,12 @@ public class PlayerSwitch : NetworkBehaviour
         Quaternion lastRotation = transform.rotation;
 
         GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);
+        PlayerRole roleComponent = newPlayer.GetComponent<PlayerRole>();
+        if (roleComponent != null)
+        {
+            roleComponent.role = "Zombie";
+        }
+        
         GameObject oldPlayer = gameObject;  
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
         string name = oldPlayer.name;

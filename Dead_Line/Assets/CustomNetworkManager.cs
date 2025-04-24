@@ -24,11 +24,19 @@ public class CustomNetworkManager : NetworkManager
 
         // Instantiate and spawn the player
         GameObject player = Instantiate(chosenPrefab, randomPosition, Quaternion.identity);
-        player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
-        NetworkServer.AddPlayerForConnection(conn, player);
 
-        totalPlayers++; // Increment count
-    }
+        // Assign role to player
+        string initialRole = (chosenPrefab == zombie_prefab) ? "Zombie" : "Human";
+        PlayerRole roleComponent = player.GetComponent<PlayerRole>();
+        if (roleComponent != null)
+        {
+            roleComponent.role = initialRole;
+        }
+            player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
+            NetworkServer.AddPlayerForConnection(conn, player);
+
+            totalPlayers++; // Increment count
+        }
 
 
 

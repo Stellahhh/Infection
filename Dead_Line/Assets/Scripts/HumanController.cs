@@ -3,14 +3,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class HumanController : MonoBehaviour
+public class HumanController : NetworkBehaviour
 {
     public static HumanController lastInfected;
 
-    public void BecomeZombie()
-    {
-        lastInfected = this; // Track last human to be infected
-        gameObject.tag = "Zombie"; // Change to zombie
-    }
 }
