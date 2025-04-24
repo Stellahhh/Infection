@@ -42,8 +42,10 @@ public class PlayerSwitch : NetworkBehaviour
             Debug.Log("Collided with Zombie - Starting Coroutine");
 
             ZombieController zombieController = other.GetComponent<ZombieController>();
+            Debug.Log("ZombieController: " + zombieController);
             if (zombieController != null)
             {
+                Debug.Log("Incrementing infection count");
                 zombieController.IncrementInfection(); // Track infection count
             }
 
@@ -72,7 +74,7 @@ public class PlayerSwitch : NetworkBehaviour
         {
             roleComponent.role = "Zombie";
         }
-        
+
         GameObject oldPlayer = gameObject;  
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
         string name = oldPlayer.name;

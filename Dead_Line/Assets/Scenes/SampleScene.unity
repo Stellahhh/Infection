@@ -708,7 +708,7 @@ MonoBehaviour:
   zombie_prefab: {fileID: 2725162522574613967, guid: 6c7a01b41b6044619a4bbf423ec82d5f,
     type: 3}
   spawnCenter: {x: 67.5, y: 10, z: 67.5}
-  zombieProportion: 0.9
+  zombieProportion: 0.5
   spawnRange: 60
 --- !u!114 &1033632473
 MonoBehaviour:

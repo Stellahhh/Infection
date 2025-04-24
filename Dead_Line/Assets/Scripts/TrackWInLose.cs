@@ -116,9 +116,11 @@ public class TrackWinLose : MonoBehaviour
         ZombieController[] zombies = FindObjectsOfType<ZombieController>();
         ZombieController topZombie = null;
         int maxInfections = 0;
+        Debug.Log("all zombies: " + zombies.Length);
 
         foreach (ZombieController zombie in zombies)
         {
+            Debug.Log("zombie: " + zombie.name + " infection count: " + zombie.infectionCount);
             if (zombie.infectionCount > maxInfections)
             {
                 maxInfections = zombie.infectionCount;
