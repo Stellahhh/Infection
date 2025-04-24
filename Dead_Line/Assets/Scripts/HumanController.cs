@@ -7,6 +7,5 @@ using Mirror;
 
 public class HumanController : NetworkBehaviour
 {
-    public static HumanController lastInfected;
-
+    public static string lastInfectedName; // Track the name of the last infected human
 }

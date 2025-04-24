@@ -53,7 +53,8 @@ public class PlayerSwitch : NetworkBehaviour
             HumanController humanController = GetComponent<HumanController>();
             if (humanController != null)
             {
-                HumanController.lastInfected = humanController;
+                HumanController.lastInfectedName = gameObject.name; // Save the human's name statically
+                Debug.Log($"Last infected human: {HumanController.lastInfectedName}");
             }
 
             StartCoroutine(DelayedSwitch());

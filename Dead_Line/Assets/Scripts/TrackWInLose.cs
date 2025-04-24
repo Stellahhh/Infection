@@ -103,12 +103,16 @@ public class TrackWinLose : MonoBehaviour
         finalReaper = ZombieController.lastCatcher;
         
         // Store last human infected as "Final Prey"
-        finalPrey = HumanController.lastInfected;
+        // finalPrey = HumanController.lastInfected;
+        string finalPreyName = HumanController.lastInfectedName ?? "None";
 
         // Store values in PlayerPrefs for ResultsScene
         PlayerPrefs.SetString("ApexPredator", apexPredator != null ? apexPredator.name : "None");
         PlayerPrefs.SetString("FinalReaper", finalReaper != null ? finalReaper.name : "None");
-        PlayerPrefs.SetString("FinalPrey", finalPrey != null ? finalPrey.name : "None");
+        // PlayerPrefs.SetString("FinalPrey", finalPrey != null ? finalPrey.name : "None");
+        PlayerPrefs.SetString("FinalPrey", finalPreyName);
+        Debug.Log("Final Prey: " + finalPreyName);
+
     }
 
     ZombieController FindApexPredator()
