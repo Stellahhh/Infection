@@ -46,14 +46,14 @@ public class TileDangerChecker : MonoBehaviour
     System.Collections.IEnumerator WarningAndDamage()
     {
         isInWarningZone = true;
-        playerUI.ShowWarning(true); // show warning UI
+        // playerUI.ShowWarning(true); // show warning UI
 
-        yield return new WaitForSeconds(10f); // grace period
+        // yield return new WaitForSeconds(10f); // grace period
 
         while (IsInsideDangerTileXZ(transform.position))
         {
-            ApplyDamage(1); // deal damage repeatedly
-            yield return new WaitForSeconds(5f); // cooldown between hits
+            ApplyDamage(500); // deal damage repeatedly
+            yield return new WaitForSeconds(1f); // cooldown between hits
         }
 
         // Player exited danger zone during loop
@@ -81,9 +81,23 @@ public class TileDangerChecker : MonoBehaviour
     }
 
     // Apply damage — could later be hooked into a real health system
+    // void ApplyDamage(int amount)
+    // {
+    //     Debug.Log($"{gameObject.name} is taking {amount} damage in danger zone.");
+    //     // Hook this to a health system if desired
+    // }
+
     void ApplyDamage(int amount)
     {
-        Debug.Log($"{gameObject.name} is taking {amount} damage in danger zone.");
-        // Hook this to a health system if desired
+        Life life = GetComponent<Life>();
+        if (life != null)
+        {
+            life.amount -= amount;
+            Debug.Log($"{gameObject.name} took {amount} damage. Remaining life: {life.amount}");
+        }
+        else
+        {
+            Debug.LogWarning($"{gameObject.name} has no Life component.");
+        }
     }
 }
