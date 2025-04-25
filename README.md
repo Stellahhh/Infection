@@ -368,6 +368,7 @@ modified the win and lose scenes to make them more visually engaging.
 2. Added unique skyboxes for each map tile — now when humans or zombies move between areas, the skybox changes to match the new theme.
 ![skybox day](skybox1.png)
 ![skybox night](skybox2.png)
+link: https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014
 
 **Effect Improvement**
 1. Added different post-processing effect for human and zombies, such that human's view is sunny and bright, while zombie's view is dark and bloody.
@@ -424,12 +425,13 @@ modified the win and lose scenes to make them more visually engaging.
 
 ### Project Checkpoint Final Touch
 1. Added different background music for human and zombie for immersive effect. 
-- The human's background music is relaxing and happy (music link: )
-- the zombie's background music is creepy and horrific (music link: )
+- The human's background music is relaxing and happy (music link: https://assetstore.unity.com/packages/audio/music/orchestral/adventure-gaming-music-suite-300438)
+- The zombie's background music is creepy and horrific (music link: https://assetstore.unity.com/packages/audio/music/dark-ambient-music-into-insanity-vol-2-289458)
 
 2. Improved the UI:
-- Added the frame for minimap and the HP bar (resources: )
+- Added the frame for minimap and the HP bar (resources: https://assetstore.unity.com/packages/2d/gui/icons/gui-parts-159068)
 - Improved the position of the UI element such that it will display at the suitable places for monitors with different sizes.
+![UI example](UI_example.png)
 
 3. Tested the result scene synchronization in the multiplayer mode.
   - Tested result scene when all humans are infected (zombies win).
@@ -437,9 +439,30 @@ modified the win and lose scenes to make them more visually engaging.
   - Tested result scene when all zombie died due to hungry (humans win).
   - Tested result scene when game ends due to time up (humans win).
 
-4. AI zombie
+4. War Zone update
+![War Zone](war_zone_preview.png)
+War Zone Detection and Damage System (TileDangerChecker)
+- Attached to each player or zombie to track whether they're standing on a disabled tile.
+- Instantiates a UI warning ("Danger Zone! Get Out!") when entering a danger tile region.
+- Uses InvokeRepeating() to check every second if the player is in a disabled tile.
+- If inside a disabled tile:
+        - Starts a coroutine (WarningAndDamage) that applies 500 damage per second.
+        - The coroutine stops once the player leaves the zone.
+- Damage is applied only if the player has a Life component (connected to health logic).
+- Position checking uses XZ bounds only, ignoring Y (height), to match flat tile detection.
 
-5. War Zone update
+Visual Feedback via Skybox Change (SkyboxHandler)
+- Attached to each map tile to change the skybox when players enter that tile.
+- On trigger enter:
+        - Gets the player's camera and ensures a Skybox component exists.
+        - Checks if the tile is in DisabledTilePositions.
+        - If disabled:
+                - Loads a dramatic CloudyCrown_Daybreak skybox from the Resources folder.
+        - If not disabled:
+                - Applies the tile’s default skyboxMaterial.
+- Changes are applied per player (camera-based), not globally.
+- Optionally updates lighting using DynamicGI.UpdateEnvironment().
+- link: https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cloudy-crown-60004
 
 ### Setup & Running the Game
 
