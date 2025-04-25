@@ -218,6 +218,21 @@ Partially solved this issue by reducing the range of the PP effect. However, whe
 - Try to implement the remote multiplayer (so that the users don't necessarily join the same Wi-Fi.)
 Didn't implement due to time constrain.
 
+### Final project submission
+Functionality:
+- Fixing bugs of specific edge cases
+  - Fixing the bug where the winners' names sometims are not show up correctly.
+  - Fixing the bug where sometimes the zombie cannot successfully infect human even when it collide with human.
+  - Fixing the bug where the last pray isn't updated when the human collide with zombie.
+
+- Functionality
+  - When the player dies (human die due to being in war zone, and zombie dies due to hunger), create specific death end scene for them instead of displaying no rendering camera.
+  - Since it is a multiplayer game that is controlled by the server, it is not feasible to have a restart option. The players have to wait until the server restart the game.
+
+- UI and Juicy
+  - Add the camera shake or other effect when the human is infected by the zombie.
+  - Add some camera shake when human and zombies are walking.
+  
  
 
 ## Development
@@ -470,7 +485,7 @@ Testing Sound Effect
 - You should hear the hiss of the zombie when your character (human) collide with the zombie.
 
 Testing Lobby Scene: 
-Run the game from lobby scene
+Run the game from lobby scene.
 
 Testing Animation
 - With online mode, simply observe the other player's animation during movement.
