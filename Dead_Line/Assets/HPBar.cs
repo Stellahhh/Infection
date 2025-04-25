@@ -19,7 +19,7 @@ public class HPBar : MonoBehaviour
 {
     if (playerLife != null)
     {
-        hpBar.fillAmount =  playerLife.amount / 100f;
+        hpBar.fillAmount =  playerLife.amount / 10000f;
     }
 }
 }

@@ -195,24 +195,44 @@ Other functionality improvement:
 
 ### Project Part 4: Finishing Touches (Chapt 18, 19)
 1. UI and visual
-- Improve the UI elements (HP, hungry bar, minimap) so that they stay in the same position for different screen and monitor sizes.
-- Improve the appearance of the UI elements (adding different HP and hungery bar frames for human and zombie)
-- Improve war zone effects
-  - have war zone effects (e.g., having red particles floating)
-  - have red skybox for war zone.
+- ~~Improve the UI elements (HP, hungry bar, minimap) so that they stay in the same position for different screen and monitor sizes.~~
+- ~~Improve the appearance of the UI elements (adding different HP and hungery bar frames for human and zombie)~~
+- ~~Improve war zone effects~~
+  - ~~have war zone effects (e.g., having red particles floating)~~
+  - ~~have red skybox for war zone.~~
 
 2. Debug and Test
-  - Test zombie win logic when all humans are infected or eliminated. Verify that the apex predator, final reaper, and final prey roles are correctly assigned and corresponding player names are displayed in the results screen
+  - ~~Test zombie win logic when all humans are infected or eliminated. Verify that the apex predator, final reaper, and final prey roles are correctly assigned and corresponding player names are displayed in the results screen~~
   - Test the synchronization when there are multiple (more than 3) players joined.
+  Didn't test this because we can't find the fourth device; everything works fine with 3 devices joining.
   - Optimization and efficiency check:
     - Check the CPU and GPU usage of the game. 
     - Test the delay time when many players are joined.
     - Test the maximum number of clients the server can host without significant delay.
+    Didn't test due to time limit.
 
 3. Functionality:
 - Include the AI Zombie that could automatically chase players.
 - Solve the problem of the human can share zombie's PP effect when they are close to the zombie.
+Partially solved this issue by reducing the range of the PP effect. However, when the human is very close to the zombie, the human can still see the zombie's PP effect
 - Try to implement the remote multiplayer (so that the users don't necessarily join the same Wi-Fi.)
+Didn't implement due to time constrain.
+
+### Final project submission
+Functionality:
+- Fixing bugs of specific edge cases
+  - Fixing the bug where the winners' names sometims are not show up correctly.
+  - Fixing the bug where sometimes the zombie cannot successfully infect human even when it collide with human.
+  - Fixing the bug where the last pray isn't updated when the human collide with zombie.
+
+- Functionality
+  - When the player dies (human die due to being in war zone, and zombie dies due to hunger), create specific death end scene for them instead of displaying no rendering camera.
+  - Since it is a multiplayer game that is controlled by the server, it is not feasible to have a restart option. The players have to wait until the server restart the game.
+
+- UI and Juicy
+  - Add the camera shake or other effect when the human is infected by the zombie.
+  - Add some camera shake when human and zombies are walking.
+  
  
 
 ## Development
@@ -400,10 +420,29 @@ modified the win and lose scenes to make them more visually engaging.
 
 
 
+### Project Checkpoint Final Touch
+1. Added different background music for human and zombie for immersive effect. 
+- The human's background music is relaxing and happy (music link: )
+- the zombie's background music is creepy and horrific (music link: )
 
+2. Improved the UI:
+- Added the frame for minimap and the HP bar (resources: )
+- Improved the position of the UI element such that it will display at the suitable places for monitors with different sizes.
 
+3. Tested the result scene synchronization in the multiplayer mode.
+  - Tested result scene when all humans are infected (zombies win).
+  - Tested result scene when all human die due to war zone (zombie win).
+  - Tested result scene when all zombie died due to hungry (humans win).
+  - Tested result scene when game ends due to time up (humans win).
+
+4. AI zombie
+
+5. War Zone update
 
 ### Setup & Running the Game
+
+**important**
+Before running the game, go to Edit/Project Setting/Player/Active Input Handeling and change it to both (because keyboard input is required for enterning name in the lobby scene.)
 
 Local Mode:
 1. Build and Run the Project
@@ -446,7 +485,7 @@ Testing Sound Effect
 - You should hear the hiss of the zombie when your character (human) collide with the zombie.
 
 Testing Lobby Scene: 
-Run the game from lobby scene
+Run the game from lobby scene.
 
 Testing Animation
 - With online mode, simply observe the other player's animation during movement.

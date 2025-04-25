@@ -35,7 +35,7 @@ public class SkyboxHandler : MonoBehaviour
                 if (isDisabled)
                 {
                     // Load fallback "Skybox" from Resources folder
-                    chosenSkybox = Resources.Load<Material>("Skybox");
+                    chosenSkybox = Resources.Load<Material>("CloudyCrown_Daybreak");
                     if (chosenSkybox == null)
                     {
                         Debug.LogWarning("Fallback skybox 'Skybox' not found in Resources.");

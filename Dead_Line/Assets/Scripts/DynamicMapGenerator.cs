@@ -156,6 +156,7 @@ public class DynamicMapGenerator : NetworkBehaviour
         }
     }
 
+    /*
     void DisableRandomTile()
     {
         if (spawnedTiles.Count == 0) return;
@@ -170,6 +171,9 @@ public class DynamicMapGenerator : NetworkBehaviour
             return;
         }
 
+        // Clear previously disabled tile(s)
+        disabledTilePositions.Clear();
+        // Add the new one
         disabledTilePositions.Add(pos);
 
         if (tileNames.ContainsKey(tileToDisable))
@@ -179,6 +183,45 @@ public class DynamicMapGenerator : NetworkBehaviour
 
         RpcDisableTile(pos);
     }
+    */
+
+    void DisableRandomTile()
+{
+    if (spawnedTiles.Count == 0) return;
+
+    GameObject tileToDisable = spawnedTiles[Random.Range(0, spawnedTiles.Count)];
+    Vector3 pos = tileToDisable.transform.position;
+
+    // Skip if already disabled
+    if (disabledTilePositions.Contains(pos))
+    {
+        DisableRandomTile(); // Try again
+        return;
+    }
+
+    // Clear previous disabled tiles
+    disabledTilePositions.Clear();
+
+    // Add all positions in the tile region to the disabled set
+    float tileHalfSize = 5f;  // Adjust based on your tile size
+    float step = 1f;          // Resolution: how granular the positions are
+
+    for (float x = pos.x - tileHalfSize; x <= pos.x + tileHalfSize; x += step)
+    {
+        for (float z = pos.z - tileHalfSize; z <= pos.z + tileHalfSize; z += step)
+        {
+            disabledTilePositions.Add(new Vector3(Mathf.Round(x), pos.y, Mathf.Round(z)));
+        }
+    }
+
+    if (tileNames.ContainsKey(tileToDisable))
+        Debug.Log($"[MAP WARNING] Disabled tile: {tileNames[tileToDisable]} at position {pos}");
+    else
+        Debug.Log($"[MAP WARNING] Disabled unknown tile at position {pos}");
+
+    RpcDisableTile(pos);
+}
+
 
     [ClientRpc]
     void RpcDisableTile(Vector3 tilePosition)
