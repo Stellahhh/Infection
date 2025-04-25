@@ -213,6 +213,7 @@ Other functionality improvement:
 
 3. Functionality:
 - Include the AI Zombie that could automatically chase players.
+  - We are half-way through implementing it and will complete the implementation in the next submission.
 - Solve the problem of the human can share zombie's PP effect when they are close to the zombie.
 Partially solved this issue by reducing the range of the PP effect. However, when the human is very close to the zombie, the human can still see the zombie's PP effect
 - Try to implement the remote multiplayer (so that the users don't necessarily join the same Wi-Fi.)
@@ -228,6 +229,7 @@ Functionality:
 - Functionality
   - When the player dies (human die due to being in war zone, and zombie dies due to hunger), create specific death end scene for them instead of displaying no rendering camera.
   - Since it is a multiplayer game that is controlled by the server, it is not feasible to have a restart option. The players have to wait until the server restart the game.
+  - Complete the AI zombie implementation.
 
 - UI and Juicy
   - Add the camera shake or other effect when the human is infected by the zombie.
