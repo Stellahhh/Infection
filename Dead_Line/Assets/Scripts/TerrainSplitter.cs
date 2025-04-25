@@ -2,6 +2,7 @@
 // Split the terrain into blocks to create war zones
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TerrainSplitter : MonoBehaviour
 {
@@ -60,6 +61,17 @@ public class TerrainSplitter : MonoBehaviour
         GameObject originalTerrainGO = originalTerrain.gameObject;
         originalTerrain = null; // Clear reference before destroying
         Destroy(originalTerrainGO);
+
+        // NavMeshSurface navSurface = GetComponent<NavMeshSurface>();
+        // if (navSurface != null)
+        // {
+        //     Debug.Log("Building NavMesh after terrain split...");
+        //     navSurface.BuildNavMesh();
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("No NavMeshSurface component found on TerrainSplitter GameObject.");
+        // }
     }
 
     private Terrain CreateTerrain(string name, float[,] heights, Vector3 size, Vector3 position, int index)
@@ -91,6 +103,14 @@ public class TerrainSplitter : MonoBehaviour
         // Store material instance for color changes
         terrainMaterials[index] = terrainMaterial;
 
+        // NavMeshSurface surface = terrainGO.AddComponent<NavMeshSurface>();
+        // Debug.Log("Added NavMeshSurface to " + terrainGO.name);
+        // surface.useGeometry = NavMeshCollectGeometry.RenderMeshes;
+        // surface.collectObjects = CollectObjects.All;
+        // surface.layerMask = ~0; // everything
+        // surface.overrideTileSize = true;
+        // surface.tileSize = 128; // optional tweak
+        // surface.BuildNavMesh();
         return terrainGO.GetComponent<Terrain>();
     }
 

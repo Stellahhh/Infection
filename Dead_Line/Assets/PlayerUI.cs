@@ -17,4 +17,7 @@ public class PlayerUI : MonoBehaviour
         // Update the displayed text only if showing
         warningText.text = show ? "Danger Zone! Get Out!" : "";
     }
+
+ 
+
 }
