@@ -12,6 +12,7 @@ public class ZombieInfectCounter : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("isServer: " + isServer);
         if (!isServer) return; // Server handles infection count
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Human"))
