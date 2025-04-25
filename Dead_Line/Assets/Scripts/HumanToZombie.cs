@@ -51,10 +51,11 @@ public class PlayerSwitch : NetworkBehaviour
 
             // You can track last prey too if needed
             HumanController humanController = GetComponent<HumanController>();
-            if (humanController != null)
+            PlayerRole roleComponent = GetComponent<PlayerRole>();
+            if (humanController != null && roleComponent != null)
             {
-                HumanController.lastInfectedName = gameObject.name; // Save the human's name statically
-                Debug.Log($"Last infected human: {HumanController.lastInfectedName}");
+                HumanController.lastInfectedName = roleComponent.playerName; // Use the custom player name from the lobby
+                Debug.Log($"Last infected human (playerName): {HumanController.lastInfectedName}");
             }
 
             StartCoroutine(DelayedSwitch());
