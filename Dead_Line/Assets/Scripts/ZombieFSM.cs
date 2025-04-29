@@ -7,8 +7,9 @@ using UnityEngine.AI;
 
 public class EnemyFSM : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     public Sight sightSensor;
+    public Animator animator;
     // Start is called before the first frame update
     void Awake()
     {
@@ -26,11 +27,14 @@ public class EnemyFSM : MonoBehaviour
             {
                 agent.isStopped = false;
                 agent.SetDestination(sightSensor.detectedObject.transform.position); 
-                //print("Chasing Player: " + sightSensor.detectedObject.transform.position);
+                
+                print("Chasing Player: " + sightSensor.detectedObject.transform.position);
+                animator.SetBool("isWalking", true);  // Trigger walk animation
                 //print("Agent Velocity: " + agent.speed);
             }
         else {
             agent.isStopped = true; 
+            animator.SetBool("isWalking", false);  // Trigger walk animation
             //print("Player not detected");
         }
     }

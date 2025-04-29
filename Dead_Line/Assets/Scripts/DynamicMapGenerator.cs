@@ -1,6 +1,7 @@
 // Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
 // Generate random maps for each game
 
+using UnityEngine.AI; 
 using UnityEngine;
 using Mirror;
 using System.Collections;
@@ -136,13 +137,21 @@ public class DynamicMapGenerator : NetworkBehaviour
 
             currentZ += maxRowHeight;
         }
-
+        foreach (GameObject tile in spawnedTiles)
+        {
+            NavMeshSurface[] surfaces = tile.GetComponentsInChildren<NavMeshSurface>();
+            foreach (NavMeshSurface surface in surfaces)
+            {
+                surface.BuildNavMesh();
+            }
+        }
         // Start danger zone scheduling
         if (isServer)
         {
             DisableRandomTile(); // Disable one immediately
             StartCoroutine(DisableTileRoutine()); // Continue disabling every 60s
         }
+        
     }
 
     // === TILE DISABLING ===
