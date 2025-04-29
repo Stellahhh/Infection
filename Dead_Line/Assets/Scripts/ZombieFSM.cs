@@ -14,10 +14,12 @@ public class EnemyFSM : MonoBehaviour
     void Awake()
     {
         agent = GetComponentInParent<NavMeshAgent>();
+        animator.SetBool("isJumping", false);
     }
 
     void Update()
     {
+        animator.SetBool("isJumping", false);
         ChasePlayer();
     }
 
