@@ -1474,6 +1474,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   role: Human
+  playerName: 
 --- !u!1 &2822510834695815650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2648,6 +2649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3561595727938184274}
   - component: {fileID: 8265597909619046001}
+  - component: {fileID: 5755694398676264610}
   m_Layer: 0
   m_Name: PPvolume
   m_TagString: Untagged
@@ -2682,11 +2684,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsGlobal: 1
+  m_IsGlobal: 0
   priority: 0
-  blendDistance: 0
+  blendDistance: 1
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 887d3d10d5a06445888361fcdc5be5e4, type: 2}
+--- !u!65 &5755694398676264610
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566271035878147122}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5620257810021345055
 GameObject:
   m_ObjectHideFlags: 0
