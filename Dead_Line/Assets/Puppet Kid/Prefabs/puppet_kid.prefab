@@ -1056,6 +1056,7 @@ GameObject:
   - component: {fileID: 2181083438044217475}
   - component: {fileID: 2556043775510134412}
   - component: {fileID: -5512936295337637673}
+  - component: {fileID: 628382957950687802}
   m_Layer: 6
   m_Name: puppet_kid
   m_TagString: Human
@@ -1130,10 +1131,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84bc8588b6224f1aa662064ab341cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 10000
+  amount: 10
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  observerPrefab: {fileID: 3831378143126518945, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+    type: 3}
 --- !u!114 &5132396434455476269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1476,6 +1479,19 @@ MonoBehaviour:
   syncInterval: 0
   role: Human
   playerName: 
+--- !u!114 &628382957950687802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdb18feabb41470992158eb003f42c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileCameras: []
 --- !u!1 &2822510834695815650
 GameObject:
   m_ObjectHideFlags: 0
