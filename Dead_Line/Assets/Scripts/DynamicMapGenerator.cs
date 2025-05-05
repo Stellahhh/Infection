@@ -34,6 +34,10 @@ public class DynamicMapGenerator : NetworkBehaviour
     private const float TILE_HALF_WIDTH = 22.5f;
     private const float TILE_HALF_DEPTH = 22.5f;
 
+    public GameObject cameraPrefab; // Assign a prefab with a Camera component in the Inspector
+    public List<Camera> tileCameras = new List<Camera>(); // Store references for switching
+
+
     // === UNITY LIFECYCLE ===
     private void Awake()
     {
@@ -117,6 +121,18 @@ public class DynamicMapGenerator : NetworkBehaviour
                 Vector3 bottomLeft = bounds.min;
                 Vector3 correctPosition = new Vector3(currentX - bottomLeft.x, 0, currentZ - bottomLeft.z);
                 spawnedObject.transform.position = correctPosition;
+
+                // Spawn a camera for this tile
+                if (cameraPrefab != null)
+                {
+                    Vector3 camPos = correctPosition + new Vector3(0, 30, 0); // 30 units above the tile
+                    GameObject camObj = Instantiate(cameraPrefab, camPos, Quaternion.Euler(90, 0, 0)); // Looking straight down
+                    camObj.name = $"TileCamera_{x}_{z}";
+                    camObj.SetActive(false); // All cameras off by default
+                    Camera cam = camObj.GetComponent<Camera>();
+                    if (cam != null)
+                        tileCameras.Add(cam);
+                }
 
                 bounds.center += correctPosition;
                 tileBoundsByPosition[correctPosition] = bounds;
