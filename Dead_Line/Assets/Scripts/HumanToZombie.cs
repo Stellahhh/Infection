@@ -70,17 +70,21 @@ public class PlayerSwitch : NetworkBehaviour
         Vector3 lastPosition = transform.position;
         Quaternion lastRotation = transform.rotation;
 
-        GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);
+        GameObject newPlayer = Instantiate(zombie_prefab, lastPosition, lastRotation);    
+        int start = gameObject.name.IndexOf('(') + 1;
+        int end = gameObject.name.IndexOf(')');
+        string name = gameObject.name.Substring(start, end - start);
         PlayerRole roleComponent = newPlayer.GetComponent<PlayerRole>();
         if (roleComponent != null)
         {
             roleComponent.role = "Zombie";
+            
+            roleComponent.playerName = name;
         }
 
         GameObject oldPlayer = gameObject;  
         NetworkServer.ReplacePlayerForConnection(connectionToClient, newPlayer, true);
-        string name = oldPlayer.name;
-        newPlayer.name = $"Zombie ({name})";
+        
         newPlayer.transform.position = lastPosition;
         newPlayer.transform.rotation = lastRotation;
         canvas.SetActive(false);

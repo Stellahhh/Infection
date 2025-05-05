@@ -32,7 +32,8 @@ public class CustomNetworkManager : NetworkManager
         {
             roleComponent.role = initialRole;
         }
-        player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
+        player.name = player.GetComponent<PlayerRole>().playerName;
+        //player.name = $"{playerPrefab.name} [connId={conn.connectionId}]";
         NetworkServer.AddPlayerForConnection(conn, player);
 
             totalPlayers++; // Increment count
