@@ -163,29 +163,44 @@ public class TrackWinLose : MonoBehaviour
     }
 
     void EndGame()
-    {
-        if (gameEnded) return;
-        gameEnded = true;
+{
+    if (gameEnded) return;
+    gameEnded = true;
 
-        PlayerPrefs.SetString("WinnerMessage", winnerMessage);
-        PlayerPrefs.SetInt("HumanCount", humanCount);
+    // Fallback values
+    
+    string apexName = apexPredator != null ? apexPredator.GetComponent<PlayerRole>().playerName : "None";
+    string reaperName = finalReaper != null ? finalReaper.GetComponent<PlayerRole>().playerName : "None";
+    string preyName = HumanController.lastInfectedName ?? "None";
 
-        // Clear zombie-related values if humans win
-        if (!PlayerPrefs.GetString("winner").ToLower().Contains("zombies"))
-        {
-            PlayerPrefs.DeleteKey("ApexPredator");
-            PlayerPrefs.DeleteKey("FinalReaper");
-            PlayerPrefs.DeleteKey("FinalPrey");
-        }
-         foreach (var conn in NetworkServer.connections)
+    string winner = PlayerPrefs.GetString("winner", "Draw");
+
+    // If humans win, clear zombie-related awards
+    if (!winner.ToLower().Contains("zombies"))
     {
+        apexName = "None";
+        reaperName = "None";
+        preyName = "None";
+    }
+
+    // Send result data to each client
+    foreach (var conn in NetworkServer.connections)
+    {
+        if (conn.Value.identity == null) continue;
+
         GameObject playerObj = conn.Value.identity.gameObject;
         PlayerResultsHandler handler = playerObj.GetComponent<PlayerResultsHandler>();
         if (handler != null)
         {
-            handler.TargetLoadResultsScene(conn.Value);
+            handler.TargetLoadResultsScene(
+                conn.Value,
+                apexName,
+                reaperName,
+                preyName,
+                winnerMessage,
+                humanCount
+            );
         }
     }
-        //SceneManager.LoadScene("ResultsScene");
-    }
+}
 }
