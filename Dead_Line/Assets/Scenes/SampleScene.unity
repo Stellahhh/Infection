@@ -1086,6 +1086,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1009282294
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_Name
+      value: puppet_kid (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2725162522574613967, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421182863943093749, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: sceneId
+      value: 3091350981
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9084458181851230346, guid: b4235d9df06b17d498218a340b679137,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4235d9df06b17d498218a340b679137, type: 3}
 --- !u!1 &1033632465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1536,18 @@ MonoBehaviour:
   cameraPrefab: {fileID: 2511726971966333814, guid: 813621c02b0cc40f7829cc2b3f1e4081,
     type: 3}
   tileCameras: []
+--- !u!114 &1312868004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2952620162094760152, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3917920301659078331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1576841634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1943,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameDuration: 10000
   timer: 0
+--- !u!223 &2107917181 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1546085907877031614, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3917920301659078331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3917920301659078331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1861,6 +1957,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128971166794316736, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+        type: 3}
+      propertyPath: m_Name
+      value: death message
+      objectReference: {fileID: 0}
     - target: {fileID: 1546085907877031614, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
         type: 3}
       propertyPath: m_RenderMode
@@ -1869,7 +1970,7 @@ PrefabInstance:
     - target: {fileID: 2952620162094760152, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
         type: 3}
       propertyPath: m_text
-      value: "YOU'RE DEAD... ENJOY THE AFTERLIFE!\nPress 1\u20139 to switch cameras"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2952620162094760152, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
         type: 3}
@@ -1961,6 +2062,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7929158313576090477, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+        type: 3}
+      propertyPath: observerCanvas
+      value: 
+      objectReference: {fileID: 2107917181}
+    - target: {fileID: 7929158313576090477, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+        type: 3}
+      propertyPath: deathMessageText
+      value: 
+      objectReference: {fileID: 1312868004}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2132,6 +2243,7 @@ SceneRoots:
   - {fileID: 938958266}
   - {fileID: 808843452}
   - {fileID: 5986862252182273615}
+  - {fileID: 1009282294}
   - {fileID: 5179396}
   - {fileID: 346063846}
   - {fileID: 1207847445}
