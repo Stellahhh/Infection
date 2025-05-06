@@ -579,7 +579,7 @@ Testing the overhead camera effect:
 
   ### Downloads
   [download for mac](./Dead_Line/deadline_mac_os.zip)
-  [download for windows](./Dead_Line/deadline_windows.zip)
+  [download for windows](./Dead_Line/dead_line_windows.zip)
 
   ### Future Work
   Functionality:
@@ -624,8 +624,8 @@ Stella:
 
 
 
-  Together:
-  - AI zombie implementation (Linda developped the AI script and Hanbei combined the AI zomnbies with the randomized navmesh surface)
-  - Player movement (Stella implemented the jump function, and Hanbei implemented the translation and rotation function)
+Together:
+- AI zombie implementation (Linda developped the AI script and Hanbei combined the AI zomnbies with the randomized navmesh surface)
+- Player movement (Stella implemented the jump function, and Hanbei implemented the translation and rotation function)
 
 
