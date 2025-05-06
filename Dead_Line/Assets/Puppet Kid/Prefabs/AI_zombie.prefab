@@ -2452,11 +2452,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72e67a4edbf14606b6ebae50ce16f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 1000
-  remainingTime: 1000
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  maxTime: 300
+  remainingTime: 300
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  observerPrefab: {fileID: 0}
 --- !u!114 &2513415376371987957
 MonoBehaviour:
   m_ObjectHideFlags: 0
