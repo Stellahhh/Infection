@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: -7883138141313389591}
   - component: {fileID: 5460007218462955331}
   - component: {fileID: 1994551573396420552}
+  - component: {fileID: 5162009433848253832}
   m_Layer: 7
   m_Name: zombie
   m_TagString: Zombie
@@ -1130,6 +1131,9 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   maxTime: 1000
   remainingTime: 1000
   onDeath:
@@ -1290,6 +1294,21 @@ MonoBehaviour:
   tileCameras: []
   observerCanvas: {fileID: 0}
   bgmManagerPrefab: {fileID: 0}
+--- !u!114 &5162009433848253832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725162522574613967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2bda302b084c437b9df92d5fa4478b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1 &2944582386504539544
 GameObject:
   m_ObjectHideFlags: 0
