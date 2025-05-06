@@ -13,7 +13,7 @@ public class PlayerResultsHandler : NetworkBehaviour
         PlayerPrefs.SetInt("HumanCount", humanCount);
 
         // Optionally store winner too
-        PlayerPrefs.SetString("winner", winnerMsg.Contains("Zombies") ? "Zombies" : "Humans");
+        // PlayerPrefs.SetString("winner", winnerMsg.Contains("Zombies") ? "Zombies" : "Humans");
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("ResultsScene");
     }
