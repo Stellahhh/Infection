@@ -47,9 +47,11 @@ public class ResultsSceneManager : MonoBehaviour
         StartCoroutine(FadeInScene());
 
         // Display main winner message
-        string winner = PlayerPrefs.GetString("WinnerMessage", "No results available.");
-        winMessageText.text = winner;
-        humanWinMessageText.text = winner;
+        string winnerText = PlayerPrefs.GetString("WinnerMessage", "No results available.");
+        string winner = PlayerPrefs.GetString("winner", "Draw");
+        Debug.Log("Winner in start: " + winner);
+        winMessageText.text = winnerText;
+        humanWinMessageText.text = winnerText;
 
         // Get zombie-related names
         string apexPredatorName = PlayerPrefs.GetString("ApexPredator", "");
@@ -166,6 +168,7 @@ public class ResultsSceneManager : MonoBehaviour
     void PlayResultAudio()
     {
         string winner = PlayerPrefs.GetString("winner", "");
+        Debug.Log("Winner: " + winner);
         string playerRole = PlayerPrefs.GetString("PlayerRole", "");
         string playerName = PlayerPrefs.GetString("PlayerName", "");
         string finalPrey = PlayerPrefs.GetString("FinalPrey", "");

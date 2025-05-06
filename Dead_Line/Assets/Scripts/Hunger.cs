@@ -51,6 +51,7 @@ public class Hunger : NetworkBehaviour
         //if (!isLocalPlayer) return;
 
         if (observerPrefab != null && isLocalPlayer)
+        if (observerPrefab != null && isLocalPlayer)
         {
             GameObject observer = Instantiate(observerPrefab);
             NetworkServer.Spawn(observer, connectionToClient);
