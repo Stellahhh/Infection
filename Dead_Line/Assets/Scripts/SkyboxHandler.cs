@@ -28,12 +28,15 @@ public class SkyboxHandler : MonoBehaviour
                 }
 
                 // Check if this tile is currently disabled
-                bool isDisabled = DynamicMapGenerator.Instance.DisabledTilePositions.Contains(transform.position);
+                Vector3 temp_pos = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(0), Mathf.Round(transform.position.z));
+                // bool isDisabled = DynamicMapGenerator.Instance.DisabledTilePositions.Contains(transform.position);
+                bool isDisabled = DynamicMapGenerator.Instance.DisabledTilePositions.Contains(temp_pos);
 
                 // Choose the appropriate material
                 Material chosenSkybox;
                 if (isDisabled)
                 {
+                    // Debug.Log("Tile currently disabled ");
                     // Load fallback "Skybox" from Resources folder
                     chosenSkybox = Resources.Load<Material>("CloudyCrown_Daybreak");
                     if (chosenSkybox == null)

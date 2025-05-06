@@ -228,14 +228,16 @@ public class DynamicMapGenerator : NetworkBehaviour
     disabledTilePositions.Clear();
 
     // Add all positions in the tile region to the disabled set
-    float tileHalfSize = 5f;  // Adjust based on your tile size
+    float tileHalfSize = 19f;  // Adjust based on your tile size
     float step = 1f;          // Resolution: how granular the positions are
 
     for (float x = pos.x - tileHalfSize; x <= pos.x + tileHalfSize; x += step)
     {
         for (float z = pos.z - tileHalfSize; z <= pos.z + tileHalfSize; z += step)
         {
-            disabledTilePositions.Add(new Vector3(Mathf.Round(x), pos.y, Mathf.Round(z)));
+            // disabledTilePositions.Add(new Vector3(Mathf.Round(x), pos.y, Mathf.Round(z)));
+            disabledTilePositions.Add(new Vector3(Mathf.Round(x), Mathf.Round(0), Mathf.Round(z)));
+        
         }
     }
 
@@ -251,7 +253,8 @@ public class DynamicMapGenerator : NetworkBehaviour
     [ClientRpc]
     void RpcDisableTile(Vector3 tilePosition)
     {
-        disabledTilePositions.Add(tilePosition);
+        // disabledTilePositions.Add(tilePosition);
+        disabledTilePositions.Add(new Vector3(Mathf.Round(tilePosition.x), Mathf.Round(0), Mathf.Round(tilePosition.z)));
         Debug.Log($"[CLIENT] Tile disabled at: {tilePosition}");
     }
 
