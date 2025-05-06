@@ -613,7 +613,7 @@ Testing the overhead camera effect:
   Hanbei:
 
   Funtionality:
-  - Spawn mechanism for human and zombie (random spaw loctaion and spawn proportion)
+  - Spawn mechanism for human and zombie (random spawn location and spawn proportion)
   - Sychronization of position and movement between clients.
   - Transition between human and zombie.
   - Human life and zombie hunger, such as the zombie's speed gets faster when it gets more hungry.
@@ -624,18 +624,30 @@ Testing the overhead camera effect:
   - Snowing special effect.
 
   Sound and UI:
-  - Background musics for the lobby scene, main game, and overhead camear scene.
+  - Background musics for the lobby scene, main game, and overhead camera scene.
   - 3D Sound effects such as zombie growling, footsteps, and infection hiss.
   - HP bar, hunger bar, overhead name, and minimap.
 
-Linda:
+  Linda:
 
-Stella:
+  Functionality: 
+    - Implemented game win/lose conditions checks, including tracking of apex predators, final reaper and final prey 
+    - Implemented transition to result scene based on game outcomes
+    - Lobby scene as the main entry point into the game
+    - Built player observer mode with overhead cameras after death
+
+  UI/audio: 
+    - results scene UI for both zombie/human win scenarios
+    - audio for results scene based on win/lose state and player's role 
+    - lobby scene UI
+    - Skyboxes for each map tile
+
+  Stella:
 
 
 
-Together:
-- AI zombie implementation (Linda developped the AI script and Hanbei combined the AI zomnbies with the randomized navmesh surface)
-- Player movement (Stella implemented the jump function, and Hanbei implemented the translation and rotation function)
+  Together:
+    - AI zombie implementation (Linda developed the AI script and Hanbei combined the AI zombies with the randomized navmesh surface)
+    - Player movement (Stella implemented the jump function, and Hanbei implemented the translation and rotation function)
 
 
