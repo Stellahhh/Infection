@@ -2,6 +2,8 @@
 // Managing the observer mode for the game
 using UnityEngine;
 using System.Collections;
+using TMPro;
+
 
 public class ObserverMode : MonoBehaviour
 {
@@ -15,17 +17,18 @@ public class ObserverMode : MonoBehaviour
     {
         tileCameras = cams;
     }
-
+    
     public void EnableObservation()
     {
         observing = true;
         SwitchToCamera(0); // Start on camera 1 (index 0)
         if (observerCanvas != null)
             observerCanvas.enabled = true;
+
         if (FindObjectOfType<BGMManager>() == null)
-    {
-        Instantiate(bgmManagerPrefab);
-    }
+        {
+            Instantiate(bgmManagerPrefab);
+        }
     }
 
     void Update()

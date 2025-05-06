@@ -9,6 +9,7 @@ public class Hunger : NetworkBehaviour
     [SyncVar] public float remainingTime;
     
     public UnityEngine.Events.UnityEvent onDeath;
+    public GameObject observerPrefab;
 
     private bool isDead = false;
 
@@ -30,7 +31,7 @@ public class Hunger : NetworkBehaviour
         {
             isDead = true;
             onDeath.Invoke();
-            NetworkServer.Destroy(gameObject); // only server can do this
+            RpcEnterObserverMode();
         }
     }
 
@@ -42,5 +43,24 @@ public class Hunger : NetworkBehaviour
         {
             remainingTime = maxTime;
         }
+    }
+
+    [ClientRpc]
+    void RpcEnterObserverMode()
+    {
+        if (!isLocalPlayer) return;
+
+        if (observerPrefab != null)
+        {
+            GameObject observer = Instantiate(observerPrefab);
+            NetworkServer.Spawn(observer, connectionToClient);
+            var obsScript = observer.GetComponent<ObserverMode>();
+            if (obsScript != null)
+            {
+                obsScript.SetCameras(DynamicMapGenerator.Instance.tileCameras.ToArray());
+                obsScript.EnableObservation();
+            }
+        }
+        NetworkServer.Destroy(gameObject);
     }
 }

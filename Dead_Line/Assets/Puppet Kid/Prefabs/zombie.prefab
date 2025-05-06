@@ -1127,11 +1127,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72e67a4edbf14606b6ebae50ce16f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   maxTime: 1000
   remainingTime: 1000
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  observerPrefab: {fileID: 3831378143126518945, guid: 6721006d0992c4e1bab9a1eab5e4f7c8,
+    type: 3}
 --- !u!114 &8525656630584668109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1288,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCameras: []
+  observerCanvas: {fileID: 0}
+  bgmManagerPrefab: {fileID: 0}
 --- !u!1 &2944582386504539544
 GameObject:
   m_ObjectHideFlags: 0

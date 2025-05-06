@@ -39,7 +39,6 @@ public class Life : NetworkBehaviour
         {
             GameObject observer = Instantiate(observerPrefab);
             NetworkServer.Spawn(observer, connectionToClient);
-
             var obsScript = observer.GetComponent<ObserverMode>();
             if (obsScript != null)
             {
