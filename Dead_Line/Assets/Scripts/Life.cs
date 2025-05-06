@@ -28,7 +28,6 @@ public class Life : MonoBehaviour
         var hpBar = GetComponent<HPBar>(); // lowercase 'h'
         if (hpBar != null && hpBar.hpBar != null)
             hpBar.hpBar.gameObject.SetActive(false);
-
         // Hide player model (optional)
         // var renderers = GetComponentsInChildren<Renderer>();
         // foreach (var r in renderers)

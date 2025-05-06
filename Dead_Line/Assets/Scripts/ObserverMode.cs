@@ -7,6 +7,7 @@ public class ObserverMode : MonoBehaviour
 {
     public Camera[] tileCameras; // Set via SetCameras()
     public Canvas observerCanvas;
+    public GameObject bgmManagerPrefab;
     private int currentIndex = -1;
     private bool observing = false;
 
@@ -21,6 +22,10 @@ public class ObserverMode : MonoBehaviour
         SwitchToCamera(0); // Start on camera 1 (index 0)
         if (observerCanvas != null)
             observerCanvas.enabled = true;
+        if (FindObjectOfType<BGMManager>() == null)
+    {
+        Instantiate(bgmManagerPrefab);
+    }
     }
 
     void Update()
