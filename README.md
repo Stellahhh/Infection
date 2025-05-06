@@ -649,6 +649,16 @@ Testing the overhead camera effect:
 
   Stella:
 
+  Functionality:
+    - Implemented the War Zone mechanic, a dynamic system that randomly disables one of the nine tiles every 60 seconds. Players within the disabled zone are warned and take damage every 1 seconds unless they escape. This includes:
+      - Tile selection logic
+      - Local skybox change to visually indicate disabled zones
+      - Danger zone detection and timed damage logic
+    - Developed the random map generation system using a 3x3 grid layout, where each tile is randomly assigned one of 10 themed terrains. This allows for diverse gameplay each session.
+    - Created the jump functionality for players, including double-jump support and integration with movement controls.
+    - Led the effort to locate, test, and integrate existing Unity asset prefabs for environment, zombie, and human models, ensuring compatibility with multiplayer and performance constraints.
+
+
 
 
   Together:
