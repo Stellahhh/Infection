@@ -3,7 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Mirror;
 public class TrackWinLose : MonoBehaviour
 {
     public float gameDuration; // 3 minutes
@@ -177,6 +177,15 @@ public class TrackWinLose : MonoBehaviour
             PlayerPrefs.DeleteKey("FinalReaper");
             PlayerPrefs.DeleteKey("FinalPrey");
         }
-        SceneManager.LoadScene("ResultsScene");
+         foreach (var conn in NetworkServer.connections)
+    {
+        GameObject playerObj = conn.Value.identity.gameObject;
+        PlayerResultsHandler handler = playerObj.GetComponent<PlayerResultsHandler>();
+        if (handler != null)
+        {
+            handler.TargetLoadResultsScene(conn.Value);
+        }
+    }
+        //SceneManager.LoadScene("ResultsScene");
     }
 }
