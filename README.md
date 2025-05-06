@@ -480,15 +480,21 @@ Visual Feedback via Skybox Change (SkyboxHandler)
 
 ### Final Project Submission
 1. Added functionality for both zombies and humans to observe game state after they die. There are 9 overhead cameras on each of the nine tiles of the map, and players can switch cameras using keys 1-9.
+
 ![Overhead Camera](overhead_camera.png)
 
 2. AI zombie
+
 - Added 9 AI zombies, with one in each terrain. The zombie will detect the player if (1) the player is human, (2) the player is within its sight (70 distance, 180 degree, no occluder), and (3) the player is in the same terrain as the zombie.
+
 ![AI_zombie](AI_zombie_1.png)
+
 ![AI_zombie_running](AI_zombie_2.png)
 
 3. Overhead names
+
 Each client will enter their name at the beginning of the game, which will then be displayed on their head.
+
 ![Overhead Name](overhead_name.png)
 
 4. Background music
@@ -579,7 +585,7 @@ Testing the overhead camera effect:
 
   ### Downloads
   [download for mac](./Dead_Line/deadline_mac_os.zip)
-  
+
   [download for windows](./Dead_Line/dead_line_windows.zip)
 
   ### Future Work
@@ -605,15 +611,18 @@ Testing the overhead camera effect:
   ### Member Contributions
 
   Hanbei:
+
   Funtionality:
   - Spawn mechanism for human and zombie (random spaw loctaion and spawn proportion)
   - Sychronization of position and movement between clients.
   - Transition between human and zombie.
   - Human life and zombie hunger, such as the zombie's speed gets faster when it gets more hungry.
   - Animations of human and zombie.
+
   Visual effect:
   - Different visual effect for human and zombie.
   - Snowing special effect.
+
   Sound and UI:
   - Background musics for the lobby scene, main game, and overhead camear scene.
   - 3D Sound effects such as zombie growling, footsteps, and infection hiss.
