@@ -48,9 +48,9 @@ public class Hunger : NetworkBehaviour
     [ClientRpc]
     void RpcEnterObserverMode()
     {
-        if (!isLocalPlayer) return;
+        //if (!isLocalPlayer) return;
 
-        if (observerPrefab != null)
+        if (observerPrefab != null && isLocalPlayer)
         {
             GameObject observer = Instantiate(observerPrefab);
             NetworkServer.Spawn(observer, connectionToClient);
