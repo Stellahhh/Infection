@@ -586,7 +586,7 @@ Testing the overhead camera effect:
   
   [human overhead camera (death scene)](https://drive.google.com/file/d/1f417ggVqMNAgdKzPWKaSg2D03R4l5G_K/view?usp=drive_link)
 
-  [human winning scene] (https://drive.google.com/file/d/16IsXEqHd97gSkqAwC9m1oDxVNd5qVFax/view?usp=drive_link)
+  [human winning scenes](https://drive.google.com/file/d/16IsXEqHd97gSkqAwC9m1oDxVNd5qVFax/view?usp=drive_link)
 
   ### Downloads
   [download for mac](./Dead_Line/deadline_mac_os.zip)

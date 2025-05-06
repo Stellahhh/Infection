@@ -1131,11 +1131,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  maxTime: 1000
-  remainingTime: 1000
+  maxTime: 300
+  remainingTime: 300
   onDeath:
     m_PersistentCalls:
       m_Calls: []

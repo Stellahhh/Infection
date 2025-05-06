@@ -19,7 +19,7 @@ public class HungerBar : MonoBehaviour
 {
     if (hunger != null)
     {
-        float hpRatio = hunger.remainingTime / 1000f;
+        float hpRatio = hunger.remainingTime / hunger.maxTime;
         hpBar.fillAmount = hpRatio;
     }
 }
