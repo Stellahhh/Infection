@@ -1863,7 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b638d18b4fe5b453bb0f8f79fce4d377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameDuration: 10000
+  gameDuration: 600
   timer: 0
 --- !u!223 &2107917181 stripped
 Canvas:
