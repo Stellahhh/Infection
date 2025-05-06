@@ -222,18 +222,30 @@ Didn't implement due to time constrain.
 ### Final project submission
 Functionality:
 - Fixing bugs of specific edge cases
-  - Fixing the bug where the winners' names sometims are not show up correctly.
-  - Fixing the bug where sometimes the zombie cannot successfully infect human even when it collide with human.
-  - Fixing the bug where the last pray isn't updated when the human collide with zombie.
+  - ~~Fixing the bug where the winners' names sometims are not show up correctly.~~
+  - ~~Fixing the bug where sometimes the zombie cannot successfully infect human even when it collide with human.~~
+  - ~~Fixing the bug where the last pray isn't updated when the human collide with zombie.~~
 
 - Functionality
-  - When the player dies (human die due to being in war zone, and zombie dies due to hunger), create specific death end scene for them instead of displaying no rendering camera.
+  - ~~When the player dies (human die due to being in war zone, and zombie dies due to hunger), create specific death end scene for them instead of displaying no rendering camera.~~
   - Since it is a multiplayer game that is controlled by the server, it is not feasible to have a restart option. The players have to wait until the server restart the game.
-  - Complete the AI zombie implementation.
+  - ~~Complete the AI zombie implementation.~~
 
 - UI and Juicy
-  - Add the camera shake or other effect when the human is infected by the zombie.
+  - ~~Add the camera shake or other effect when the human is infected by the zombie.~~
   - Add some camera shake when human and zombies are walking.
+  - We didn't implement it because we realize it makes the player very dizzy and it is hard to play the game for a long time
+
+Additions:
+- We added overhead cameras after player dies, so that they can choose between 9 different cameras to observe the game.
+- We added names on top of each player's head.
+- We added background musics for lobby scene and the observing scene. 
+- We fixed the bug of end scene unable to synch among multiple clients. (We force shift the result scene for all connections.)
+- We fixed the bug of winners' names not synch among clients. (We broadcast the winner names across all connection)
+- We fixed the bug of the newly infected human (new zombie) didn't inherit the name of the previous human. (We overwrite the PlayerRole script.)
+- We fixed the bug of pp volumn not functional when new player entered. (It was previously set the global and we've changed it to local.)
+
+
   
  
 
@@ -464,6 +476,25 @@ Visual Feedback via Skybox Change (SkyboxHandler)
 - Optionally updates lighting using DynamicGI.UpdateEnvironment().
 - link: https://assetstore.unity.com/packages/2d/textures-materials/sky/farland-skies-cloudy-crown-60004
 
+
+
+### Final Project Submission
+1. Added functionality for both zombies and humans to observe game state after they die. There are 9 overhead cameras on each of the nine tiles of the map, and players can switch cameras using keys 1-9.
+![Overhead Camera](overhead_camera.png)
+
+2. AI zombie
+- Added 9 AI zombies, with one in each terrain. The zombie will detect the player if (1) the player is human, (2) the player is within its sight (70 distance, 180 degree, no occluder), and (3) the player is in the same terrain as the zombie.
+![AI_zombie](AI_zombie_1.png)
+![AI_zombie_running](AI_zombie_2.png)
+
+3. Overhead names
+Each client will enter their name at the beginning of the game, which will then be displayed on their head.
+![Overhead Name](overhead_name.png)
+
+4. Background music
+- We added background music for the lobby scene and the overhead camera scene (both pieces coming from https://assetstore.unity.com/packages/audio/music/dark-ambient-music-into-insanity-vol-2-289458)
+
+
 ### Setup & Running the Game
 
 **important**
@@ -531,3 +562,70 @@ Testing War Zone effect
   - Players entering a disabled tile see a **galaxy-themed skybox**.
   - When they leave the zone, the skybox returns to default.
   - Skybox is applied per-player, allowing unique views for different zones.
+
+Testing AI zombie:
+- Walk around the map until you see a console message "Chasing Player: (xxx, xxx, xxx)," which indicate the zombies saw you.
+- The AI zombie will approach you and attack you.
+- Due to the collision problem inherited with the navmesh surface in the environment prefab, we recommend testing zombie on the city, train station, or snow village environment.
+
+Testing the overhead camera effect:
+- **Make sure the game won't end if your character dead** (i.e., you are not the only human or only zombie in the scene. If so, drag another human or zombie prefab into the scene to prevent the game from ending.)
+- If you are a human: go to the inspector and make the component Life's amount to be 0.
+- If you are a zombie: go to the inspector and make the component Hunger's remaining time to be 0.
+- You should then enter the overhead camera scene automatically. 
+- You can press number keys 1-9 to switch between the scenes.
+
+  ### Demo
+
+  ### Downloads
+  [download for mac](./Dead_Line/deadline_mac_os)
+  [download for windows](./Dead_Line/deadline_windows)
+
+  ### Future Work
+  Functionality:
+  - Include the functionality of customizing the appearance of the characters.
+  - Include different kinds of environment and a larger/randomized map.
+  - Improve the collision system (currently there're many collision bugs associated with the collider inside the environment prefab we are using.)
+  - Include more advanced mechanism (e.g., players can buy weapons to eliminate zombie or buy medicines to convert zombies back to humans)
+  - Include a larger lobby function so that one server can host more than one game.
+  - Enabling online collaboration and cloud server, such that players don't need to connect to the same WiFi.
+  - Enabling threshold adjustment for rotation speed. Additionally, enabling customized keyboard.
+  - Enabling chatting function.
+
+  Visual effect and animation:
+  - Include smoother transition between animation stage
+  - Include transitons during infection (e.g., human fresh becomes skeleton).
+  - Include more special effects, such as changing weathers conditions (it would be harder to find humans/run away from zombies in foggy and rainy environment).
+
+  UI and sound:
+  - In the map function, include the human and zombie icons.
+  - Add more realistic sound effect (different sound for stepping onto grass, snow, or rock.)
+  
+  ### Member Contributions
+
+  Hanbei:
+  Funtionality:
+  - Spawn mechanism for human and zombie (random spaw loctaion and spawn proportion)
+  - Sychronization of position and movement between clients.
+  - Transition between human and zombie.
+  - Human life and zombie hunger, such as the zombie's speed gets faster when it gets more hungry.
+  - Animations of human and zombie.
+  Visual effect:
+  - Different visual effect for human and zombie.
+  - Snowing special effect.
+  Sound and UI:
+  - Background musics for the lobby scene, main game, and overhead camear scene.
+  - 3D Sound effects such as zombie growling, footsteps, and infection hiss.
+  - HP bar, hunger bar, overhead name, and minimap.
+
+Linda:
+
+Stella:
+
+
+
+  Together:
+  - AI zombie implementation (Linda developped the AI script and Hanbei combined the AI zomnbies with the randomized navmesh surface)
+  - Player movement (Stella implemented the jump function, and Hanbei implemented the translation and rotation function)
+
+
