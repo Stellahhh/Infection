@@ -1,35 +1,46 @@
 // Linda Fan <yfan43@jhu.edu>, Stella Huo <shuo2@jhu.edu>, Hanbei Zhou <hzhou43@jhu.edu>
-// managing hunger level of zombie
-using System.Collections;
-using System.Collections.Generic;
+// Managing hunger level of zombie
 using UnityEngine;
+using Mirror;
 
-public class Hunger : MonoBehaviour
+public class Hunger : NetworkBehaviour
 {
     public float maxTime;
-    public float remainingTime;
+    [SyncVar] public float remainingTime;
     
     public UnityEngine.Events.UnityEvent onDeath;
 
+    private bool isDead = false;
+
     private void Start()
     {
-        remainingTime = maxTime;
+        if (isServer)
+        {
+            remainingTime = maxTime;
+        }
     }
+
     void Update()
     {
-        remainingTime -= Time.deltaTime; // Decrease time gradually
+        if (!isServer || isDead) return;
+
+        remainingTime -= Time.deltaTime;
 
         if (remainingTime < 0)
         {
+            isDead = true;
             onDeath.Invoke();
-            Destroy(gameObject);
+            NetworkServer.Destroy(gameObject); // only server can do this
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!isServer) return;
+
         if (other.CompareTag("Human")) // Check if collided with a human
         {
-            remainingTime = maxTime; // clear hungriness if eat a human
+            remainingTime = maxTime;
         }
     }
 }

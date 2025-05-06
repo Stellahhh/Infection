@@ -4,45 +4,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Mirror; 
 
-public class Life : MonoBehaviour
+public class Life : NetworkBehaviour
 {
     public float amount;
-    public UnityEvent onDeath;
-    public GameObject observerPrefab; // Assign in Inspector
+    public UnityEngine.Events.UnityEvent onDeath;
+    public GameObject observerPrefab;
     private bool isDead = false;
+
     void Update()
     {
         if (!isDead && amount <= 0)
         {
             isDead = true;
             onDeath.Invoke();
-            EnterObserverMode();
+
+            if (isLocalPlayer)
+            {
+                CmdHandleDeath();
+            }
         }
     }
 
-     void EnterObserverMode() {
-        // Example: disable player controls
-        var movement = GetComponent<PlayerMovement>();
-        if (movement != null) movement.enabled = false;
-        var hpBar = GetComponent<HPBar>(); // lowercase 'h'
-        if (hpBar != null && hpBar.hpBar != null)
-            hpBar.hpBar.gameObject.SetActive(false);
-        // Hide player model (optional)
-        // var renderers = GetComponentsInChildren<Renderer>();
-        // foreach (var r in renderers)
-        //     r.enabled = false;
+    [Command]
+    void CmdHandleDeath()
+    {
+        EnterObserverMode();
+    }
 
-        // var observer = GetComponent<ObserverMode>();
-        // if (observer != null)
-        // {
-        //     // Optionally set cameras from the map generator
-        //     observer.SetCameras(DynamicMapGenerator.Instance.tileCameras.ToArray());
-        //     observer.EnableObservation();
-        // }
+    void EnterObserverMode()
+    {
         if (observerPrefab != null)
         {
             GameObject observer = Instantiate(observerPrefab);
+            NetworkServer.Spawn(observer, connectionToClient);
+
             var obsScript = observer.GetComponent<ObserverMode>();
             if (obsScript != null)
             {
@@ -51,7 +48,6 @@ public class Life : MonoBehaviour
             }
         }
 
-        // Destroy the player for game state logic
-        Destroy(gameObject, 0.1f);
+        NetworkServer.Destroy(gameObject);
     }
 }
