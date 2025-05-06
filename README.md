@@ -588,6 +588,13 @@ Testing the overhead camera effect:
 
   [human winning scenes](https://drive.google.com/file/d/16IsXEqHd97gSkqAwC9m1oDxVNd5qVFax/view?usp=drive_link)
 
+  [all humans infected](https://drive.google.com/file/d/1Th3IhkrvjHhkdS75oWW5cENOunhHRqtA/view?usp=sharing)
+  
+  [zombies die of hunger](https://drive.google.com/file/d/1tPuG8IuqaaCpyBiAPLU2sMm75snzEJOu/view?usp=sharing)
+
+  [zombies times up](https://drive.google.com/file/d/1cHsfix4JgOURsCvkV5nKEf_pefQ73mca/view?usp=sharing)
+
+
   ### Downloads
   [download for mac](./Dead_Line/deadline_mac_os.zip)
 
