@@ -578,8 +578,8 @@ Testing the overhead camera effect:
   ### Demo
 
   ### Downloads
-  [download for mac](./Dead_Line/deadline_mac_os)
-  [download for windows](./Dead_Line/deadline_windows)
+  [download for mac](./Dead_Line/deadline_mac_os.zip)
+  [download for windows](./Dead_Line/deadline_windows.zip)
 
   ### Future Work
   Functionality:
